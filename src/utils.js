@@ -8,14 +8,15 @@ import * as ort from 'onnxruntime-web'
 
 //global variables?
 const m_meshLoader = new MeshDataIO();
-const m_sampleLatents = [[-0.3565,  0.1575,  1.0918,  2.4775,  2.2573, -0.1390, -1.3193,  3.0594,
-                            -0.9858,  0.7706, -0.0137,  2.7787,  2.6453,  1.1211,  0.4391, -0.9247],
-                        [-2.2181,  1.3984,  0.3352,  1.9815, -2.0877,  0.9447,  1.8893, -0.9952,
-                            -0.3084, -0.0416, -0.4527,  1.8579,  2.5294,  4.0021,  0.2990, -1.0654],
-                        [ 1.0405,  0.9194,  1.9217, -1.2535,  0.7970, -1.7441,  3.7671, -0.8281,
-                            1.4710, -0.5767, -0.9464, -2.3008, -2.1810,  1.7609, -3.3695, -1.5451],
-                        [ 1.0568, -2.5039, -2.0869,  1.4479,  0.4336, -2.8037,  2.4863, -1.1014,
-                            0.6378, -2.5953, -0.3835,  2.7578,  1.5824, -2.3905,  0.2244, -0.0916]];
+const m_sampleLatents = [[ 2.7622, -2.2852,  2.3655,  1.2294, -1.8817,  2.0528,  1.7541, -0.1315,
+                            -3.4645,  2.9667,  2.5833,  0.3329,  4.4528,  0.0312,  2.8146,  0.7895],
+                        [ 1.9867, -0.3162,  3.4118, -0.6602, -1.1517,  0.5038,  1.2648, -0.4614,
+                            -1.8139,  4.6501,  0.4611,  1.2268,  3.8348, -2.5931,  3.2938,  1.0686],
+                        [-1.2091,  0.4990,  0.6193,  2.6189, -3.0905, -1.2833,  1.6822, -0.7626,
+                            -5.0616,  3.3977, -0.3486, -1.4750,  6.0732,  2.5065,  3.4132,  1.0382],
+                        [ 2.4245, -4.3261,  1.5485,  3.4660, -2.5159,  3.9251,  1.6547,  1.0180,
+                            -2.3387,  2.5968, -0.0481, -1.3488,  4.5446,  0.5115,  2.5426,  2.2390]];
+let m_session = null;
 
 export const createGenericRenderWindow = () => {
     
@@ -79,24 +80,19 @@ export const readMesh = async (path)=>{
     
 }
 
-export const decoder = async(renderingobject) =>{
-    const m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
-    console.log("Decoder Initialized");                        
+export const warmUp = async ()=>{
+    m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
+}
 
-
-    console.log(new Float32Array(m_sampleLatents[2]))
-    const dummy_tensor = new ort.Tensor('float32', new Float32Array(m_sampleLatents[3]) , [1, 16]);
-    const pred = await m_session.run({input:dummy_tensor});
+export const decoder = async(renderingobject, latent = new Float32Array(m_sampleLatents[3]) ) =>{        
+    const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
+    const pred = await m_session.run({input:input_tensor});
     const output = pred.output;
 
-
-    console.log(renderingobject._PolyData.getNumberOfPoints());
-
-    // console.log("Decoder Output : ", output,  output.data);
+    //Update polydata
     const data = output.data;    
-    for(let i=0 ; i<data.length ; i+=3){        
-        let position = [ data[i], data[i+1], data[i+2] ];
-        renderingobject._PolyData.getPoints().setPoint(i/3, position[0], position[1], position[2]);        
+    for(let i=0 ; i<data.length ; i+=3){                
+        renderingobject._PolyData.getPoints().setPoint(i/3, data[i], data[i+1], data[i+2]);        
     }
     
     renderingobject._PolyData.modified();
