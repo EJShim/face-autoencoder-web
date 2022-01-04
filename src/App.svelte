@@ -16,15 +16,15 @@
 		//read sample mesh
 		const renderingObject = await readMesh('resources/sample_1.vtp');
 
-		m_renderer.addActor(renderingObject._Actor);
-		m_renderer.getActiveCamera().setPosition(0, 0, 10);
+		
+		m_renderer.getActiveCamera().setPosition(0, 0, 100);
 		m_renderer.getActiveCamera().setViewUp(0, 1, 0);
+		
+
+		await decoder(renderingObject);
+		renderingObject.addToRenderer(m_renderer);
 		m_renderer.resetCamera();
 		m_renderWindow.render();
-
-
-		decoder(renderingObject);
-
 
 		
 	});	
