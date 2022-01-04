@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
-	import {createGenericRenderWindow, readMesh} from './utils';	
+	import {createGenericRenderWindow, readMesh, decoder} from './utils';	
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
 	let m_renderer = m_genericRenderWindow.getRenderer();
@@ -21,6 +21,11 @@
 		m_renderer.getActiveCamera().setViewUp(0, 1, 0);
 		m_renderer.resetCamera();
 		m_renderWindow.render();
+
+
+		decoder(renderingObject);
+
+
 		
 	});	
 </script>
@@ -38,7 +43,7 @@
 <style>
 
 	.renderer{
-		background: linear-gradient( #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: linear-gradient(to bottom, #9cecfb, #65c7f7, #0052d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 		width:80%;
 		height:100%;
 		position:absolute;

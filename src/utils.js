@@ -3,6 +3,8 @@ import ViewInfo from '@imago/iwtk.js/dist/data/ViewInfo';
 import MeshDataIO from '@imago/iwtk.js/dist/loader/MeshDataIO';
 import MeshRenderingObject from '@imago/iwtk.js/dist/data/MeshRenderingObject'; 
 import axios from 'axios';
+import * as ort from 'onnxruntime-web'
+
 
 //global variables?
 const m_meshLoader = new MeshDataIO();
@@ -67,4 +69,18 @@ export const readMesh = async (path)=>{
 
     return renderingObject;
     
+}
+
+export const decoder = async(renderingobject) =>{
+    const m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
+    console.log("Decoder Initialized");                        
+
+
+    const dummy_tensor = new ort.Tensor('float32', new Float32Array(1*16) , [1, 16]);
+    const pred = await m_session.run({input:dummy_tensor});
+    const output = pred.output;
+
+    console.log("Decoder Output : ", output);
+    
+
 }
