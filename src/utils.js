@@ -16,6 +16,7 @@ const m_sampleLatents = [[ 2.7622, -2.2852,  2.3655,  1.2294, -1.8817,  2.0528, 
                             -5.0616,  3.3977, -0.3486, -1.4750,  6.0732,  2.5065,  3.4132,  1.0382],
                         [ 2.4245, -4.3261,  1.5485,  3.4660, -2.5159,  3.9251,  1.6547,  1.0180,
                             -2.3387,  2.5968, -0.0481, -1.3488,  4.5446,  0.5115,  2.5426,  2.2390]];
+
 let m_session = null;
 
 export const createGenericRenderWindow = () => {
@@ -85,6 +86,8 @@ export const warmUp = async ()=>{
 }
 
 export const decoder = async(renderingobject, latent = new Float32Array(m_sampleLatents[3]) ) =>{        
+
+    console.log(latent)
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
     const pred = await m_session.run({input:input_tensor});
     const output = pred.output;

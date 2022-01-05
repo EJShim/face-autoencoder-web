@@ -14,6 +14,8 @@
 
 		//read sample mesh
 		const renderingObject = await readMesh('resources/sample_1.vtp');
+		renderingObject.getProperty().setColor(.8, .7, .3)
+		renderingObject.updateActor();
 
 		
 		m_renderer.getActiveCamera().setPosition(0, 0, 100);
