@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
-	import {createGenericRenderWindow, readMesh, decoder, warmUp} from './utils';	
+	import {createGenericRenderWindow, readPolyData, makeActor, decoder, warmUp} from './utils';	
 	import {sampleLatents} from './utils';
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
@@ -9,8 +9,10 @@
 	let m_bWarmUp = false;
 	
 	let m_targetObject = null;
+	let m_targetActor = null;
 	let latentColor = `rgb(${12}, ${76}, ${0})`;
 	let m_bControl = false;
+	let m_bCalculate = false;
 
 	onMount(async ()=>{		
 		m_genericRenderWindow.setContainer(m_container);
@@ -18,18 +20,20 @@
 
 
 		//read sample mesh
-		m_targetObject = await readMesh('resources/sample_1.vtp');
-		m_targetObject.getProperty().setColor(.8, .7, .3)
-		m_targetObject.updateActor();
-
-		
+		m_targetObject = await readPolyData('resources/sample_1.vtp');
+		m_targetActor = makeActor(m_targetObject);
+		m_targetActor.getProperty().setColor(.8, .7, .3);
+		m_targetActor.getProperty().setSpecular(true);
+		m_targetActor.getProperty().setSpecularColor(.2, .2, .2);
+		m_targetActor.getProperty().setSpecularPower(300);		
+				
 		m_renderer.getActiveCamera().setPosition(0, 0, 100);
 		m_renderer.getActiveCamera().setViewUp(0, 1, 0);
 		
 
 		await warmUp();		
 		await decoder(m_targetObject);		
-		m_targetObject.addToRenderer(m_renderer);
+		m_renderer.addActor(m_targetActor);
 		m_renderer.resetCamera();
 		m_renderer.getActiveCamera().translate(10, 0, 0);
 		// console.log(m_renderer.getActiveCamera());
@@ -52,7 +56,8 @@ const endControl = ()=>{
 const onMouseMove = async (e)=>{
 
 	if(!m_bControl) return;
-
+	if(m_bCalculate) return;
+	m_bCalculate = true;
 	
 	let rect = e.target.getBoundingClientRect();
 	let x = e.clientX - rect.left; //x position within the element.
@@ -81,7 +86,10 @@ const onMouseMove = async (e)=>{
 	}
 	
 	await decoder(m_targetObject, outputLatent);
+	m_targetActor.getMapper().modified();
 	m_renderWindow.render();	
+
+	m_bCalculate = false;
 
 	
 }

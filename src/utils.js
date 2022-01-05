@@ -1,5 +1,9 @@
 import vtkGenericRenderWindow from '@kitware/vtk.js/Rendering/Misc/GenericRenderWindow';
-import ViewInfo from '@imago/iwtk.js/dist/data/ViewInfo';
+
+import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper';
+import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
+
+
 import MeshDataIO from '@imago/iwtk.js/dist/loader/MeshDataIO';
 import MeshRenderingObject from '@imago/iwtk.js/dist/data/MeshRenderingObject'; 
 import axios from 'axios';
@@ -23,39 +27,41 @@ export const createGenericRenderWindow = () => {
     
     
     let genericRenderWindow = vtkGenericRenderWindow.newInstance();
-        const viewInfo = new ViewInfo(
-            'main',
-            '3D',
-            false,
-            genericRenderWindow
-        );
-        viewInfo.update();
-        genericRenderWindow.getRenderer().setBackground(0, 0, 0, 0);        
+    // const viewInfo = new ViewInfo(
+    //     'main',
+    //     '3D',
+    //     false,
+    //     genericRenderWindow
+    // );
+    // viewInfo.update();
+    
 
-        const renderer = genericRenderWindow.getRenderer();
+    // const renderer = genericRenderWindow.getRenderer();
 
-        //modify camera callback?
-        const manipulators = genericRenderWindow
-            .getInteractor()
-            .getInteractorStyle()
-            .getMouseManipulators();
-        for (let i = 0; i < manipulators.length; i++) {
-            if (
-                manipulators[i].isA(
-                    'vtkMouseCameraTrackballRotateManipulator'
-                )
-            ) {
-                renderer.getActiveCamera().onModified(() => {
-                    const bds = renderer.computeVisiblePropBounds();
-                    const cen = [
-                        (bds[0] + bds[1]) * 0.5,
-                        (bds[2] + bds[3]) * 0.5,
-                        (bds[4] + bds[5]) * 0.5,
-                    ];
-                    manipulators[i].setCenter(cen[0], cen[1], cen[2]);
-                });
-            }
-        }
+    // //modify camera callback?
+    // const manipulators = genericRenderWindow
+    //     .getInteractor()
+    //     .getInteractorStyle()
+    //     .getMouseManipulators();
+    // for (let i = 0; i < manipulators.length; i++) {
+    //     if (
+    //         manipulators[i].isA(
+    //             'vtkMouseCameraTrackballRotateManipulator'
+    //         )
+    //     ) {
+    //         renderer.getActiveCamera().onModified(() => {
+    //             const bds = renderer.computeVisiblePropBounds();
+    //             const cen = [
+    //                 (bds[0] + bds[1]) * 0.5,
+    //                 (bds[2] + bds[3]) * 0.5,
+    //                 (bds[4] + bds[5]) * 0.5,
+    //             ];
+    //             manipulators[i].setCenter(cen[0], cen[1], cen[2]);
+    //         });
+    //     }
+    // }
+
+    genericRenderWindow.getRenderer().setBackground(0, 0, 0, 0);        
 
 
     return genericRenderWindow;
@@ -76,28 +82,38 @@ export const readMesh = async (path)=>{
     renderingObject._VertexColorOn = true;
     renderingObject.updateActor();
 
+    return renderingObject;   
+}
 
-    return renderingObject;
-    
+export const readPolyData = async(path) =>{
+
+    const renderingObject = await readMesh(path);
+    return renderingObject._PolyData;
+}
+
+export const makeActor = (polydata)=>{
+    const mapper = vtkMapper.newInstance();
+    mapper.setInputData(polydata);
+
+    const actor = vtkActor.newInstance();
+    actor.setMapper(mapper);
+
+    return actor;
 }
 
 export const warmUp = async ()=>{
     m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
 }
 
-export const decoder = async(renderingobject, latent = new Float32Array(sampleLatents[3]) ) =>{    
+export const decoder = async(polydata, latent = new Float32Array(sampleLatents[3]) ) =>{    
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
     const pred = await m_session.run({input:input_tensor});
     const output = pred.output;
 
-    //Update polydata
+    // Update polydata
     const data = output.data;    
     for(let i=0 ; i<data.length ; i+=3){                
-        renderingobject._PolyData.getPoints().setPoint(i/3, data[i], data[i+1], data[i+2]);        
+        polydata.getPoints().setPoint(i/3, data[i], data[i+1], data[i+2]);        
     }
-    
-    renderingobject._PolyData.modified();
-    renderingobject.updateActor();
-    
-
+    polydata.modified();    
 }
