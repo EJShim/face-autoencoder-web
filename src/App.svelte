@@ -9,7 +9,7 @@
 	let m_bWarmUp = false;
 	let m_bCalculating = false;
 	let m_targetObject = null;
-	let latentColor = `rgb(${255}, ${231}, ${0})`;
+	let latentColor = `rgb(${12}, ${76}, ${0})`;
 
 	onMount(async ()=>{		
 		m_genericRenderWindow.setContainer(m_container);
