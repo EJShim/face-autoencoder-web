@@ -1,6 +1,10 @@
 <script>
 	import {onMount} from 'svelte';
 	import {createGenericRenderWindow, readPolyData, makeActor, decoder, warmUp} from './utils';	
+	import AnimatedBackground from './AnimatedBackground.svelte'
+	import AnimatedBackground2 from './AnimatedBackground2.svelte'
+	import AnimatedBackground3 from './AnimatedBackground3.svelte'
+	import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 	import {sampleLatents} from './utils';
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
@@ -21,7 +25,17 @@
 
 		//read sample mesh
 		m_targetObject = await readPolyData('resources/sample_1_norm.vtp');
-		console.log(m_targetObject.getPointData().getArrays());
+
+		// let colors = new Int8Array(m_targetObject.getNumberOfPoints());						
+		// for(let pid in colors){
+		// 	const position = m_targetObject.getPoints().getPoint(pid);
+		// 	if(position[0] > 0) colors[pid] = 1;
+		// }
+		// let scalars = vtkDataArray.newInstance({values:colors});
+		
+		// m_targetObject.getPointData().setScalars(scalars);
+
+		
 		m_targetActor = makeActor(m_targetObject);
 		m_targetActor.getProperty().setColor(.8, .7, .3);
 		m_targetActor.getProperty().setSpecular(true);
@@ -73,9 +87,9 @@ const onMouseMove = async (e)=>{
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(y,2) ),
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(1-y,2) )
 	];
-
+	
 	latentColor = `rgb(${255*latentWeights[0]}, ${255*latentWeights[1]}, ${255*latentWeights[2]})`;
-
+	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);
 
 	let outputLatent = new Float32Array(16);	
 	for(let i in sampleLatents){
@@ -97,6 +111,8 @@ const onMouseMove = async (e)=>{
 </script>
 
 
+<AnimatedBackground2/>
+
 <div class="renderer" bind:this={m_container}/>
 
 {#if m_bWarmUp}
@@ -116,10 +132,16 @@ const onMouseMove = async (e)=>{
 {/if}
 
 
-<style>
+
+
+<style lang="scss">
+
 
 	.renderer{
-		background: linear-gradient(to bottom, rgb(44, 125, 158) , rgb(135, 206, 235)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		backdrop-filter: blur(15px);
+		// background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+		// background: linear-gradient(to bottom, rgb(44, 125, 158) , rgb(135, 206, 235)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		// background-color: rgba(#000, 0.5);
 		width:100%;
 		height:100%;
 		position:absolute;
