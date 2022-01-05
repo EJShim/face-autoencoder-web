@@ -16,10 +16,11 @@
     
 
     .wrap {
-        position: fixed;
+        position: absolute;
         height: 100%;
         width: 100%;
         background-color: black;
+        overflow-y: hidden;
         
     }
 
@@ -42,7 +43,7 @@
     }
 
     @for $i from 1 through $total {
-        $hue: (300/$total) * 80;
+        $hue: (300/$total) * 70;
         .c:nth-child(#{$i}){
             left: ($i - 1) * $percent;
             background-image: linear-gradient( to bottom, black, hsla($hue, 100%, 50%, .8));

@@ -37,7 +37,7 @@
 
 		
 		m_targetActor = makeActor(m_targetObject);
-		m_targetActor.getProperty().setColor(.8, .7, .3);
+		m_targetActor.getProperty().setColor(239/255, 192/255, 80/255);
 		m_targetActor.getProperty().setSpecular(true);
 		m_targetActor.getProperty().setSpecularColor(.2, .2, .2);
 		m_targetActor.getProperty().setSpecularPower(300);		
@@ -88,7 +88,7 @@ const onMouseMove = async (e)=>{
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(1-y,2) )
 	];
 	
-	latentColor = `rgb(${255*latentWeights[0]}, ${255*latentWeights[1]}, ${255*latentWeights[2]})`;
+	latentColor = `rgb(${128*(latentWeights[0]+latentWeights[3])}, ${128*(latentWeights[1]+latentWeights[3])}, ${128*(latentWeights[2]+latentWeights[3])})`;
 	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);
 
 	let outputLatent = new Float32Array(16);	
@@ -125,8 +125,7 @@ const onMouseMove = async (e)=>{
 		on:touch={e=>{onMouseMove(e)}}
 		on:mouseup={e=>{endControl()}}
 		
-		on>
-		
+		on>		
 		Click & Drag Here (Latent Space)
 	</div>
 {/if}
