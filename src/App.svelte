@@ -7,9 +7,10 @@
 	let m_renderer = m_genericRenderWindow.getRenderer();
 	let m_renderWindow = m_genericRenderWindow.getRenderWindow();
 	let m_bWarmUp = false;
-	let m_bCalculating = false;
+	
 	let m_targetObject = null;
 	let latentColor = `rgb(${12}, ${76}, ${0})`;
+	let m_bControl = false;
 
 	onMount(async ()=>{		
 		m_genericRenderWindow.setContainer(m_container);
@@ -40,11 +41,19 @@
 		
 	});	
 
+const startControl = ()=>{
+	m_bControl = true;
+}
+
+const endControl = ()=>{
+	m_bControl = false;
+}
+
 const onMouseMove = async (e)=>{
 
-	// if(m_bCalculating) return;
+	if(!m_bControl) return;
 
-	m_bCalculating = true;
+	
 	let rect = e.target.getBoundingClientRect();
 	let x = e.clientX - rect.left; //x position within the element.
 	let y = e.clientY - rect.top;  //y position within the element.
@@ -72,9 +81,7 @@ const onMouseMove = async (e)=>{
 	}
 	
 	await decoder(m_targetObject, outputLatent);
-	m_renderWindow.render();
-
-	m_bCalculating = false;
+	m_renderWindow.render();	
 
 	
 }
@@ -87,8 +94,11 @@ const onMouseMove = async (e)=>{
 	<div 
 		class="controller" 
 		style="--latent-color:{latentColor}"
-		on:mousemove={e=>{onMouseMove(e)}}>
-		Expression Latent Space
+		on:mousedown={e=>{startControl()}}
+		on:mousemove={e=>{onMouseMove(e)}}
+		on:mouseup={e=>{endControl()}}>
+		
+		Click & Drag Here (Latent Space)
 	</div>
 {/if}
 
@@ -121,6 +131,7 @@ const onMouseMove = async (e)=>{
 		justify-content: center;
 
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		user-select: none;
 	}
 
 </style>
