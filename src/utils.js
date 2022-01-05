@@ -8,7 +8,7 @@ import * as ort from 'onnxruntime-web'
 
 //global variables?
 const m_meshLoader = new MeshDataIO();
-const m_sampleLatents = [[ 2.7622, -2.2852,  2.3655,  1.2294, -1.8817,  2.0528,  1.7541, -0.1315,
+export const sampleLatents = [[ 2.7622, -2.2852,  2.3655,  1.2294, -1.8817,  2.0528,  1.7541, -0.1315,
                             -3.4645,  2.9667,  2.5833,  0.3329,  4.4528,  0.0312,  2.8146,  0.7895],
                         [ 1.9867, -0.3162,  3.4118, -0.6602, -1.1517,  0.5038,  1.2648, -0.4614,
                             -1.8139,  4.6501,  0.4611,  1.2268,  3.8348, -2.5931,  3.2938,  1.0686],
@@ -85,9 +85,7 @@ export const warmUp = async ()=>{
     m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
 }
 
-export const decoder = async(renderingobject, latent = new Float32Array(m_sampleLatents[3]) ) =>{        
-
-    console.log(latent)
+export const decoder = async(renderingobject, latent = new Float32Array(sampleLatents[3]) ) =>{    
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
     const pred = await m_session.run({input:input_tensor});
     const output = pred.output;
