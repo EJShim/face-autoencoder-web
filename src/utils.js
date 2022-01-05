@@ -77,10 +77,11 @@ const readArrayBuffer = async (file) =>{
     })
 }
 
-export const readPolyData = async(path) =>{
-
-    const filename = path.split("/").at(-1);
-    const ext = filename.split(".").at(-1)
+export const readPolyData = async(path) =>{    
+    let filename = path.split("/");
+    filename = filename[ filename.length-1 ];
+    let ext = filename.split(".")
+    ext = ext[ext.length -1];
     
 
     const response = await axios.get(path);    
