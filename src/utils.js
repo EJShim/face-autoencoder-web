@@ -2,16 +2,12 @@ import vtkGenericRenderWindow from '@kitware/vtk.js/Rendering/Misc/GenericRender
 
 import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper';
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
-
-
-import MeshDataIO from '@imago/iwtk.js/dist/loader/MeshDataIO';
-import MeshRenderingObject from '@imago/iwtk.js/dist/data/MeshRenderingObject'; 
+import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader';
 import axios from 'axios';
 import * as ort from 'onnxruntime-web'
 
 
 //global variables?
-const m_meshLoader = new MeshDataIO();
 export const sampleLatents = [[ 2.7622, -2.2852,  2.3655,  1.2294, -1.8817,  2.0528,  1.7541, -0.1315,
                             -3.4645,  2.9667,  2.5833,  0.3329,  4.4528,  0.0312,  2.8146,  0.7895],
                         [ 1.9867, -0.3162,  3.4118, -0.6602, -1.1517,  0.5038,  1.2648, -0.4614,
@@ -68,27 +64,30 @@ export const createGenericRenderWindow = () => {
 }
 
 
-export const readMesh = async (path)=>{
 
+const readArrayBuffer = async (file) =>{
+    return new Promise((resolve, reject)=>{
+        const filreader = new FileReader();
+        filreader.onload = ()=>{
+            resolve(filreader.result);
+        }
 
-    
-    const response = await axios.get(path);
-    
-    const file = new File([response.data], 'sample_1.vtp');
-    await m_meshLoader.openLocalFile(file);
-
-    const renderingObject = new MeshRenderingObject();        
-    renderingObject.setCppMeshData(m_meshLoader.cppMeshData);
-    renderingObject._VertexColorOn = true;
-    renderingObject.updateActor();
-
-    return renderingObject;   
+        filreader.readAsArrayBuffer(file)
+    })
 }
 
 export const readPolyData = async(path) =>{
 
-    const renderingObject = await readMesh(path);
-    return renderingObject._PolyData;
+    const response = await axios.get(path);    
+    const file = new File([response.data], 'sample_1.vtp');
+    const arrayBuffer = await readArrayBuffer(file);
+    const reader = vtkXMLPolyDataReader.newInstance();
+    reader.parseAsArrayBuffer(arrayBuffer);
+    reader.update();
+
+
+    // const renderingObject = await readMesh(path);
+    return reader.getOutputData();
 }
 
 export const makeActor = (polydata)=>{

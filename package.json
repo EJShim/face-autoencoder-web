@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "iwtk-download-resources",
-    "prestart": "iwtk-download-resources",
-    "predev": "iwtk-download-resources",
+    "postinstall": "node scripts/copywasm",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear --port 3000"
@@ -23,7 +21,6 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@imago/iwtk.js": "file:../IWTK",
     "@kitware/vtk.js": "^21.5.1",
     "axios": "^0.21.4",
     "onnxruntime-web": "^1.10.0",
