@@ -3,6 +3,7 @@ import vtkGenericRenderWindow from '@kitware/vtk.js/Rendering/Misc/GenericRender
 import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper';
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader';
+import vtkPLYReader from '@kitware/vtk.js/IO/Geometry/PLYReader';
 import axios from 'axios';
 import * as ort from 'onnxruntime-web'
 
@@ -78,10 +79,19 @@ const readArrayBuffer = async (file) =>{
 
 export const readPolyData = async(path) =>{
 
+    const filename = path.split("/").at(-1);
+    const ext = filename.split(".").at(-1)
+    
+
     const response = await axios.get(path);    
-    const file = new File([response.data], 'sample_1.vtp');
+    const file = new File([response.data], filename);
     const arrayBuffer = await readArrayBuffer(file);
-    const reader = vtkXMLPolyDataReader.newInstance();
+
+    let reader;
+    if(ext === "vtp")
+        reader = vtkXMLPolyDataReader.newInstance();
+    else if(ext === "ply")
+        reader = vtkPLYReader.newInstance();
     reader.parseAsArrayBuffer(arrayBuffer);
     reader.update();
 

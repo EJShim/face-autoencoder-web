@@ -20,7 +20,8 @@
 
 
 		//read sample mesh
-		m_targetObject = await readPolyData('resources/sample_1.vtp');
+		m_targetObject = await readPolyData('resources/sample_1_norm.vtp');
+		console.log(m_targetObject.getPointData().getArrays());
 		m_targetActor = makeActor(m_targetObject);
 		m_targetActor.getProperty().setColor(.8, .7, .3);
 		m_targetActor.getProperty().setSpecular(true);

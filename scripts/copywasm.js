@@ -9,8 +9,6 @@ const wasmCopy = () =>{
     ortWasmFiles.forEach(file=>{
         fs.copySync( file, path.join(solutionPath, 'public', 'static', 'js', path.basename(file)));        
     });
-
-    console.log(ortWasmFiles);
 }
 
 wasmCopy();
