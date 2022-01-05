@@ -9,6 +9,7 @@
 	let m_bWarmUp = false;
 	let m_bCalculating = false;
 	let m_targetObject = null;
+	let latentColor = `rgb(${255}, ${231}, ${0})`;
 
 	onMount(async ()=>{		
 		m_genericRenderWindow.setContainer(m_container);
@@ -30,6 +31,8 @@
 		await decoder(m_targetObject);
 		m_targetObject.addToRenderer(m_renderer);
 		m_renderer.resetCamera();
+		m_renderer.getActiveCamera().translate(10, 0, 0);
+		// console.log(m_renderer.getActiveCamera());
 		m_renderWindow.render();
 
 		
@@ -37,7 +40,7 @@
 
 const onMouseMove = async (e)=>{
 
-	// if(m_bCalculating) return;
+	if(m_bCalculating) return;
 
 	m_bCalculating = true;
 	let rect = e.target.getBoundingClientRect();
@@ -52,7 +55,9 @@ const onMouseMove = async (e)=>{
 		1 - Math.sqrt( Math.pow(x,2) + Math.pow(1-y,2) ),
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(y,2) ),
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(1-y,2) )
-	]
+	];
+
+	latentColor = `rgb(${255*latentWeights[0]}, ${255*latentWeights[1]}, ${255*latentWeights[2]})`;
 
 
 	let outputLatent = new Float32Array(16);	
@@ -63,10 +68,7 @@ const onMouseMove = async (e)=>{
 			outputLatent[j] +=  sampleLatents[i][j] * weight;
 		}
 	}
-
-	// console.log(outputLatent)
-
-	// console.log(outputLatent);
+	
 	await decoder(m_targetObject, outputLatent);
 	m_renderWindow.render();
 
@@ -77,43 +79,46 @@ const onMouseMove = async (e)=>{
 </script>
 
 
-<div class="renderer" bind:this={m_container}>
+<div class="renderer" bind:this={m_container}/>
 
-</div>
-
-<div class="controllerArea">
-	{#if {m_bWarmUp}}
-		<div class="controller" on:mousemove={e=>{onMouseMove(e)}}></div>
-	{/if}
-
-</div>
+{#if {m_bWarmUp}}
+	<div 
+		class="controller" 
+		style="--latent-color:{latentColor}"
+		on:mousemove={e=>{onMouseMove(e)}}>
+		Expression Latent Space
+	</div>
+{/if}
 
 
 <style>
 
 	.renderer{
 		background: linear-gradient(to bottom, rgb(44, 125, 158) , rgb(135, 206, 235)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		width:calc(100% - 250px);
+		width:100%;
 		height:100%;
 		position:absolute;
 	}
 
-	.controllerArea{
-		position:absolute;
-		left:calc(100% - 250px);
-		background-color: burlywood;
-		width:250px;
-		height:100%;
+	
+
+	.controller{
+
+		position : absolute;
+
+		top : calc(50% - 150px);
+		left : calc(100% - 320px);
+
+		width : 300px;
+		height : 300px;
+		background-color:var(--latent-color);
+		color : white;
 
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
 
-	.controller{
-		width : 200px;
-		height : 200px;
-		background-color: chocolate;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	}
 
 </style>
