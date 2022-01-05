@@ -26,21 +26,23 @@
 		m_renderer.getActiveCamera().setViewUp(0, 1, 0);
 		
 
-		await warmUp();
-		m_bWarmUp = true;
-		await decoder(m_targetObject);
+		await warmUp();		
+		await decoder(m_targetObject);		
 		m_targetObject.addToRenderer(m_renderer);
 		m_renderer.resetCamera();
 		m_renderer.getActiveCamera().translate(10, 0, 0);
 		// console.log(m_renderer.getActiveCamera());
 		m_renderWindow.render();
 
+
+		m_bWarmUp = true;
+
 		
 	});	
 
 const onMouseMove = async (e)=>{
 
-	if(m_bCalculating) return;
+	// if(m_bCalculating) return;
 
 	m_bCalculating = true;
 	let rect = e.target.getBoundingClientRect();
@@ -81,7 +83,7 @@ const onMouseMove = async (e)=>{
 
 <div class="renderer" bind:this={m_container}/>
 
-{#if {m_bWarmUp}}
+{#if m_bWarmUp}
 	<div 
 		class="controller" 
 		style="--latent-color:{latentColor}"
