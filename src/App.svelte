@@ -95,8 +95,12 @@ const onMouseMove = async (e)=>{
 		class="controller" 
 		style="--latent-color:{latentColor}"
 		on:mousedown={e=>{startControl()}}
+		on:touchstart={e=>{startControl()}}
 		on:mousemove={e=>{onMouseMove(e)}}
-		on:mouseup={e=>{endControl()}}>
+		on:touch={e=>{onMouseMove(e)}}
+		on:mouseup={e=>{endControl()}}
+		
+		on>
 		
 		Click & Drag Here (Latent Space)
 	</div>
