@@ -111,7 +111,7 @@ const onMouseMove = async (e)=>{
 </script>
 
 
-<AnimatedBackground2/>
+<AnimatedBackground1/>
 
 <div class="renderer" bind:this={m_container}/>
 
