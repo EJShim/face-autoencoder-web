@@ -7,10 +7,10 @@
 
 <style lang="scss">
     $total: 144;
-    $time: 4;
+    $time: 10;
     $height: 400;
-    $percent: .69444%;  
-    $dotSize: .9;
+    $percent: .34444%;  
+    $dotSize: 1;
 
     
     
@@ -45,7 +45,7 @@
     @for $i from 1 through $total {
         $hue: (300/$total) * 70;
         .c:nth-child(#{$i}){
-            left: ($i - 1) * $percent;
+            left: 50 + ($i - 1) * $percent;
             background-image: linear-gradient( to bottom, black, hsla($hue, 100%, 50%, .8));
             animation-delay: random($total) * ($time/$total) * -1s;
             &:after {

@@ -14,7 +14,7 @@
 	
 	let m_targetObject = null;
 	let m_targetActor = null;
-	let latentColor = `rgb(${255}, ${76}, ${0})`;
+	let latentColor = `rgb(${0}, ${0}, ${255})`;
 	let m_bControl = false;
 	let m_bCalculate = false;
 
@@ -82,8 +82,7 @@ const latentFunction = async (x, y)=>{
 		if(latentWeights[i] > 1) latentWeights[i] = 1
 	}
 	
-	latentColor = `rgb(${255*(latentWeights[3])}, ${0}, ${255*(latentWeights[2])})`;
-	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);
+	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[2])})`;	
 
 	let outputLatent = new Float32Array(16);	
 	for(let i in sampleLatents){
