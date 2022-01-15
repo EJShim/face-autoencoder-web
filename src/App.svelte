@@ -17,6 +17,11 @@
 	let m_bControl = false;
 	let m_bCalculate = false;
 
+	let m_pillTop = "50%";
+	let m_pillLeft = '50%';
+	let m_windowInnerWidth, m_windowInnerHeight;
+
+
 	onMount(async ()=>{		
 		m_genericRenderWindow.setContainer(m_container);
 		m_genericRenderWindow.resize();
@@ -38,7 +43,7 @@
 		m_targetActor = makeActor(m_targetObject);
 		m_targetActor.getProperty().setColor(239/255, 192/255, 80/255);
 		m_targetActor.getProperty().setSpecular(true);		
-		m_targetActor.getProperty().setSpecularPower(300);		
+		m_targetActor.getProperty().setSpecularPower(400);		
 				
 		m_renderer.getActiveCamera().setPosition(0, 0, 100);
 		m_renderer.getActiveCamera().setViewUp(0, 1, 0);
@@ -48,7 +53,7 @@
 		await decoder(m_targetObject);		
 		m_renderer.addActor(m_targetActor);
 		m_renderer.resetCamera();
-		m_renderer.getActiveCamera().translate(10, 0, 0);
+		// m_renderer.getActiveCamera().translate(10, 0, 0);
 		// console.log(m_renderer.getActiveCamera());
 		m_renderWindow.render();
 
@@ -58,28 +63,11 @@
 		
 	});	
 
-const startControl = ()=>{
-	m_bControl = true;
-}
 
-const endControl = ()=>{
-	m_bControl = false;
-}
-
-const onMouseMove = async (e)=>{
-
-	if(!m_bControl) return;
+const latentFunction = async (x, y)=>{
+	
 	if(m_bCalculate) return;
 	m_bCalculate = true;
-	
-	let rect = e.target.getBoundingClientRect();
-	let x = e.clientX - rect.left; //x position within the element.
-	let y = e.clientY - rect.top;  //y position within the element.
-
-	x = x / rect.width;
-	y = y / rect.height
-
-
 
 	let latentWeights = [
 		1 - Math.sqrt( Math.pow(x,2) + Math.pow(y,2) ) ,
@@ -113,64 +101,73 @@ const onMouseMove = async (e)=>{
 
 	
 }
+
+
+
+const onMouseMove = (e)=>{
+	if(!m_bControl) return;
+	let x = e.clientX;
+	let y = e.clientY;
+
+	if(x > m_windowInnerWidth || y > m_windowInnerHeight) return;
+	
+
+	//Move Pill
+	m_pillLeft = `${x-50}px`
+	m_pillTop =  `${y-50}px`
+
+
+	//Calculate Latent
+	latentFunction(x / m_windowInnerWidth, y/ m_windowInnerHeight)
+}
 </script>
 
 
-<AnimatedBackground2/>
+<AnimatedBackground3/>
+<svelte:window on:mousemove={e=>{onMouseMove(e)}}
+				bind:innerWidth={m_windowInnerWidth}
+				bind:innerHeight={m_windowInnerHeight}/>
 
 <div class="renderer" bind:this={m_container}/>
 
-{#if m_bWarmUp}
-	<div 
-		class="controller" 
-		style="--latent-color:{latentColor}"
-		on:mousedown={e=>{startControl()}}
-		on:touchstart={e=>{startControl()}}
-		on:mousemove={e=>{onMouseMove(e)}}
-		on:touch={e=>{onMouseMove(e)}}
-		on:mouseup={e=>{endControl()}}
-		
-		on>		
-		Click & Drag Here (Latent Space)
-	</div>
+{#if m_bWarmUp}	
+
+	<div class="pill" 
+		style="--pill-top:{m_pillTop}; 
+			--pill-left:{m_pillLeft};
+			--latent-color:{latentColor}"
+		on:mousedown={e=>{m_bControl=true;}}
+		on:mouseup={e=>{m_bControl=false;}}			
+		/>
 {/if}
 
 
 
 
 <style lang="scss">
-
+	
 
 	.renderer{
-		backdrop-filter: blur(15px);
-		// background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
-		// background: linear-gradient(to bottom, rgb(44, 125, 158) , rgb(135, 206, 235)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		// background-color: rgba(#000, 0.5);
+		backdrop-filter: blur(15px);		
 		width:100%;
 		height:100%;
 		position:absolute;
 	}
 
 	
-
-	.controller{
-
+	.pill{
 		position : absolute;
 
-		top : calc(50% - 150px);
-		left : calc(100% - 320px);
+		top : var(--pill-top);
+		left : var(--pill-left);
 
-		width : 300px;
-		height : 300px;
-		background-color:var(--latent-color);
-		color : white;
+		width : 100px;
+		height : 100px;
+		// background-color: var(--latent-color);
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		border-radius: 50%;
+		background: radial-gradient(circle at 30px 30px, #5cabff, #000);
 
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-		user-select: none;
 	}
 
 </style>
