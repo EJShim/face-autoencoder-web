@@ -19,7 +19,7 @@
 	let m_bCalculate = false;
 
 	let m_pillTop = "10%";
-	let m_pillLeft = '10%';
+	let m_pillLeft = '50%';
 	let m_windowInnerWidth, m_windowInnerHeight;
 
 
@@ -42,7 +42,7 @@
 
 		
 		m_targetActor = makeActor(m_targetObject);
-		m_targetActor.getProperty().setColor(239/255, 192/255, 80/255);
+		m_targetActor.getProperty().setColor(.87, .66, .1);
 		m_targetActor.getProperty().setSpecular(true);		
 		m_targetActor.getProperty().setSpecularPower(400);		
 				
@@ -54,6 +54,7 @@
 		await decoder(m_targetObject);		
 		m_renderer.addActor(m_targetActor);
 		m_renderer.resetCamera();
+		m_renderer.getActiveCamera().zoom(0.7);
 		// m_renderer.getActiveCamera().translate(10, 0, 0);
 		// console.log(m_renderer.getActiveCamera());
 		m_renderWindow.render();
@@ -82,7 +83,8 @@ const latentFunction = async (x, y)=>{
 		if(latentWeights[i] > 1) latentWeights[i] = 1
 	}
 	
-	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[2])})`;	
+	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[2])})`;
+	// m_targetActor.getProperty().setColor((1-x)/1.4, x/1.4, .4);
 
 	let outputLatent = new Float32Array(16);	
 	for(let i in sampleLatents){

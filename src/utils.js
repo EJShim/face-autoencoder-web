@@ -133,7 +133,7 @@ export const warmUp = async ()=>{
     m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx', sessionOption);
 }
 
-export const decoder = async(polydata, latent = new Float32Array(sampleLatents[0]) ) =>{    
+export const decoder = async(polydata, latent = new Float32Array(sampleLatents[1]) ) =>{    
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
     const pred = await m_session.run({input:input_tensor});
     const output = pred.output;
