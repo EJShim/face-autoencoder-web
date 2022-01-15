@@ -4,7 +4,6 @@
 	import AnimatedBackground from './AnimatedBackground.svelte'
 	import AnimatedBackground2 from './AnimatedBackground2.svelte'
 	import AnimatedBackground3 from './AnimatedBackground3.svelte'
-	import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 	import {sampleLatents} from './utils';
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
@@ -25,7 +24,7 @@
 
 		//read sample mesh
 		m_targetObject = await readPolyData('resources/sample_1_norm.vtp');
-
+		// m_targetObject.getPointData().removeArray("Normals");
 		// let colors = new Int8Array(m_targetObject.getNumberOfPoints());						
 		// for(let pid in colors){
 		// 	const position = m_targetObject.getPoints().getPoint(pid);
@@ -38,8 +37,7 @@
 		
 		m_targetActor = makeActor(m_targetObject);
 		m_targetActor.getProperty().setColor(239/255, 192/255, 80/255);
-		m_targetActor.getProperty().setSpecular(true);
-		m_targetActor.getProperty().setSpecularColor(.2, .2, .2);
+		m_targetActor.getProperty().setSpecular(true);		
 		m_targetActor.getProperty().setSpecularPower(300);		
 				
 		m_renderer.getActiveCamera().setPosition(0, 0, 100);
@@ -81,12 +79,19 @@ const onMouseMove = async (e)=>{
 	x = x / rect.width;
 	y = y / rect.height
 
+
+
 	let latentWeights = [
 		1 - Math.sqrt( Math.pow(x,2) + Math.pow(y,2) ) ,
 		1 - Math.sqrt( Math.pow(x,2) + Math.pow(1-y,2) ),
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(y,2) ),
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(1-y,2) )
 	];
+	
+	for(let i in latentWeights){
+		if(latentWeights[i] < 0) latentWeights[i] = 0
+		if(latentWeights[i] > 1) latentWeights[i] = 1
+	}
 	
 	latentColor = `rgb(${128*(latentWeights[0]+latentWeights[3])}, ${128*(latentWeights[1]+latentWeights[3])}, ${128*(latentWeights[2]+latentWeights[3])})`;
 	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);

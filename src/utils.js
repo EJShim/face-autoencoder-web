@@ -5,7 +5,7 @@ import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader';
 import vtkPLYReader from '@kitware/vtk.js/IO/Geometry/PLYReader';
 import axios from 'axios';
-import * as ort from 'onnxruntime-web'
+// import * as ort from 'onnxruntime-web'
 
 
 //global variables?
@@ -112,16 +112,34 @@ export const makeActor = (polydata)=>{
 }
 
 export const warmUp = async ()=>{
-    m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx');
+
+    const sessionOption = { 
+        executionProviders: ['wasm'] ,
+        graphOptimizationLevel: "disabled"
+        // extra: {
+        //     session: {
+        //         set_denormal_as_zero: "0",
+        //         disable_prepacking: "0"
+        //     },
+        //         optimization: {
+        //         enable_gelu_approximation: "0"
+        //     }
+        // }
+    };
+
+
+    m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx', sessionOption);
 }
 
-export const decoder = async(polydata, latent = new Float32Array(sampleLatents[3]) ) =>{    
+export const decoder = async(polydata, latent = new Float32Array(sampleLatents[0]) ) =>{    
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
     const pred = await m_session.run({input:input_tensor});
     const output = pred.output;
 
     // Update polydata
     const data = output.data;    
+    // console.log(input_tensor.data)
+    // console.log(data)
     for(let i=0 ; i<data.length ; i+=3){                
         polydata.getPoints().setPoint(i/3, data[i], data[i+1], data[i+2]);        
     }
