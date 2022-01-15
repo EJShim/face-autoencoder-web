@@ -51,7 +51,7 @@
 		
 
 		await warmUp();		
-		await decoder(m_targetObject);		
+		await latentFunction(.5, .1);	
 		m_renderer.addActor(m_targetActor);
 		m_renderer.resetCamera();
 		m_renderer.getActiveCamera().zoom(0.7);
