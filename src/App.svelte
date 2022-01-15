@@ -4,6 +4,7 @@
 	import AnimatedBackground from './AnimatedBackground.svelte'
 	import AnimatedBackground2 from './AnimatedBackground2.svelte'
 	import AnimatedBackground3 from './AnimatedBackground3.svelte'
+	import Pill from './components/Pill.svelte';
 	import {sampleLatents} from './utils';
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
@@ -13,7 +14,7 @@
 	
 	let m_targetObject = null;
 	let m_targetActor = null;
-	let latentColor = `rgb(${12}, ${76}, ${0})`;
+	let latentColor = `rgb(${255}, ${76}, ${0})`;
 	let m_bControl = false;
 	let m_bCalculate = false;
 
@@ -113,8 +114,8 @@ const onMouseMove = (e)=>{
 	
 
 	//Move Pill
-	m_pillLeft = `${x-50}px`
-	m_pillTop =  `${y-50}px`
+	m_pillLeft = `${x}px`
+	m_pillTop =  `${y}px`
 
 
 	//Calculate Latent
@@ -125,20 +126,21 @@ const onMouseMove = (e)=>{
 
 <AnimatedBackground3/>
 <svelte:window on:mousemove={e=>{onMouseMove(e)}}
+				on:mouseup={e=>{m_bControl=false;}}
 				bind:innerWidth={m_windowInnerWidth}
 				bind:innerHeight={m_windowInnerHeight}/>
 
 <div class="renderer" bind:this={m_container}/>
 
-{#if m_bWarmUp}	
+{#if m_bWarmUp}		
 
-	<div class="pill" 
-		style="--pill-top:{m_pillTop}; 
-			--pill-left:{m_pillLeft};
-			--latent-color:{latentColor}"
-		on:mousedown={e=>{m_bControl=true;}}
-		on:mouseup={e=>{m_bControl=false;}}			
-		/>
+	<Pill top={m_pillTop} 
+			left={m_pillLeft}
+			color={latentColor}
+			on:mousedown={e=>{m_bControl=true;}}
+			on:mouseup={e=>{m_bControl=false;}}	/>
+
+
 {/if}
 
 
@@ -152,22 +154,6 @@ const onMouseMove = (e)=>{
 		width:100%;
 		height:100%;
 		position:absolute;
-	}
-
-	
-	.pill{
-		position : absolute;
-
-		top : var(--pill-top);
-		left : var(--pill-left);
-
-		width : 100px;
-		height : 100px;
-		// background-color: var(--latent-color);
-
-		border-radius: 50%;
-		background: radial-gradient(circle at 30px 30px, #5cabff, #000);
-
 	}
 
 </style>
