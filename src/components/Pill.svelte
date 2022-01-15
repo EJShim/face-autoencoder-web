@@ -10,12 +10,14 @@ export let color;
         --pill-left:{left};"
         on:mousedown
         on:mouseup
+        on:touchstart
+        on:touchend
 >
 <div class="pink pill-cap cap-bottom"></div>
 <div class="pink pill pill-bottom"></div>
-<div class="blue pill-cap cap-top"></div>
-<div class="blue pill pill-top"></div>
-<div class="blue pill-cap cap-middle"></div>
+<div class="blue pill-cap cap-top" style="--latent-color:{color}"/>
+<div class="blue pill pill-top" style="--latent-color:{color}"/>
+<div class="blue pill-cap cap-middle" style="--latent-color:{color}"/>
 <div class="highlight-circle"></div>
 <div class="highlight-rect"></div>
 <div class="lighting"></div>
@@ -32,16 +34,12 @@ export let color;
 
 		top : var(--pill-top);
 		left : var(--pill-left);
-
-		/* width : 100px;
-		height : 100px;		 */
-
-        background-color: red;
+	    
 	}
 
 
 .blue {
-  background-color: #0011ff;
+  background-color: var(--latent-color);
 }
 
 .pink {
@@ -50,24 +48,24 @@ export let color;
 
 .pill-cap {
   position: absolute;
-  width: 70px;
-  height: 70px;
-  border-radius: 35px;
+  width: 35px;
+  height: 35px;
+  border-radius: 17px;
 }
 
 .cap-top {
-  top: -47px;
-  left: 47px;
+  top: -23px;
+  left: 23px;
 }
 
 .cap-middle {
-  top: -10px;
-  left: 10px;
+  top: -5px;
+  left: 5px;
 }
 
 .cap-bottom {
-  top: 50px;
-  left: -50px;
+  top: 25px;
+  left: -25px;
 }
 
 .pill {
@@ -81,36 +79,36 @@ export let color;
 }
 
 .pill-top {
-  top: -23px;
-  left: 27px;
-  width: 70px;
-  height: 60px;
+  top: -11px;
+  left: 13px;
+  width: 35px;
+  height: 30px;
 }
 
 .pill-bottom {
-  top: 15px;
-  left: -20px;
-  width: 70px;
-  height: 80px;
+  top: 7px;
+  left: -10px;
+  width: 35px;
+  height: 40px;
 }
 
 .highlight-circle {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  top: 65px;
-  left: -35px;  
-  border-radius: 15px;
+  width: 7px;
+  height: 7px;
+  top: 32px;
+  left: -17px;  
+  border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
 .highlight-rect {
   position: absolute;
-  width: 70px;
-  height: 15px;
-  top: -10px;
-  left: 12.5px;
-  border-radius: 15px;
+  width: 35px;
+  height: 7px;
+  top: -5px;
+  left: 6px;
+  border-radius: 7px;
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -121,11 +119,11 @@ export let color;
 
 .lighting {
   position: absolute;
-  width: 162.5px;
-  height: 15px;
-  top: 50px;
-  left: -30px;
-  border-radius: 25px;
+  width: 81px;
+  height: 7px;
+  top: 25px;
+  left: -15px;
+  border-radius: 12px;
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);

@@ -82,7 +82,7 @@ const latentFunction = async (x, y)=>{
 		if(latentWeights[i] > 1) latentWeights[i] = 1
 	}
 	
-	latentColor = `rgb(${128*(latentWeights[0]+latentWeights[3])}, ${128*(latentWeights[1]+latentWeights[3])}, ${128*(latentWeights[2]+latentWeights[3])})`;
+	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[3])})`;
 	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);
 
 	let outputLatent = new Float32Array(16);	
@@ -114,19 +114,43 @@ const onMouseMove = (e)=>{
 	
 
 	//Move Pill
-	m_pillLeft = `${x}px`
-	m_pillTop =  `${y}px`
+	m_pillLeft = `${x-15}px`
+	m_pillTop =  `${y-15}px`
 
 
 	//Calculate Latent
-	latentFunction(x / m_windowInnerWidth, y/ m_windowInnerHeight)
+	latentFunction(x / m_windowInnerWidth, y/ m_windowInnerHeight);
+}
+
+const onTouchMove = (e)=>{
+	if(!m_bControl) return;
+
+	let touch = e.touches[0];
+	
+	let x = touch.pageX;
+	let y = touch.pageY;
+
+
+	if(x > m_windowInnerWidth || y > m_windowInnerHeight) return;
+	
+
+	//Move Pill
+	m_pillLeft = `${x-30}px`
+	m_pillTop =  `${y-30}px`
+
+
+	//Calculate Latent
+	latentFunction(x / m_windowInnerWidth, y/ m_windowInnerHeight);
+	
 }
 </script>
 
 
-<AnimatedBackground3/>
+<AnimatedBackground2/>
 <svelte:window on:mousemove={e=>{onMouseMove(e)}}
-				on:mouseup={e=>{m_bControl=false;}}
+				on:touchmove={e=>{onTouchMove(e)}}	
+				on:mouseup={e=>{m_bControl=false;}}		
+				on:touchend={e=>{m_bControl=false;}}													
 				bind:innerWidth={m_windowInnerWidth}
 				bind:innerHeight={m_windowInnerHeight}/>
 
@@ -137,8 +161,10 @@ const onMouseMove = (e)=>{
 	<Pill top={m_pillTop} 
 			left={m_pillLeft}
 			color={latentColor}
-			on:mousedown={e=>{m_bControl=true;}}
-			on:mouseup={e=>{m_bControl=false;}}	/>
+			on:mousedown={e=>{m_bControl=true;}}	
+			on:touchstart={e=>{m_bControl=true;}}			
+			on:mouseup={e=>{m_bControl=false;}}	
+			on:touchend={e=>{m_bControl=false;}}/>
 
 
 {/if}
