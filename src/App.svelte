@@ -18,8 +18,8 @@
 	let m_bControl = false;
 	let m_bCalculate = false;
 
-	let m_pillTop = "50%";
-	let m_pillLeft = '50%';
+	let m_pillTop = "10%";
+	let m_pillLeft = '10%';
 	let m_windowInnerWidth, m_windowInnerHeight;
 
 
@@ -82,7 +82,7 @@ const latentFunction = async (x, y)=>{
 		if(latentWeights[i] > 1) latentWeights[i] = 1
 	}
 	
-	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[3])})`;
+	latentColor = `rgb(${255*(latentWeights[3])}, ${0}, ${255*(latentWeights[2])})`;
 	m_targetActor.getProperty().setAmbientColor(latentWeights[0], latentWeights[1], latentWeights[2]);
 
 	let outputLatent = new Float32Array(16);	
