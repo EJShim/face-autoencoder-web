@@ -5,7 +5,7 @@ import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader';
 import vtkPLYReader from '@kitware/vtk.js/IO/Geometry/PLYReader';
 import axios from 'axios';
-// import * as ort from 'onnxruntime-web'
+import * as ort from 'onnxruntime-web'
 
 
 //global variables?

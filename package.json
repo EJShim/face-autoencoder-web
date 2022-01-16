@@ -6,7 +6,7 @@
     "postinstall": "node scripts/copywasm",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear --port 3000"
+    "start": "sirv docs --no-clear --port 3000"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
