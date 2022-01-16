@@ -20,7 +20,9 @@ export const sampleLatents = [
                             -3.4645,  2.9667,  2.5833,  0.3329,  4.4528,  0.0312,  2.8146,  0.7895]
                         ];
 
-let m_session = null;
+
+let m_encoderSession = null;                        
+let m_decoderSession = null;
 
 export const createGenericRenderWindow = () => {
     
@@ -130,20 +132,28 @@ export const warmUp = async ()=>{
     };
 
 
-    m_session = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx', sessionOption);
+    m_encoderSession = await ort.InferenceSession.create('resources/spiralnetEncoder.onnx', sessionOption);
+    m_decoderSession = await ort.InferenceSession.create('resources/spiralnetDecoder.onnx', sessionOption);
+}
+
+export const encoderDecoder = async(polydata)=>{
+
+    const inputData = polydata.getPoints().getData();
+    const input_tensor = new ort.Tensor('float32', inputData, [1, inputData.length / 3 ,3]);
+    const latentPred = await m_encoderSession.run({input:input_tensor});
+    
+    const latent = latentPred.output.data;
+    
+    decoder(polydata, latent);
+
 }
 
 export const decoder = async(polydata, latent = new Float32Array(sampleLatents[1]) ) =>{    
     const input_tensor = new ort.Tensor('float32', latent  , [1, 16]);
-    const pred = await m_session.run({input:input_tensor});
+    const pred = await m_decoderSession.run({input:input_tensor});
     const output = pred.output;
 
-    // Update polydata
-    const data = output.data;    
-    // console.log(input_tensor.data)
-    // console.log(data)
-    for(let i=0 ; i<data.length ; i+=3){                
-        polydata.getPoints().setPoint(i/3, data[i], data[i+1], data[i+2]);        
-    }
+    // Update polydata    
+    polydata.getPoints().setData(output.data);
     polydata.modified();    
 }

@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
-	import {createGenericRenderWindow, readPolyData, makeActor, decoder, warmUp} from './utils';	
+	import {createGenericRenderWindow, readPolyData, makeActor, encoderDecoder, decoder, warmUp} from './utils';	
 	import AnimatedBackground from './AnimatedBackground.svelte'
 	import AnimatedBackground2 from './AnimatedBackground2.svelte'
 	import AnimatedBackground3 from './AnimatedBackground3.svelte'
@@ -150,6 +150,11 @@ const onTouchMove = (e)=>{
 	
 }
 
+const latnetEncoderFunction = async (polydata) =>{
+	console.log(polydata.getPoints().getData());
+
+}
+
 
 const main = async ()=>{
 	const interactor = m_genericRenderWindow.getInteractor();
@@ -186,7 +191,9 @@ const main = async ()=>{
 
 		m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
 		// m_targetObject.getPoints().modified();
-		m_targetObject.modified();		
+		// m_targetObject.modified();		
+
+		encoderDecoder(m_targetObject);
 
 		m_renderWindow.render();
 		
