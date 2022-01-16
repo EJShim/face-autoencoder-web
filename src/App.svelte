@@ -149,7 +149,7 @@ const onTouchMove = (e)=>{
 </script>
 
 
-<AnimatedBackground2/>
+<AnimatedBackground3/>
 <svelte:window on:mousemove={e=>{onMouseMove(e)}}
 				on:touchmove={e=>{onTouchMove(e)}}	
 				on:mouseup={e=>{m_bControl=false;}}		

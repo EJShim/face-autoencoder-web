@@ -44722,7 +44722,7 @@ var app = (function () {
   }
 
   function create_fragment(ctx) {
-  	let animatedbackground2;
+  	let animatedbackground3;
   	let t0;
   	let div;
   	let t1;
@@ -44731,12 +44731,12 @@ var app = (function () {
   	let mounted;
   	let dispose;
   	add_render_callback(/*onwindowresize*/ ctx[14]);
-  	animatedbackground2 = new AnimatedBackground2({ $$inline: true });
+  	animatedbackground3 = new AnimatedBackground3({ $$inline: true });
   	let if_block = /*m_bWarmUp*/ ctx[1] && create_if_block(ctx);
 
   	const block = {
   		c: function create() {
-  			create_component(animatedbackground2.$$.fragment);
+  			create_component(animatedbackground3.$$.fragment);
   			t0 = space();
   			div = element("div");
   			t1 = space();
@@ -44749,7 +44749,7 @@ var app = (function () {
   			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
   		},
   		m: function mount(target, anchor) {
-  			mount_component(animatedbackground2, target, anchor);
+  			mount_component(animatedbackground3, target, anchor);
   			insert_dev(target, t0, anchor);
   			insert_dev(target, div, anchor);
   			/*div_binding*/ ctx[15](div);
@@ -44796,17 +44796,17 @@ var app = (function () {
   		},
   		i: function intro(local) {
   			if (current) return;
-  			transition_in(animatedbackground2.$$.fragment, local);
+  			transition_in(animatedbackground3.$$.fragment, local);
   			transition_in(if_block);
   			current = true;
   		},
   		o: function outro(local) {
-  			transition_out(animatedbackground2.$$.fragment, local);
+  			transition_out(animatedbackground3.$$.fragment, local);
   			transition_out(if_block);
   			current = false;
   		},
   		d: function destroy(detaching) {
-  			destroy_component(animatedbackground2, detaching);
+  			destroy_component(animatedbackground3, detaching);
   			if (detaching) detach_dev(t0);
   			if (detaching) detach_dev(div);
   			/*div_binding*/ ctx[15](null);
