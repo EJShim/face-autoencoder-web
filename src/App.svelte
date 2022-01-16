@@ -18,7 +18,7 @@
 	let m_bControl = false;
 	let m_bCalculate = false;
 
-	let m_pillTop = "10%";
+	let m_pillTop = `${90}%`;
 	let m_pillLeft = '50%';
 	let m_windowInnerWidth, m_windowInnerHeight;
 
@@ -51,7 +51,7 @@
 		
 
 		await warmUp();		
-		await latentFunction(.5, .1);	
+		// await latentFunction(.5, .9);	
 		m_renderer.addActor(m_targetActor);
 		m_renderer.resetCamera();
 		m_renderer.getActiveCamera().zoom(0.7);
@@ -78,10 +78,12 @@ const latentFunction = async (x, y)=>{
 		1 - Math.sqrt( Math.pow(1-x,2) + Math.pow(1-y,2) )
 	];
 	
+
 	for(let i in latentWeights){
 		if(latentWeights[i] < 0) latentWeights[i] = 0
 		if(latentWeights[i] > 1) latentWeights[i] = 1
 	}
+
 	
 	latentColor = `rgb(${255*(latentWeights[0])}, ${0}, ${255*(latentWeights[2])})`;
 	// m_targetActor.getProperty().setColor((1-x)/1.4, x/1.4, .4);
