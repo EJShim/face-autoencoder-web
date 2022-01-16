@@ -3890,9 +3890,9 @@ var app = (function () {
 
   var globalthis = getGlobal;
 
-  function ownKeys$o(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$q(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$o(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$o(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$o(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$q(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$q(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$q(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var vtkGlobal = globalthis(); // returns native globalThis if compliant
 
   var factoryMapping = {
@@ -3928,7 +3928,7 @@ var app = (function () {
     } // Shallow copy object
 
 
-    var model = _objectSpread$o({}, obj); // Convert into vtkObject any nested key
+    var model = _objectSpread$q({}, obj); // Convert into vtkObject any nested key
 
 
     Object.keys(model).forEach(function (keyName) {
@@ -4118,9 +4118,9 @@ var app = (function () {
     return ClassHierarchy;
   }( /*#__PURE__*/_wrapNativeSuper(Array));
 
-  function ownKeys$n(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$p(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$n(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$n(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$n(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$p(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$p(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$p(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var globalMTime = 0;
   var VOID$1 = Symbol('void');
 
@@ -4161,13 +4161,13 @@ var app = (function () {
   function vtkInfoMacro() {
     loggerFunctions.info.apply(loggerFunctions, arguments);
   }
-  function vtkDebugMacro$a() {
+  function vtkDebugMacro$b() {
     loggerFunctions.debug.apply(loggerFunctions, arguments);
   }
-  function vtkErrorMacro$l() {
+  function vtkErrorMacro$n() {
     loggerFunctions.error.apply(loggerFunctions, arguments);
   }
-  function vtkWarningMacro$6() {
+  function vtkWarningMacro$7() {
     loggerFunctions.warn.apply(loggerFunctions, arguments);
   }
   var ERROR_ONCE_MAP = {};
@@ -4351,7 +4351,7 @@ var app = (function () {
 
     publicAPI.modified = function (otherMTime) {
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
 
@@ -4367,7 +4367,7 @@ var app = (function () {
 
     publicAPI.onModified = function (callback) {
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return null;
       }
 
@@ -4413,7 +4413,7 @@ var app = (function () {
         } else {
           // Set data on model directly
           if (['mtime'].indexOf(name) === -1 && !noWarning) {
-            vtkWarningMacro$6("Warning: Set value to model directly ".concat(name, ", ").concat(map[name]));
+            vtkWarningMacro$7("Warning: Set value to model directly ".concat(name, ", ").concat(map[name]));
           }
 
           ret = model[name] !== map[name] || ret;
@@ -4456,7 +4456,7 @@ var app = (function () {
 
 
     publicAPI.getState = function () {
-      var jsonArchive = _objectSpread$n(_objectSpread$n({}, model), {}, {
+      var jsonArchive = _objectSpread$p(_objectSpread$p({}, model), {}, {
         vtkClass: publicAPI.getClassName()
       }); // Convert every vtkObject to its serializable form
 
@@ -4500,7 +4500,7 @@ var app = (function () {
 
         if (keyIdx === -1) {
           if (debug) {
-            vtkDebugMacro$a("add ".concat(key, " in shallowCopy"));
+            vtkDebugMacro$b("add ".concat(key, " in shallowCopy"));
           }
         } else {
           keyList.splice(keyIdx, 1);
@@ -4510,7 +4510,7 @@ var app = (function () {
       });
 
       if (keyList.length && debug) {
-        vtkDebugMacro$a("Untouched keys: ".concat(keyList.join(', ')));
+        vtkDebugMacro$b("Untouched keys: ".concat(keyList.join(', ')));
       }
 
       publicAPI.modified();
@@ -4552,7 +4552,7 @@ var app = (function () {
             return false;
           }
 
-          vtkErrorMacro$l("Set Enum with invalid argument ".concat(field, ", ").concat(value));
+          vtkErrorMacro$n("Set Enum with invalid argument ".concat(field, ", ").concat(value));
           throw new RangeError('Set Enum with invalid string argument');
         }
 
@@ -4566,14 +4566,14 @@ var app = (function () {
               return true;
             }
 
-            vtkErrorMacro$l("Set Enum outside numeric range ".concat(field, ", ").concat(value));
+            vtkErrorMacro$n("Set Enum outside numeric range ".concat(field, ", ").concat(value));
             throw new RangeError('Set Enum outside numeric range');
           }
 
           return false;
         }
 
-        vtkErrorMacro$l("Set Enum with invalid argument (String/Number) ".concat(field, ", ").concat(value));
+        vtkErrorMacro$n("Set Enum with invalid argument (String/Number) ".concat(field, ", ").concat(value));
         throw new TypeError('Set Enum with invalid argument (String/Number)');
       };
     }
@@ -4589,14 +4589,14 @@ var app = (function () {
         };
       }
 
-      vtkErrorMacro$l("No setter for field ".concat(field));
+      vtkErrorMacro$n("No setter for field ".concat(field));
       throw new TypeError('No setter for field');
     }
 
     return function getSetter(publicAPI, model) {
       return function setter(value) {
         if (model.deleted) {
-          vtkErrorMacro$l('instance deleted - cannot call any method');
+          vtkErrorMacro$n('instance deleted - cannot call any method');
           return false;
         }
 
@@ -4656,7 +4656,7 @@ var app = (function () {
 
       publicAPI["set".concat(capitalize(field))] = function () {
         if (model.deleted) {
-          vtkErrorMacro$l('instance deleted - cannot call any method');
+          vtkErrorMacro$n('instance deleted - cannot call any method');
           return false;
         }
 
@@ -4760,12 +4760,12 @@ var app = (function () {
       var port = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
 
       if (port >= model.numberOfInputs) {
-        vtkErrorMacro$l("algorithm ".concat(publicAPI.getClassName(), " only has ").concat(model.numberOfInputs, " input ports. To add more input ports, use addInputData()"));
+        vtkErrorMacro$n("algorithm ".concat(publicAPI.getClassName(), " only has ").concat(model.numberOfInputs, " input ports. To add more input ports, use addInputData()"));
         return;
       }
 
@@ -4793,7 +4793,7 @@ var app = (function () {
       var port = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
 
@@ -4801,7 +4801,7 @@ var app = (function () {
         var msg = "algorithm ".concat(publicAPI.getClassName(), " only has ");
         msg += "".concat(model.numberOfInputs);
         msg += ' input ports. To add more input ports, use addInputConnection()';
-        vtkErrorMacro$l(msg);
+        vtkErrorMacro$n(msg);
         return;
       }
 
@@ -4816,7 +4816,7 @@ var app = (function () {
 
     function addInputConnection(outputPort) {
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
 
@@ -4835,7 +4835,7 @@ var app = (function () {
 
     function addInputData(dataset) {
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
 
@@ -4856,7 +4856,7 @@ var app = (function () {
       var port = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return null;
       }
 
@@ -5032,7 +5032,7 @@ var app = (function () {
       var _arguments = arguments;
 
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return;
       }
       /* eslint-disable prefer-rest-params */
@@ -5086,7 +5086,7 @@ var app = (function () {
       }
 
       if (model.deleted) {
-        vtkErrorMacro$l('instance deleted - cannot call any method');
+        vtkErrorMacro$n('instance deleted - cannot call any method');
         return null;
       }
 
@@ -5111,7 +5111,7 @@ var app = (function () {
   // newInstance
   // ----------------------------------------------------------------------------
 
-  function newInstance$1j(extend, className) {
+  function newInstance$1n(extend, className) {
     var constructor = function constructor() {
       var initialValues = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var model = {};
@@ -5371,7 +5371,7 @@ var app = (function () {
       if (prop) {
         Object.assign(prop, propUI);
       } else {
-        propertyMap[propertyName] = _objectSpread$n({}, propUI);
+        propertyMap[propertyName] = _objectSpread$p({}, propUI);
       }
     };
 
@@ -5921,7 +5921,7 @@ var app = (function () {
     getStateArrayMapFunc: getStateArrayMapFunc,
     isVtkObject: isVtkObject,
     keystore: keystore,
-    newInstance: newInstance$1j,
+    newInstance: newInstance$1n,
     newTypedArray: newTypedArray,
     newTypedArrayFrom: newTypedArrayFrom,
     normalizeWheel: normalizeWheel$1,
@@ -5942,15 +5942,15 @@ var app = (function () {
     // deprecated todo remove on breaking API revision
     uncapitalize: uncapitalize,
     VOID: VOID$1,
-    vtkDebugMacro: vtkDebugMacro$a,
-    vtkErrorMacro: vtkErrorMacro$l,
+    vtkDebugMacro: vtkDebugMacro$b,
+    vtkErrorMacro: vtkErrorMacro$n,
     vtkInfoMacro: vtkInfoMacro,
     vtkLogMacro: vtkLogMacro,
     vtkOnceErrorMacro: vtkOnceErrorMacro$1,
-    vtkWarningMacro: vtkWarningMacro$6
+    vtkWarningMacro: vtkWarningMacro$7
   };
 
-  var vtkErrorMacro$k = macro.vtkErrorMacro;
+  var vtkErrorMacro$m = macro.vtkErrorMacro;
   var PASS_TYPES = ['Build', 'Render']; // ----------------------------------------------------------------------------
   // vtkViewNode methods
   // ----------------------------------------------------------------------------
@@ -6120,7 +6120,7 @@ var app = (function () {
 
     publicAPI.createViewNode = function (dataObj) {
       if (!model.myFactory) {
-        vtkErrorMacro$k('Cannot create view nodes without my own factory');
+        vtkErrorMacro$m('Cannot create view nodes without my own factory');
         return null;
       }
 
@@ -6137,7 +6137,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1l = {
+  var DEFAULT_VALUES$1p = {
     parent: null,
     renderable: null,
     myFactory: null,
@@ -6145,9 +6145,9 @@ var app = (function () {
     visited: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$1n(publicAPI, model) {
+  function extend$1r(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1l, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$1p, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.event(publicAPI, model, 'event');
@@ -6160,11 +6160,11 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
 
-  var newInstance$1i = macro.newInstance(extend$1n, 'vtkViewNode'); // ----------------------------------------------------------------------------
+  var newInstance$1m = macro.newInstance(extend$1r, 'vtkViewNode'); // ----------------------------------------------------------------------------
 
   var vtkViewNode$1 = {
-    newInstance: newInstance$1i,
-    extend: extend$1n,
+    newInstance: newInstance$1m,
+    extend: extend$1r,
     PASS_TYPES: PASS_TYPES
   };
 
@@ -6215,23 +6215,23 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1k = {// overrides: {},
+  var DEFAULT_VALUES$1o = {// overrides: {},
   }; // ----------------------------------------------------------------------------
 
-  function extend$1m(publicAPI, model) {
+  function extend$1q(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1k, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$1o, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model); // Object methods
 
     vtkViewNodeFactory$1(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1h = macro.newInstance(extend$1m, 'vtkViewNodeFactory'); // ----------------------------------------------------------------------------
+  var newInstance$1l = macro.newInstance(extend$1q, 'vtkViewNodeFactory'); // ----------------------------------------------------------------------------
 
   var vtkViewNodeFactory$1$1 = {
-    newInstance: newInstance$1h,
-    extend: extend$1m
+    newInstance: newInstance$1l,
+    extend: extend$1q
   };
 
   var CLASS_MAPPING$1 = Object.create(null);
@@ -6249,11 +6249,11 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1j = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$1n = {}; // ----------------------------------------------------------------------------
 
-  function extend$1l(publicAPI, model) {
+  function extend$1p(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1j, initialValues); // Static class mapping shared across instances
+    Object.assign(model, DEFAULT_VALUES$1n, initialValues); // Static class mapping shared across instances
 
     model.overrides = CLASS_MAPPING$1; // Inheritance
 
@@ -6262,11 +6262,11 @@ var app = (function () {
     vtkOpenGLViewNodeFactory(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1g = macro.newInstance(extend$1l, 'vtkOpenGLViewNodeFactory'); // ----------------------------------------------------------------------------
+  var newInstance$1k = macro.newInstance(extend$1p, 'vtkOpenGLViewNodeFactory'); // ----------------------------------------------------------------------------
 
   var vtkViewNodeFactory = {
-    newInstance: newInstance$1g,
-    extend: extend$1l
+    newInstance: newInstance$1k,
+    extend: extend$1p
   };
 
   // vtkOpenGLCamera methods
@@ -6319,16 +6319,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1i = {
+  var DEFAULT_VALUES$1m = {
     context: null,
     lastRenderer: null,
     keyMatrixTime: null,
     keyMatrices: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1k(publicAPI, model) {
+  function extend$1o(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1i, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1m, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.keyMatrixTime = {};
@@ -6346,11 +6346,11 @@ var app = (function () {
     vtkOpenGLCamera(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1f = newInstance$1j(extend$1k); // ----------------------------------------------------------------------------
+  var newInstance$1j = newInstance$1n(extend$1o); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkCamera', newInstance$1f);
+  registerOverride$1('vtkCamera', newInstance$1j);
 
-  var vtkDebugMacro$9 = vtkDebugMacro$a; // ----------------------------------------------------------------------------
+  var vtkDebugMacro$a = vtkDebugMacro$b; // ----------------------------------------------------------------------------
   // vtkOpenGLRenderer methods
   // ----------------------------------------------------------------------------
 
@@ -6385,7 +6385,7 @@ var app = (function () {
       }
 
       if (!count) {
-        vtkDebugMacro$9('No lights are on, creating one.');
+        vtkDebugMacro$a('No lights are on, creating one.');
         model.renderable.createLight();
       }
 
@@ -6520,15 +6520,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1h = {
+  var DEFAULT_VALUES$1l = {
     context: null,
     openGLRenderWindow: null,
     selector: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1j(publicAPI, model) {
+  function extend$1n(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1h, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1l, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues); // Build VTK API
 
@@ -6538,9 +6538,9 @@ var app = (function () {
     vtkOpenGLRenderer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1e = newInstance$1j(extend$1j, 'vtkOpenGLRenderer'); // ----------------------------------------------------------------------------
+  var newInstance$1i = newInstance$1n(extend$1n, 'vtkOpenGLRenderer'); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkRenderer', newInstance$1e);
+  registerOverride$1('vtkRenderer', newInstance$1i);
 
   // vtkOpenGLActor methods
   // ----------------------------------------------------------------------------
@@ -6694,16 +6694,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1g = {
+  var DEFAULT_VALUES$1k = {
     context: null,
     keyMatrixTime: null,
     keyMatrices: null,
     activeTextures: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1i(publicAPI, model) {
+  function extend$1m(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1g, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1k, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.keyMatrixTime = {};
@@ -6721,9 +6721,9 @@ var app = (function () {
     vtkOpenGLActor(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1d = newInstance$1j(extend$1i); // ----------------------------------------------------------------------------
+  var newInstance$1h = newInstance$1n(extend$1m); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkActor', newInstance$1d);
+  registerOverride$1('vtkActor', newInstance$1h);
 
   // vtkOpenGLActor methods
   // ----------------------------------------------------------------------------
@@ -6867,14 +6867,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1f = {
+  var DEFAULT_VALUES$1j = {
     context: null,
     activeTextures: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1h(publicAPI, model) {
+  function extend$1l(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1f, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1j, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues); // Build VTK API
 
@@ -6884,9 +6884,9 @@ var app = (function () {
     vtkOpenGLActor2D(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1c = newInstance$1j(extend$1h); // ----------------------------------------------------------------------------
+  var newInstance$1g = newInstance$1n(extend$1l); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkActor2D', newInstance$1c);
+  registerOverride$1('vtkActor2D', newInstance$1g);
 
   var ObjectType$1 = {
     ARRAY_BUFFER: 0,
@@ -6897,9 +6897,9 @@ var app = (function () {
     ObjectType: ObjectType$1
   };
 
-  function ownKeys$m(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$o(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$m(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$m(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$m(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$o(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$o(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$o(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var ObjectType = Constants$b.ObjectType; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
@@ -6907,7 +6907,7 @@ var app = (function () {
   // Static API
   // ----------------------------------------------------------------------------
 
-  var STATIC$9 = {}; // ----------------------------------------------------------------------------
+  var STATIC$a = {}; // ----------------------------------------------------------------------------
   // vtkOpenGLBufferObject methods
   // ----------------------------------------------------------------------------
 
@@ -7031,27 +7031,27 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1e = {
+  var DEFAULT_VALUES$1i = {
     objectType: ObjectType.ARRAY_BUFFER,
     openGLRenderWindow: null,
     context: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1g(publicAPI, model) {
+  function extend$1k(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1e, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$1i, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['openGLRenderWindow']);
     vtkOpenGLBufferObject(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1b = macro.newInstance(extend$1g); // ----------------------------------------------------------------------------
+  var newInstance$1f = macro.newInstance(extend$1k); // ----------------------------------------------------------------------------
 
-  var vtkBufferObject = _objectSpread$m(_objectSpread$m({
-    newInstance: newInstance$1b,
-    extend: extend$1g
-  }, STATIC$9), Constants$b);
+  var vtkBufferObject = _objectSpread$o(_objectSpread$o({
+    newInstance: newInstance$1f,
+    extend: extend$1k
+  }, STATIC$a), Constants$b);
 
   var Shading$1 = {
     FLAT: 0,
@@ -7070,7 +7070,7 @@ var app = (function () {
     Interpolation: Interpolation$1
   };
 
-  var vtkErrorMacro$j = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$l = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // Static functions
   // ----------------------------------------------------------------------------
 
@@ -7406,12 +7406,12 @@ var app = (function () {
 
     publicAPI.setCoordShiftAndScale = function (coordShift, coordScale) {
       if (coordShift !== null && (coordShift.constructor !== Float64Array || coordShift.length !== 3)) {
-        vtkErrorMacro$j('Wrong type for coordShift, expected vec3 or null');
+        vtkErrorMacro$l('Wrong type for coordShift, expected vec3 or null');
         return;
       }
 
       if (coordScale !== null && (coordScale.constructor !== Float64Array || coordScale.length !== 3)) {
-        vtkErrorMacro$j('Wrong type for coordScale, expected vec3 or null');
+        vtkErrorMacro$l('Wrong type for coordScale, expected vec3 or null');
         return;
       }
 
@@ -7436,7 +7436,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1d = {
+  var DEFAULT_VALUES$1h = {
     elementCount: 0,
     stride: 0,
     colorBOStride: 0,
@@ -7454,9 +7454,9 @@ var app = (function () {
     inverseShiftAndScaleMatrix: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1f(publicAPI, model) {
+  function extend$1j(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1d, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1h, initialValues); // Inheritance
 
     vtkBufferObject.extend(publicAPI, model, initialValues);
     macro.setGet(publicAPI, model, ['colorBO', 'elementCount', 'stride', 'colorBOStride', 'vertexOffset', 'normalOffset', 'tCoordOffset', 'tCoordComponents', 'colorOffset', 'colorComponents', 'customData']);
@@ -7465,14 +7465,14 @@ var app = (function () {
     vtkOpenGLCellArrayBufferObject(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1a = macro.newInstance(extend$1f); // ----------------------------------------------------------------------------
+  var newInstance$1e = macro.newInstance(extend$1j); // ----------------------------------------------------------------------------
 
   var vtkCellArrayBufferObject = {
-    newInstance: newInstance$1a,
-    extend: extend$1f
+    newInstance: newInstance$1e,
+    extend: extend$1j
   };
 
-  var vtkErrorMacro$i = macro.vtkErrorMacro; // export const SHADER_TYPES = ['Vertex', 'Fragment', 'Geometry', 'Unknown'];
+  var vtkErrorMacro$k = macro.vtkErrorMacro; // export const SHADER_TYPES = ['Vertex', 'Fragment', 'Geometry', 'Unknown'];
   // ----------------------------------------------------------------------------
   // vtkShader methods
   // ----------------------------------------------------------------------------
@@ -7515,7 +7515,7 @@ var app = (function () {
 
       if (!isCompiled) {
         var lastError = model.context.getShaderInfoLog(model.handle);
-        vtkErrorMacro$i("Error compiling shader '".concat(model.source, "': ").concat(lastError));
+        vtkErrorMacro$k("Error compiling shader '".concat(model.source, "': ").concat(lastError));
         model.context.deleteShader(model.handle);
         model.handle = 0;
         return false;
@@ -7539,7 +7539,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1c = {
+  var DEFAULT_VALUES$1g = {
     shaderType: 'Unknown',
     source: '',
     error: '',
@@ -7548,9 +7548,9 @@ var app = (function () {
     context: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1e(publicAPI, model) {
+  function extend$1i(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1c, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$1g, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, ['shaderType', 'source', 'error', 'handle', 'context']); // Object methods
@@ -7558,14 +7558,14 @@ var app = (function () {
     vtkShader(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$19 = macro.newInstance(extend$1e, 'vtkShader'); // ----------------------------------------------------------------------------
+  var newInstance$1d = macro.newInstance(extend$1i, 'vtkShader'); // ----------------------------------------------------------------------------
 
   var vtkShader$1 = {
-    newInstance: newInstance$19,
-    extend: extend$1e
+    newInstance: newInstance$1d,
+    extend: extend$1i
   };
 
-  var vtkErrorMacro$h = macro.vtkErrorMacro; // perform in place string substitutions, indicate if a substitution was done
+  var vtkErrorMacro$j = macro.vtkErrorMacro; // perform in place string substitutions, indicate if a substitution was done
   // this is useful for building up shader strings which typically involve
   // lots of string substitutions. Return true if a substitution was done.
 
@@ -7601,34 +7601,34 @@ var app = (function () {
 
     publicAPI.compileShader = function () {
       if (!model.vertexShader.compile()) {
-        vtkErrorMacro$h(model.vertexShader.getSource().split('\n').map(function (line, index) {
+        vtkErrorMacro$j(model.vertexShader.getSource().split('\n').map(function (line, index) {
           return "".concat(index, ": ").concat(line);
         }).join('\n'));
-        vtkErrorMacro$h(model.vertexShader.getError());
+        vtkErrorMacro$j(model.vertexShader.getError());
         return 0;
       }
 
       if (!model.fragmentShader.compile()) {
-        vtkErrorMacro$h(model.fragmentShader.getSource().split('\n').map(function (line, index) {
+        vtkErrorMacro$j(model.fragmentShader.getSource().split('\n').map(function (line, index) {
           return "".concat(index, ": ").concat(line);
         }).join('\n'));
-        vtkErrorMacro$h(model.fragmentShader.getError());
+        vtkErrorMacro$j(model.fragmentShader.getError());
         return 0;
       } // skip geometry for now
 
 
       if (!publicAPI.attachShader(model.vertexShader)) {
-        vtkErrorMacro$h(model.error);
+        vtkErrorMacro$j(model.error);
         return 0;
       }
 
       if (!publicAPI.attachShader(model.fragmentShader)) {
-        vtkErrorMacro$h(model.error);
+        vtkErrorMacro$j(model.error);
         return 0;
       }
 
       if (!publicAPI.link()) {
-        vtkErrorMacro$h("Links failed: ".concat(model.error));
+        vtkErrorMacro$j("Links failed: ".concat(model.error));
         return 0;
       }
 
@@ -7687,7 +7687,7 @@ var app = (function () {
 
       if (!isCompiled) {
         var lastError = model.context.getProgramInfoLog(model.handle);
-        vtkErrorMacro$h("Error linking shader ".concat(lastError));
+        vtkErrorMacro$j("Error linking shader ".concat(lastError));
         model.handle = 0;
         return false;
       }
@@ -8022,7 +8022,7 @@ var app = (function () {
       }
 
       if (!model.linked) {
-        vtkErrorMacro$h('attempt to find uniform when the shader program is not linked');
+        vtkErrorMacro$j('attempt to find uniform when the shader program is not linked');
         return false;
       }
 
@@ -8049,7 +8049,7 @@ var app = (function () {
       }
 
       if (!model.linked) {
-        vtkErrorMacro$h('attempt to find uniform when the shader program is not linked');
+        vtkErrorMacro$j('attempt to find uniform when the shader program is not linked');
         return false;
       }
 
@@ -8183,7 +8183,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1b = {
+  var DEFAULT_VALUES$1f = {
     vertexShaderHandle: 0,
     fragmentShaderHandle: 0,
     geometryShaderHandle: 0,
@@ -8203,9 +8203,9 @@ var app = (function () {
     lastCameraMTime: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1d(publicAPI, model) {
+  function extend$1h(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1b, initialValues); // Instantiate internal objects
+    Object.assign(model, DEFAULT_VALUES$1f, initialValues); // Instantiate internal objects
 
     model.attributesLocs = {};
     model.uniformLocs = {};
@@ -8224,11 +8224,11 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
 
-  var newInstance$18 = macro.newInstance(extend$1d, 'vtkShaderProgram'); // ----------------------------------------------------------------------------
+  var newInstance$1c = macro.newInstance(extend$1h, 'vtkShaderProgram'); // ----------------------------------------------------------------------------
 
   var vtkShaderProgram$1 = {
-    newInstance: newInstance$18,
-    extend: extend$1d,
+    newInstance: newInstance$1c,
+    extend: extend$1h,
     substitute: substitute$1
   };
 
@@ -8551,7 +8551,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1a = {
+  var DEFAULT_VALUES$1e = {
     forceEmulation: false,
     handleVAO: 0,
     handleProgram: 0,
@@ -8561,9 +8561,9 @@ var app = (function () {
     openGLRenderWindow: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$1c(publicAPI, model) {
+  function extend$1g(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1a, initialValues); // Internal objects initialization
+    Object.assign(model, DEFAULT_VALUES$1e, initialValues); // Internal objects initialization
 
     model.buffers = []; // Object methods
 
@@ -8577,11 +8577,11 @@ var app = (function () {
     vtkOpenGLVertexArrayObject(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$17 = macro.newInstance(extend$1c, 'vtkOpenGLVertexArrayObject'); // ----------------------------------------------------------------------------
+  var newInstance$1b = macro.newInstance(extend$1g, 'vtkOpenGLVertexArrayObject'); // ----------------------------------------------------------------------------
 
   var vtkVertexArrayObject = {
-    newInstance: newInstance$17,
-    extend: extend$1c
+    newInstance: newInstance$1b,
+    extend: extend$1g
   };
 
   // vtkOpenGLHelper methods
@@ -8607,7 +8607,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$19 = {
+  var DEFAULT_VALUES$1d = {
     program: null,
     shaderSourceTime: null,
     VAO: null,
@@ -8616,9 +8616,9 @@ var app = (function () {
     primitiveType: 0
   }; // ----------------------------------------------------------------------------
 
-  function extend$1b(publicAPI, model) {
+  function extend$1f(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$19, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$1d, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     model.shaderSourceTime = {};
@@ -8633,11 +8633,11 @@ var app = (function () {
     vtkOpenGLHelper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$16 = macro.newInstance(extend$1b); // ----------------------------------------------------------------------------
+  var newInstance$1a = macro.newInstance(extend$1f); // ----------------------------------------------------------------------------
 
   var vtkHelper = {
-    newInstance: newInstance$16,
-    extend: extend$1b
+    newInstance: newInstance$1a,
+    extend: extend$1f
   };
 
   // vtkAbstractMapper methods
@@ -8726,13 +8726,13 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$18 = {
+  var DEFAULT_VALUES$1c = {
     clippingPlanes: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$1a(publicAPI, model) {
+  function extend$1e(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$18, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$1c, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.algo(publicAPI, model, 1, 0);
@@ -8745,7 +8745,7 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
   var vtkAbstractMapper$1 = {
-    extend: extend$1a
+    extend: extend$1e
   };
 
   var alea = createCommonjsModule(function (module) {
@@ -9703,7 +9703,7 @@ var app = (function () {
   seedrandom.xor4096 = xor4096;
   seedrandom.tychei = tychei;
 
-  var vtkWarningMacro$5 = macro.vtkWarningMacro; // ----------------------------------------------------------------------------
+  var vtkWarningMacro$6 = macro.vtkWarningMacro; // ----------------------------------------------------------------------------
   var VTK_SMALL_NUMBER = 1.0e-12;
 
   function createArray() {
@@ -9859,7 +9859,7 @@ var app = (function () {
       }
 
       if (largest === 0.0) {
-        vtkWarningMacro$5('Unable to factor linear system');
+        vtkWarningMacro$6('Unable to factor linear system');
         return 0;
       }
 
@@ -9917,7 +9917,7 @@ var app = (function () {
       index[j] = maxI;
 
       if (Math.abs(A[j][j]) <= VTK_SMALL_NUMBER) {
-        vtkWarningMacro$5('Unable to factor linear system');
+        vtkWarningMacro$6('Unable to factor linear system');
         return 0;
       }
 
@@ -10162,14 +10162,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$17 = {
+  var DEFAULT_VALUES$1b = {
     bounds: [1, -1, 1, -1, 1, -1],
     center: [0, 0, 0]
   }; // ----------------------------------------------------------------------------
 
-  function extend$19(publicAPI, model) {
+  function extend$1d(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$17, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$1b, initialValues); // Inheritance
 
     vtkAbstractMapper$1.extend(publicAPI, model, initialValues);
 
@@ -10185,7 +10185,7 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
   var vtkAbstractMapper3D$1 = {
-    extend: extend$19
+    extend: extend$1d
   };
 
   var DataTypeByteSize = {
@@ -10219,9 +10219,9 @@ var app = (function () {
     VtkDataTypes: VtkDataTypes$3
   };
 
-  function ownKeys$l(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$n(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$l(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$l(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$l(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$n(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$n(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$n(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var DefaultDataType = Constants$a.DefaultDataType;
   var TUPLE_HOLDER = []; // ----------------------------------------------------------------------------
   // Global methods
@@ -10329,7 +10329,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$8 = {
+  var STATIC$9 = {
     computeRange: computeRange,
     createRangeHelper: createRangeHelper,
     getDataType: getDataType,
@@ -10482,7 +10482,7 @@ var app = (function () {
 
 
     publicAPI.newClone = function () {
-      return newInstance$15({
+      return newInstance$19({
         empty: true,
         name: model.name,
         dataType: model.dataType,
@@ -10519,7 +10519,7 @@ var app = (function () {
 
 
     publicAPI.getState = function () {
-      var jsonArchive = _objectSpread$l(_objectSpread$l({}, model), {}, {
+      var jsonArchive = _objectSpread$n(_objectSpread$n({}, model), {}, {
         vtkClass: publicAPI.getClassName()
       }); // Convert typed array to regular array
 
@@ -10549,7 +10549,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$16 = {
+  var DEFAULT_VALUES$1a = {
     name: '',
     numberOfComponents: 1,
     size: 0,
@@ -10559,9 +10559,9 @@ var app = (function () {
 
   }; // ----------------------------------------------------------------------------
 
-  function extend$18(publicAPI, model) {
+  function extend$1c(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$16, initialValues);
+    Object.assign(model, DEFAULT_VALUES$1a, initialValues);
 
     if (!model.empty && !model.values && !model.size) {
       throw new TypeError('Cannot create vtkDataArray object without: size > 0, values');
@@ -10585,16 +10585,16 @@ var app = (function () {
     vtkDataArray(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$15 = newInstance$1j(extend$18, 'vtkDataArray'); // ----------------------------------------------------------------------------
+  var newInstance$19 = newInstance$1n(extend$1c, 'vtkDataArray'); // ----------------------------------------------------------------------------
 
-  var vtkDataArray$1 = _objectSpread$l(_objectSpread$l({
-    newInstance: newInstance$15,
-    extend: extend$18
-  }, STATIC$8), Constants$a);
+  var vtkDataArray$1 = _objectSpread$n(_objectSpread$n({
+    newInstance: newInstance$19,
+    extend: extend$1c
+  }, STATIC$9), Constants$a);
 
-  function ownKeys$k(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$m(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$k(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$k(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$k(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$m(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$m(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$m(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var PLANE_TOLERANCE = 1.0e-6;
   var COINCIDE = 'coincide';
   var DISJOINT = 'disjoint'; // ----------------------------------------------------------------------------
@@ -10776,7 +10776,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$7 = {
+  var STATIC$8 = {
     evaluate: evaluate,
     distanceToPlane: distanceToPlane,
     projectPoint: projectPoint,
@@ -10844,30 +10844,30 @@ var app = (function () {
   // Object factory
   // ----------------------------------------------------------------------------
 
-  var DEFAULT_VALUES$15 = {
+  var DEFAULT_VALUES$19 = {
     normal: [0.0, 0.0, 1.0],
     origin: [0.0, 0.0, 0.0]
   }; // ----------------------------------------------------------------------------
 
-  function extend$17(publicAPI, model) {
+  function extend$1b(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$15, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$19, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.setGetArray(publicAPI, model, ['normal', 'origin'], 3);
     vtkPlane(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$14 = macro.newInstance(extend$17, 'vtkPlane'); // ----------------------------------------------------------------------------
+  var newInstance$18 = macro.newInstance(extend$1b, 'vtkPlane'); // ----------------------------------------------------------------------------
 
-  var vtkPlane$1 = _objectSpread$k({
-    newInstance: newInstance$14,
-    extend: extend$17
-  }, STATIC$7);
+  var vtkPlane$1 = _objectSpread$m({
+    newInstance: newInstance$18,
+    extend: extend$1b
+  }, STATIC$8);
 
-  function ownKeys$j(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$l(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$j(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$j(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$j(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$l(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$l(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$l(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var INIT_BOUNDS = [Number.MAX_VALUE, -Number.MAX_VALUE, // X
   Number.MAX_VALUE, -Number.MAX_VALUE, // Y
   Number.MAX_VALUE, -Number.MAX_VALUE // Z
@@ -11591,7 +11591,7 @@ var app = (function () {
     return BoundingBox;
   }();
 
-  function newInstance$13(initialValues) {
+  function newInstance$17(initialValues) {
     var bounds = initialValues && initialValues.bounds;
     return new BoundingBox(bounds);
   } // ----------------------------------------------------------------------------
@@ -11599,7 +11599,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$6 = {
+  var STATIC$7 = {
     equals: _equals,
     isValid: _isValid,
     setBounds: _setBounds,
@@ -11633,9 +11633,9 @@ var app = (function () {
     contains: contains,
     INIT_BOUNDS: INIT_BOUNDS
   };
-  var vtkBoundingBox = _objectSpread$j({
-    newInstance: newInstance$13
-  }, STATIC$6);
+  var vtkBoundingBox = _objectSpread$l({
+    newInstance: newInstance$17
+  }, STATIC$7);
 
   // vtkFieldData methods
   // ----------------------------------------------------------------------------
@@ -11886,25 +11886,25 @@ var app = (function () {
     };
   }
 
-  var DEFAULT_VALUES$14 = {
+  var DEFAULT_VALUES$18 = {
     arrays: [],
     copyFieldFlags: [],
     // fields not to copy
     doCopyAllOn: true,
     doCopyAllOff: false
   };
-  function extend$16(publicAPI, model) {
+  function extend$1a(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$14, initialValues);
+    Object.assign(model, DEFAULT_VALUES$18, initialValues);
     macro.obj(publicAPI, model);
     vtkFieldData(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$12 = macro.newInstance(extend$16, 'vtkFieldData'); // ----------------------------------------------------------------------------
+  var newInstance$16 = macro.newInstance(extend$1a, 'vtkFieldData'); // ----------------------------------------------------------------------------
 
   var vtkFieldData$1 = {
-    newInstance: newInstance$12,
-    extend: extend$16
+    newInstance: newInstance$16,
+    extend: extend$1a
   };
 
   var AttributeTypes$1 = {
@@ -11969,12 +11969,12 @@ var app = (function () {
     ghostArrayName: ghostArrayName
   };
 
-  function ownKeys$i(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$k(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$i(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$i(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$i(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$k(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$k(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$k(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var AttributeTypes = Constants$9.AttributeTypes,
       AttributeCopyOperations = Constants$9.AttributeCopyOperations;
-  var vtkWarningMacro$4 = macro.vtkWarningMacro; // ----------------------------------------------------------------------------
+  var vtkWarningMacro$5 = macro.vtkWarningMacro; // ----------------------------------------------------------------------------
   // vtkDataSetAttributes methods
   // ----------------------------------------------------------------------------
 
@@ -12008,12 +12008,12 @@ var app = (function () {
       var attType = cleanAttributeType(uncleanAttType);
 
       if (arr && attType.toUpperCase() === 'PEDIGREEIDS' && !arr.isA('vtkDataArray')) {
-        vtkWarningMacro$4("Cannot set attribute ".concat(attType, ". The attribute must be a vtkDataArray."));
+        vtkWarningMacro$5("Cannot set attribute ".concat(attType, ". The attribute must be a vtkDataArray."));
         return -1;
       }
 
       if (arr && !publicAPI.checkNumberOfComponents(arr, attType)) {
-        vtkWarningMacro$4("Cannot set attribute ".concat(attType, ". Incorrect number of components."));
+        vtkWarningMacro$5("Cannot set attribute ".concat(attType, ". Incorrect number of components."));
         return -1;
       }
 
@@ -12050,12 +12050,12 @@ var app = (function () {
           var arr = publicAPI.getArrayByIndex(arrayIdx);
 
           if (!arr.isA('vtkDataArray')) {
-            vtkWarningMacro$4("Cannot set attribute ".concat(attType, ". Only vtkDataArray subclasses can be set as active attributes."));
+            vtkWarningMacro$5("Cannot set attribute ".concat(attType, ". Only vtkDataArray subclasses can be set as active attributes."));
             return -1;
           }
 
           if (!publicAPI.checkNumberOfComponents(arr, attType)) {
-            vtkWarningMacro$4("Cannot set attribute ".concat(attType, ". Incorrect number of components."));
+            vtkWarningMacro$5("Cannot set attribute ".concat(attType, ". Incorrect number of components."));
             return -1;
           }
         }
@@ -12186,7 +12186,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$13 = {
+  var DEFAULT_VALUES$17 = {
     activeScalars: -1,
     activeVectors: -1,
     activeTensors: -1,
@@ -12196,9 +12196,9 @@ var app = (function () {
     activePedigreeIds: -1
   }; // ----------------------------------------------------------------------------
 
-  function extend$15(publicAPI, model) {
+  function extend$19(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$13, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$17, initialValues); // Object methods
 
     vtkFieldData$1.extend(publicAPI, model, initialValues);
     macro.setGet(publicAPI, model, ['activeScalars', 'activeNormals', 'activeTCoords', 'activeVectors', 'activeTensors', 'activeGlobalIds', 'activePedigreeIds']);
@@ -12211,11 +12211,11 @@ var app = (function () {
     vtkDataSetAttributes(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$11 = macro.newInstance(extend$15, 'vtkDataSetAttributes'); // ----------------------------------------------------------------------------
+  var newInstance$15 = macro.newInstance(extend$19, 'vtkDataSetAttributes'); // ----------------------------------------------------------------------------
 
-  var vtkDataSetAttributes$1 = _objectSpread$i({
-    newInstance: newInstance$11,
-    extend: extend$15
+  var vtkDataSetAttributes$1 = _objectSpread$k({
+    newInstance: newInstance$15,
+    extend: extend$19
   }, Constants$9);
 
   // Specify how data arrays can be used by data objects
@@ -12264,9 +12264,9 @@ var app = (function () {
     FieldAssociations: FieldAssociations$2
   };
 
-  function ownKeys$h(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$j(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$h(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$h(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$h(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$j(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$j(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$j(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   // import * as vtkMath from '../../Core/Math';
   //
   // function getBounds(dataset) {
@@ -12329,14 +12329,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$12 = {// pointData: null,
+  var DEFAULT_VALUES$16 = {// pointData: null,
     // cellData: null,
     // fieldData: null,
   }; // ----------------------------------------------------------------------------
 
-  function extend$14(publicAPI, model) {
+  function extend$18(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$12, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$16, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, DATASET_FIELDS); // Object specific methods
@@ -12344,11 +12344,11 @@ var app = (function () {
     vtkDataSet(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$10 = macro.newInstance(extend$14, 'vtkDataSet'); // ----------------------------------------------------------------------------
+  var newInstance$14 = macro.newInstance(extend$18, 'vtkDataSet'); // ----------------------------------------------------------------------------
 
-  var vtkDataSet$1 = _objectSpread$h({
-    newInstance: newInstance$10,
-    extend: extend$14
+  var vtkDataSet$1 = _objectSpread$j({
+    newInstance: newInstance$14,
+    extend: extend$18
   }, Constants$8);
 
   var StructuredType$1 = {
@@ -12367,9 +12367,9 @@ var app = (function () {
     StructuredType: StructuredType$1
   };
 
-  function ownKeys$g(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$i(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$g(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$g(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$g(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$i(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$i(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$i(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var StructuredType = Constants$7.StructuredType;
   function getDataDescriptionFromExtent(inExt) {
     var dataDim = 0;
@@ -12414,11 +12414,11 @@ var app = (function () {
 
     return StructuredType.SINGLE_POINT;
   }
-  var vtkStructuredData = _objectSpread$g({
+  var vtkStructuredData = _objectSpread$i({
     getDataDescriptionFromExtent: getDataDescriptionFromExtent
   }, Constants$7);
 
-  var vtkErrorMacro$g = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$i = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // vtkImageData methods
   // ----------------------------------------------------------------------------
 
@@ -12428,7 +12428,7 @@ var app = (function () {
 
     publicAPI.setExtent = function () {
       if (model.deleted) {
-        vtkErrorMacro$g('instance deleted - cannot call any method');
+        vtkErrorMacro$i('instance deleted - cannot call any method');
         return false;
       }
 
@@ -12468,7 +12468,7 @@ var app = (function () {
       var k;
 
       if (model.deleted) {
-        vtkErrorMacro$g('instance deleted - cannot call any method');
+        vtkErrorMacro$i('instance deleted - cannot call any method');
         return;
       }
 
@@ -12482,7 +12482,7 @@ var app = (function () {
         j = arguments.length <= 1 ? undefined : arguments[1];
         k = arguments.length <= 2 ? undefined : arguments[2];
       } else {
-        vtkErrorMacro$g('Bad dimension specification');
+        vtkErrorMacro$i('Bad dimension specification');
         return;
       }
 
@@ -12519,7 +12519,7 @@ var app = (function () {
       var dims = publicAPI.getDimensions();
 
       if (dims[0] === 0 || dims[1] === 0 || dims[2] === 0) {
-        vtkErrorMacro$g('Requesting a point from an empty image.');
+        vtkErrorMacro$i('Requesting a point from an empty image.');
         return null;
       }
 
@@ -12566,7 +12566,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$g('Invalid dataDescription');
+          vtkErrorMacro$i('Invalid dataDescription');
           break;
       }
 
@@ -12670,7 +12670,7 @@ var app = (function () {
 
     publicAPI.setDirection = function () {
       if (model.deleted) {
-        vtkErrorMacro$g('instance deleted - cannot call any method');
+        vtkErrorMacro$i('instance deleted - cannot call any method');
         return false;
       }
 
@@ -12865,7 +12865,7 @@ var app = (function () {
 
       for (var idx = 0; idx < 3; ++idx) {
         if (index[idx] < extent[idx * 2] || index[idx] > extent[idx * 2 + 1]) {
-          vtkErrorMacro$g("GetScalarPointer: Pixel ".concat(index, " is not in memory. Current extent = ").concat(extent));
+          vtkErrorMacro$i("GetScalarPointer: Pixel ".concat(index, " is not in memory. Current extent = ").concat(extent));
           return NaN;
         }
       } // Assumed the index here is within 0 <-> scalarData.length, but doesn't hurt to check upstream
@@ -12885,7 +12885,7 @@ var app = (function () {
       var numberOfComponents = publicAPI.getPointData().getScalars().getNumberOfComponents();
 
       if (comp < 0 || comp >= numberOfComponents) {
-        vtkErrorMacro$g("GetScalarPointer: Scalar Component ".concat(comp, " is not within bounds. Current Scalar numberOfComponents: ").concat(numberOfComponents));
+        vtkErrorMacro$i("GetScalarPointer: Scalar Component ".concat(comp, " is not within bounds. Current Scalar numberOfComponents: ").concat(numberOfComponents));
         return NaN;
       }
 
@@ -12903,7 +12903,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$11 = {
+  var DEFAULT_VALUES$15 = {
     direction: null,
     // a mat3
     indexToWorld: null,
@@ -12916,9 +12916,9 @@ var app = (function () {
     dataDescription: StructuredType$1.EMPTY
   }; // ----------------------------------------------------------------------------
 
-  function extend$13(publicAPI, model) {
+  function extend$17(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$11, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$15, initialValues); // Inheritance
 
     vtkDataSet$1.extend(publicAPI, model, initialValues);
 
@@ -12938,11 +12938,11 @@ var app = (function () {
     vtkImageData(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$$ = macro.newInstance(extend$13, 'vtkImageData'); // ----------------------------------------------------------------------------
+  var newInstance$13 = macro.newInstance(extend$17, 'vtkImageData'); // ----------------------------------------------------------------------------
 
   var vtkImageData$1 = {
-    newInstance: newInstance$$,
-    extend: extend$13
+    newInstance: newInstance$13,
+    extend: extend$17
   };
 
   var VectorMode$2 = {
@@ -12984,15 +12984,15 @@ var app = (function () {
     ScalarMode: ScalarMode$5
   };
 
-  function ownKeys$f(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$h(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$f(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$f(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$f(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$h(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$h(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$h(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
   var ScalarMappingTarget = vtkScalarsToColors$2.ScalarMappingTarget,
       VectorMode$1 = vtkScalarsToColors$2.VectorMode;
   var VtkDataTypes$2 = vtkDataArray$1.VtkDataTypes;
   var ColorMode$2 = Constants$6.ColorMode;
-  var vtkErrorMacro$f = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$h = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
   // Add module-level functions or api that you want to expose statically via
@@ -13041,7 +13041,7 @@ var app = (function () {
       }
 
       if (values && annotations && values.length !== annotations.length) {
-        vtkErrorMacro$f('Values and annotations do not have the same number of tuples so ignoring');
+        vtkErrorMacro$h('Values and annotations do not have the same number of tuples so ignoring');
         return;
       }
 
@@ -13461,7 +13461,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$f('Cannot convert colors');
+          vtkErrorMacro$h('Cannot convert colors');
           return null;
       }
 
@@ -13488,7 +13488,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$10 = {
+  var DEFAULT_VALUES$14 = {
     alpha: 1.0,
     vectorComponent: 0,
     vectorSize: -1,
@@ -13499,9 +13499,9 @@ var app = (function () {
     indexedLookup: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$12(publicAPI, model) {
+  function extend$16(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$10, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$14, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     model.mappingRange = [0, 255];
@@ -13518,14 +13518,14 @@ var app = (function () {
     vtkScalarsToColors(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$_ = macro.newInstance(extend$12, 'vtkScalarsToColors'); // ----------------------------------------------------------------------------
+  var newInstance$12 = macro.newInstance(extend$16, 'vtkScalarsToColors'); // ----------------------------------------------------------------------------
 
-  var vtkScalarsToColors$1 = _objectSpread$f({
-    newInstance: newInstance$_,
-    extend: extend$12
+  var vtkScalarsToColors$1 = _objectSpread$h({
+    newInstance: newInstance$12,
+    extend: extend$16
   }, vtkScalarsToColors$2);
 
-  var vtkErrorMacro$e = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$g = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
   // Add module-level functions or api that you want to expose statically via
@@ -13723,12 +13723,12 @@ var app = (function () {
 
     publicAPI.setTable = function (table) {
       if (table.getNumberOfComponents() !== 4) {
-        vtkErrorMacro$e('Expected 4 components for RGBA colors');
+        vtkErrorMacro$g('Expected 4 components for RGBA colors');
         return;
       }
 
       if (table.getDataType() !== VtkDataTypes$3.UNSIGNED_CHAR) {
-        vtkErrorMacro$e('Expected unsigned char values for RGBA colors');
+        vtkErrorMacro$g('Expected unsigned char values for RGBA colors');
         return;
       }
 
@@ -13803,7 +13803,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$$ = {
+  var DEFAULT_VALUES$13 = {
     numberOfColors: 256,
     // table: null,
     hueRange: [0.0, 0.66667],
@@ -13821,9 +13821,9 @@ var app = (function () {
 
   }; // ----------------------------------------------------------------------------
 
-  function extend$11(publicAPI, model) {
+  function extend$15(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$$, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$13, initialValues); // Inheritance
 
     vtkScalarsToColors$1.extend(publicAPI, model, initialValues); // Internal objects initialization
 
@@ -13855,11 +13855,11 @@ var app = (function () {
     vtkLookupTable(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$Z = macro.newInstance(extend$11, 'vtkLookupTable'); // ----------------------------------------------------------------------------
+  var newInstance$11 = macro.newInstance(extend$15, 'vtkLookupTable'); // ----------------------------------------------------------------------------
 
   var vtkLookupTable$1 = {
-    newInstance: newInstance$Z,
-    extend: extend$11
+    newInstance: newInstance$11,
+    extend: extend$15
   };
 
   var resolveCoincidentTopologyPolygonOffsetFaces = 1;
@@ -14012,9 +14012,9 @@ var app = (function () {
     CATEGORIES: CATEGORIES
   };
 
-  function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$g(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$g(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$g(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$g(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var staticOffsetAPI = CoincidentTopologyHelper.staticOffsetAPI,
       otherStaticMethods = CoincidentTopologyHelper.otherStaticMethods;
   var ColorMode$1 = Constants$6.ColorMode,
@@ -14463,7 +14463,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$_ = {
+  var DEFAULT_VALUES$12 = {
     colorMapColors: null,
     // Same as this->Colors
     static: false,
@@ -14488,9 +14488,9 @@ var app = (function () {
     customShaderAttributes: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$10(publicAPI, model) {
+  function extend$14(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$_, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$12, initialValues); // Inheritance
 
     vtkAbstractMapper3D$1.extend(publicAPI, model, initialValues);
     macro.get(publicAPI, model, ['colorCoordinates', 'colorMapColors', 'colorTextureMap']);
@@ -14507,11 +14507,11 @@ var app = (function () {
     vtkMapper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$Y = macro.newInstance(extend$10, 'vtkMapper'); // ----------------------------------------------------------------------------
+  var newInstance$10 = macro.newInstance(extend$14, 'vtkMapper'); // ----------------------------------------------------------------------------
 
-  var vtkMapper$1 = _objectSpread$e(_objectSpread$e(_objectSpread$e({
-    newInstance: newInstance$Y,
-    extend: extend$10
+  var vtkMapper$1 = _objectSpread$g(_objectSpread$g(_objectSpread$g({
+    newInstance: newInstance$10,
+    extend: extend$14
   }, staticOffsetAPI), otherStaticMethods), Constants$6);
 
   var Wrap$2 = {
@@ -14611,15 +14611,15 @@ var app = (function () {
     toHalf: toHalf
   };
 
-  function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$f(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$f(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$f(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$f(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var Wrap$1 = Constants$5.Wrap,
       Filter$1 = Constants$5.Filter;
   var VtkDataTypes = vtkDataArray$1.VtkDataTypes;
-  var vtkDebugMacro$8 = vtkDebugMacro$a,
-      vtkErrorMacro$d = vtkErrorMacro$l,
-      vtkWarningMacro$3 = vtkWarningMacro$6; // ----------------------------------------------------------------------------
+  var vtkDebugMacro$9 = vtkDebugMacro$b,
+      vtkErrorMacro$f = vtkErrorMacro$n,
+      vtkWarningMacro$4 = vtkWarningMacro$7; // ----------------------------------------------------------------------------
   // vtkOpenGLTexture methods
   // ----------------------------------------------------------------------------
 
@@ -14837,7 +14837,7 @@ var app = (function () {
             break;
 
           default:
-            vtkWarningMacro$3('impossible case');
+            vtkWarningMacro$4('impossible case');
             break;
         }
 
@@ -14877,7 +14877,7 @@ var app = (function () {
       }
 
       if (!model.internalFormat) {
-        vtkDebugMacro$8("Unable to find suitable internal format for T=".concat(vtktype, " NC= ").concat(numComps));
+        vtkDebugMacro$9("Unable to find suitable internal format for T=".concat(vtktype, " NC= ").concat(numComps));
       }
 
       return model.internalFormat;
@@ -14897,8 +14897,8 @@ var app = (function () {
       result = _this.openGLRenderWindow.getDefaultTextureInternalFormat(vtktype, numComps, true);
 
       if (!result) {
-        vtkDebugMacro$8('Unsupported internal texture type!');
-        vtkDebugMacro$8("Unable to find suitable internal format for T=".concat(vtktype, " NC= ").concat(numComps));
+        vtkDebugMacro$9('Unsupported internal texture type!');
+        vtkDebugMacro$9("Unable to find suitable internal format for T=".concat(vtktype, " NC= ").concat(numComps));
       }
 
       return result;
@@ -15288,7 +15288,7 @@ var app = (function () {
       publicAPI.getFormat(dataType, numComps);
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       }
 
@@ -15326,7 +15326,7 @@ var app = (function () {
       publicAPI.getFormat(dataType, numComps);
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       }
 
@@ -15413,7 +15413,7 @@ var app = (function () {
       }
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       }
 
@@ -15447,7 +15447,7 @@ var app = (function () {
       publicAPI.getFormat(VtkDataTypes.UNSIGNED_CHAR, 4);
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       }
 
@@ -15580,7 +15580,7 @@ var app = (function () {
       publicAPI.getFormat(dataType, numComps);
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       }
 
@@ -15719,7 +15719,7 @@ var app = (function () {
       publicAPI.getFormat(dataTypeToUse, numComps);
 
       if (!model.internalFormat || !model.format || !model.openGLDataType) {
-        vtkErrorMacro$d('Failed to determine texture parameters.');
+        vtkErrorMacro$f('Failed to determine texture parameters.');
         return false;
       } // have to pack this 3D texture into pot 2D texture
 
@@ -15843,7 +15843,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$Z = {
+  var DEFAULT_VALUES$11 = {
     openGLRenderWindow: null,
     context: null,
     handle: 0,
@@ -15870,9 +15870,9 @@ var app = (function () {
     generateMipmap: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$$(publicAPI, model) {
+  function extend$13(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$Z, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$11, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.sendParametersTime = {};
@@ -15891,18 +15891,18 @@ var app = (function () {
     vtkOpenGLTexture(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$X = newInstance$1j(extend$$, 'vtkOpenGLTexture'); // ----------------------------------------------------------------------------
+  var newInstance$$ = newInstance$1n(extend$13, 'vtkOpenGLTexture'); // ----------------------------------------------------------------------------
 
-  var vtkOpenGLTexture$1 = _objectSpread$d({
-    newInstance: newInstance$X,
-    extend: extend$$
+  var vtkOpenGLTexture$1 = _objectSpread$f({
+    newInstance: newInstance$$,
+    extend: extend$13
   }, Constants$5); // Register ourself to OpenGL backend if imported
 
-  registerOverride$1('vtkTexture', newInstance$X);
+  registerOverride$1('vtkTexture', newInstance$$);
 
-  function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var Representation$3 = PropertyConst.Representation,
       Interpolation = PropertyConst.Interpolation;
 
@@ -15994,7 +15994,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$Y = {
+  var DEFAULT_VALUES$10 = {
     color: [1, 1, 1],
     ambientColor: [1, 1, 1],
     diffuseColor: [1, 1, 1],
@@ -16017,9 +16017,9 @@ var app = (function () {
     materialName: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$_(publicAPI, model) {
+  function extend$12(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$Y, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$10, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, ['lighting', 'interpolation', 'ambient', 'diffuse', 'specular', 'specularPower', 'opacity', 'edgeVisibility', 'lineWidth', 'pointSize', 'backfaceCulling', 'frontfaceCulling', 'representation']);
@@ -16028,11 +16028,11 @@ var app = (function () {
     vtkProperty(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$W = macro.newInstance(extend$_, 'vtkProperty'); // ----------------------------------------------------------------------------
+  var newInstance$_ = macro.newInstance(extend$12, 'vtkProperty'); // ----------------------------------------------------------------------------
 
-  var vtkProperty$1 = _objectSpread$c({
-    newInstance: newInstance$W,
-    extend: extend$_
+  var vtkProperty$1 = _objectSpread$e({
+    newInstance: newInstance$_,
+    extend: extend$12
   }, PropertyConst);
 
   var vtkPolyDataVS = "//VTK::System::Dec\n\n/*=========================================================================\n\n  Program:   Visualization Toolkit\n  Module:    vtkPolyDataVS.glsl\n\n  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen\n  All rights reserved.\n  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.\n\n     This software is distributed WITHOUT ANY WARRANTY; without even\n     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR\n     PURPOSE.  See the above copyright notice for more information.\n\n=========================================================================*/\n\nattribute vec4 vertexMC;\n\n// frag position in VC\n//VTK::PositionVC::Dec\n\n// optional normal declaration\n//VTK::Normal::Dec\n\n// extra lighting parameters\n//VTK::Light::Dec\n\n// Texture coordinates\n//VTK::TCoord::Dec\n\n// material property values\n//VTK::Color::Dec\n\n// clipping plane vars\n//VTK::Clip::Dec\n\n// camera and actor matrix values\n//VTK::Camera::Dec\n\n// Apple Bug\n//VTK::PrimID::Dec\n\n// picking support\n//VTK::Picking::Dec\n\nvoid main()\n{\n  //VTK::Color::Impl\n\n  //VTK::Normal::Impl\n\n  //VTK::TCoord::Impl\n\n  //VTK::Clip::Impl\n\n  //VTK::PrimID::Impl\n\n  //VTK::PositionVC::Impl\n\n  //VTK::Light::Impl\n\n  //VTK::Picking::Impl\n}\n";
@@ -16096,7 +16096,7 @@ var app = (function () {
   var ScalarMode$3 = vtkMapper$1.ScalarMode;
   var Filter = vtkOpenGLTexture$1.Filter,
       Wrap = vtkOpenGLTexture$1.Wrap;
-  var vtkErrorMacro$c = vtkErrorMacro$l;
+  var vtkErrorMacro$e = vtkErrorMacro$n;
   var StartEvent$2 = {
     type: 'StartEvent'
   };
@@ -16357,7 +16357,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$c('bad light complexity');
+          vtkErrorMacro$e('bad light complexity');
       }
 
       shaders.Fragment = FSSource;
@@ -16733,13 +16733,13 @@ var app = (function () {
 
         if (cellBO.getProgram().isAttributeUsed('vertexMC')) {
           if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), 'vertexMC', cellBO.getCABO().getVertexOffset(), cellBO.getCABO().getStride(), model.context.FLOAT, 3, false)) {
-            vtkErrorMacro$c('Error setting vertexMC in shader VAO.');
+            vtkErrorMacro$e('Error setting vertexMC in shader VAO.');
           }
         }
 
         if (cellBO.getProgram().isAttributeUsed('normalMC') && cellBO.getCABO().getNormalOffset() && lastLightComplexity > 0) {
           if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), 'normalMC', cellBO.getCABO().getNormalOffset(), cellBO.getCABO().getStride(), model.context.FLOAT, 3, false)) {
-            vtkErrorMacro$c('Error setting normalMC in shader VAO.');
+            vtkErrorMacro$e('Error setting normalMC in shader VAO.');
           }
         } else {
           cellBO.getVAO().removeAttributeArray('normalMC');
@@ -16748,14 +16748,14 @@ var app = (function () {
         model.renderable.getCustomShaderAttributes().forEach(function (attrName, idx) {
           if (cellBO.getProgram().isAttributeUsed("".concat(attrName, "MC"))) {
             if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), "".concat(attrName, "MC"), cellBO.getCABO().getCustomData()[idx].offset, cellBO.getCABO().getStride(), model.context.FLOAT, cellBO.getCABO().getCustomData()[idx].components, false)) {
-              vtkErrorMacro$c("Error setting ".concat(attrName, "MC in shader VAO."));
+              vtkErrorMacro$e("Error setting ".concat(attrName, "MC in shader VAO."));
             }
           }
         });
 
         if (cellBO.getProgram().isAttributeUsed('tcoordMC') && cellBO.getCABO().getTCoordOffset()) {
           if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), 'tcoordMC', cellBO.getCABO().getTCoordOffset(), cellBO.getCABO().getStride(), model.context.FLOAT, cellBO.getCABO().getTCoordComponents(), false)) {
-            vtkErrorMacro$c('Error setting tcoordMC in shader VAO.');
+            vtkErrorMacro$e('Error setting tcoordMC in shader VAO.');
           }
         } else {
           cellBO.getVAO().removeAttributeArray('tcoordMC');
@@ -16763,7 +16763,7 @@ var app = (function () {
 
         if (cellBO.getProgram().isAttributeUsed('scalarColor') && cellBO.getCABO().getColorComponents()) {
           if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO().getColorBO(), 'scalarColor', cellBO.getCABO().getColorOffset(), cellBO.getCABO().getColorBOStride(), model.context.UNSIGNED_BYTE, 4, true)) {
-            vtkErrorMacro$c('Error setting scalarColor in shader VAO.');
+            vtkErrorMacro$e('Error setting scalarColor in shader VAO.');
           }
         } else {
           cellBO.getVAO().removeAttributeArray('scalarColor');
@@ -17099,7 +17099,7 @@ var app = (function () {
       publicAPI.invokeEvent(EndEvent$2);
 
       if (!model.currentInput) {
-        vtkErrorMacro$c('No input!');
+        vtkErrorMacro$e('No input!');
         return;
       } // if there are no points then we are done
 
@@ -17276,7 +17276,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$X = {
+  var DEFAULT_VALUES$$ = {
     context: null,
     VBOBuildTime: 0,
     VBOBuildString: null,
@@ -17300,9 +17300,9 @@ var app = (function () {
     haveSeenDepthRequest: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$Z(publicAPI, model) {
+  function extend$11(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$X, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$$, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     vtkReplacementShaderMapper.implementReplaceShaderCoincidentOffset(publicAPI, model, initialValues);
@@ -17331,15 +17331,15 @@ var app = (function () {
     vtkOpenGLPolyDataMapper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$V = newInstance$1j(extend$Z, 'vtkOpenGLPolyDataMapper'); // ----------------------------------------------------------------------------
+  var newInstance$Z = newInstance$1n(extend$11, 'vtkOpenGLPolyDataMapper'); // ----------------------------------------------------------------------------
 
   var vtkOpenGLPolyDataMapper$1 = {
-    newInstance: newInstance$V,
-    extend: extend$Z,
+    newInstance: newInstance$Z,
+    extend: extend$11,
     primTypes: primTypes$1
   }; // Register ourself to OpenGL backend if imported
 
-  registerOverride$1('vtkMapper', newInstance$V);
+  registerOverride$1('vtkMapper', newInstance$Z);
 
   var ColorMode = Constants$6.ColorMode,
       ScalarMode$2 = Constants$6.ScalarMode,
@@ -17506,7 +17506,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$W = {
+  var DEFAULT_VALUES$_ = {
     static: false,
     lookupTable: null,
     scalarVisibility: false,
@@ -17523,9 +17523,9 @@ var app = (function () {
     customShaderAttributes: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$Y(publicAPI, model) {
+  function extend$10(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$W, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$_, initialValues); // Inheritance
 
     vtkAbstractMapper$1.extend(publicAPI, model, initialValues);
     macro.get(publicAPI, model, ['colorMapColors']);
@@ -17541,14 +17541,14 @@ var app = (function () {
     vtkMapper2D(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$U = macro.newInstance(extend$Y, 'vtkMapper2D'); // ----------------------------------------------------------------------------
+  var newInstance$Y = macro.newInstance(extend$10, 'vtkMapper2D'); // ----------------------------------------------------------------------------
 
   var vtkMapper2D$1 = {
-    newInstance: newInstance$U,
-    extend: extend$Y
+    newInstance: newInstance$Y,
+    extend: extend$10
   };
 
-  var vtkErrorMacro$b = macro.vtkErrorMacro;
+  var vtkErrorMacro$d = macro.vtkErrorMacro;
   var INVALID_BOUNDS = [1, -1, 1, -1, 1, -1]; // ----------------------------------------------------------------------------
   // vtkPoints methods
   // ----------------------------------------------------------------------------
@@ -17598,7 +17598,7 @@ var app = (function () {
       }
 
       if (publicAPI.getNumberOfComponents() !== 2) {
-        vtkErrorMacro$b("getBounds called on an array with components of\n        ".concat(publicAPI.getNumberOfComponents()));
+        vtkErrorMacro$d("getBounds called on an array with components of\n        ".concat(publicAPI.getNumberOfComponents()));
         return INVALID_BOUNDS;
       }
 
@@ -17622,25 +17622,25 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$V = {
+  var DEFAULT_VALUES$Z = {
     empty: true,
     numberOfComponents: 3,
     dataType: VtkDataTypes$3.FLOAT,
     bounds: [1, -1, 1, -1, 1, -1]
   }; // ----------------------------------------------------------------------------
 
-  function extend$X(publicAPI, model) {
+  function extend$$(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$V, initialValues);
+    Object.assign(model, DEFAULT_VALUES$Z, initialValues);
     vtkDataArray$1.extend(publicAPI, model, initialValues);
     vtkPoints(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$T = macro.newInstance(extend$X, 'vtkPoints'); // ----------------------------------------------------------------------------
+  var newInstance$X = macro.newInstance(extend$$, 'vtkPoints'); // ----------------------------------------------------------------------------
 
   var vtkPoints$1 = {
-    newInstance: newInstance$T,
-    extend: extend$X
+    newInstance: newInstance$X,
+    extend: extend$$
   };
 
   var vtkPolyData2DFS = "//VTK::System::Dec\n\n/*=========================================================================\n\n  Program:   Visualization Toolkit\n  Module:    vtkPolyData2DFS.glsl\n\n  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen\n  All rights reserved.\n  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.\n\n     This software is distributed WITHOUT ANY WARRANTY; without even\n     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR\n     PURPOSE.  See the above copyright notice for more information.\n\n=========================================================================*/\n\nuniform int PrimitiveIDOffset;\n\n// Texture coordinates\n//VTK::TCoord::Dec\n\n// Scalar coloring\n//VTK::Color::Dec\n\n// Depth Peeling\n//VTK::DepthPeeling::Dec\n\n// picking support\n//VTK::Picking::Dec\n\n// the output of this shader\n//VTK::Output::Dec\n\n// Apple Bug\n//VTK::PrimID::Dec\n\nvoid main()\n{\n  // Apple Bug\n  //VTK::PrimID::Impl\n\n  //VTK::Color::Impl\n  //VTK::TCoord::Impl\n\n  //VTK::DepthPeeling::Impl\n  //VTK::Picking::Impl\n\n  if (gl_FragData[0].a <= 0.0)\n    {\n    discard;\n    }\n}\n";
@@ -17655,7 +17655,7 @@ var app = (function () {
   // import { mat3, mat4, vec3 } from 'gl-matrix';
   var primTypes = vtkOpenGLPolyDataMapper$1.primTypes;
   var ScalarMode$1 = vtkMapper2D$1.ScalarMode;
-  var vtkErrorMacro$a = vtkErrorMacro$l;
+  var vtkErrorMacro$c = vtkErrorMacro$n;
   var StartEvent$1 = {
     type: 'StartEvent'
   };
@@ -17748,7 +17748,7 @@ var app = (function () {
       publicAPI.invokeEvent(EndEvent$1);
 
       if (!model.currentInput) {
-        vtkErrorMacro$a('No input!');
+        vtkErrorMacro$c('No input!');
         return;
       } // if there are no points then we are done
 
@@ -18098,7 +18098,7 @@ var app = (function () {
 
       if (cellBO.getProgram().isAttributeUsed('vertexWC')) {
         if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), 'vertexWC', cellBO.getCABO().getVertexOffset(), cellBO.getCABO().getStride(), model.context.FLOAT, 3, false)) {
-          vtkErrorMacro$a('Error setting vertexWC in shader VAO.');
+          vtkErrorMacro$c('Error setting vertexWC in shader VAO.');
         }
       }
 
@@ -18106,14 +18106,14 @@ var app = (function () {
         model.renderable.getCustomShaderAttributes().forEach(function (attrName, idx) {
           if (cellBO.getProgram().isAttributeUsed("".concat(attrName, "MC"))) {
             if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), "".concat(attrName, "MC"), cellBO.getCABO().getCustomData()[idx].offset, cellBO.getCABO().getStride(), model.context.FLOAT, cellBO.getCABO().getCustomData()[idx].components, false)) {
-              vtkErrorMacro$a("Error setting ".concat(attrName, "MC in shader VAO."));
+              vtkErrorMacro$c("Error setting ".concat(attrName, "MC in shader VAO."));
             }
           }
         });
 
         if (cellBO.getProgram().isAttributeUsed('tcoordMC') && cellBO.getCABO().getTCoordOffset()) {
           if (!cellBO.getVAO().addAttributeArray(cellBO.getProgram(), cellBO.getCABO(), 'tcoordMC', cellBO.getCABO().getTCoordOffset(), cellBO.getCABO().getStride(), model.context.FLOAT, cellBO.getCABO().getTCoordComponents(), false)) {
-            vtkErrorMacro$a('Error setting tcoordMC in shader VAO.');
+            vtkErrorMacro$c('Error setting tcoordMC in shader VAO.');
           }
         } else {
           cellBO.getVAO().removeAttributeArray('tcoordMC');
@@ -18254,7 +18254,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$U = {
+  var DEFAULT_VALUES$Y = {
     context: null,
     VBOBuildTime: 0,
     VBOBuildString: null,
@@ -18263,9 +18263,9 @@ var app = (function () {
     shaderRebuildString: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$W(publicAPI, model) {
+  function extend$_(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$U, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$Y, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     vtkReplacementShaderMapper.implementReplaceShaderCoincidentOffset(publicAPI, model, initialValues);
@@ -18293,11 +18293,11 @@ var app = (function () {
     vtkOpenGLPolyDataMapper2D(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$S = newInstance$1j(extend$W, 'vtkOpenGLPolyDataMapper2D'); // ----------------------------------------------------------------------------
+  var newInstance$W = newInstance$1n(extend$_, 'vtkOpenGLPolyDataMapper2D'); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkMapper2D', newInstance$S);
+  registerOverride$1('vtkMapper2D', newInstance$W);
 
-  var vtkErrorMacro$9 = vtkErrorMacro$l; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$b = vtkErrorMacro$n; // ----------------------------------------------------------------------------
   // vtkOpenGLSkybox methods
   // ----------------------------------------------------------------------------
 
@@ -18417,7 +18417,7 @@ var app = (function () {
         model.tris.getVAO().bind();
 
         if (!model.tris.getVAO().addAttributeArray(model.tris.getProgram(), model.tris.getCABO(), 'vertexMC', model.tris.getCABO().getVertexOffset(), model.tris.getCABO().getStride(), model.context.FLOAT, 3, model.context.FALSE)) {
-          vtkErrorMacro$9('Error setting vertexMC in shader VAO.');
+          vtkErrorMacro$b('Error setting vertexMC in shader VAO.');
         }
       } // set/update the texture map if needed
 
@@ -18425,7 +18425,7 @@ var app = (function () {
       var tmaps = model.renderable.getTextures();
 
       if (!tmaps.length) {
-        vtkErrorMacro$9('vtkSkybox requires a texture map');
+        vtkErrorMacro$b('vtkSkybox requires a texture map');
       }
 
       if (model.openGLTexture.getRenderable() !== tmaps[0]) {
@@ -18438,13 +18438,13 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$T = {
+  var DEFAULT_VALUES$X = {
     context: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$V(publicAPI, model) {
+  function extend$Z(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$T, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$X, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.openGLTexture = vtkOpenGLTexture$1.newInstance();
@@ -18464,12 +18464,12 @@ var app = (function () {
     vtkOpenGLSkybox(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$R = newInstance$1j(extend$V); // ----------------------------------------------------------------------------
+  var newInstance$V = newInstance$1n(extend$Z); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkSkybox', newInstance$R);
+  registerOverride$1('vtkSkybox', newInstance$V);
 
   // import { mat4, vec3 }     from 'gl-matrix';
-  var vtkDebugMacro$7 = vtkDebugMacro$a; // ----------------------------------------------------------------------------
+  var vtkDebugMacro$8 = vtkDebugMacro$b; // ----------------------------------------------------------------------------
   // vtkOpenGLPixelSpaceCallbackMapper methods
   // ----------------------------------------------------------------------------
 
@@ -18494,7 +18494,7 @@ var app = (function () {
         var fb = renderPass.getFramebuffer();
 
         if (!fb) {
-          vtkDebugMacro$7('No framebuffer to save/restore');
+          vtkDebugMacro$8('No framebuffer to save/restore');
         } else {
           // save framebuffer settings
           fb.saveCurrentBindingsAndBuffers();
@@ -18533,20 +18533,20 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$S = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$W = {}; // ----------------------------------------------------------------------------
 
-  function extend$U(publicAPI, model) {
+  function extend$Y(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$S, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$W, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues); // Object methods
 
     vtkOpenGLPixelSpaceCallbackMapper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$Q = newInstance$1j(extend$U, 'vtkOpenGLPixelSpaceCallbackMapper'); // ----------------------------------------------------------------------------
+  var newInstance$U = newInstance$1n(extend$Y, 'vtkOpenGLPixelSpaceCallbackMapper'); // ----------------------------------------------------------------------------
 
-  registerOverride$1('vtkPixelSpaceCallbackMapper', newInstance$Q);
+  registerOverride$1('vtkPixelSpaceCallbackMapper', newInstance$U);
 
   var CLASS_MAPPING = Object.create(null);
   function registerOverride(className, fn) {
@@ -18563,11 +18563,11 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$R = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$V = {}; // ----------------------------------------------------------------------------
 
-  function extend$T(publicAPI, model) {
+  function extend$X(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$R, initialValues); // Static class mapping shared across instances
+    Object.assign(model, DEFAULT_VALUES$V, initialValues); // Static class mapping shared across instances
 
     model.overrides = CLASS_MAPPING; // Inheritance
 
@@ -18576,7 +18576,7 @@ var app = (function () {
     vtkWebGPUViewNodeFactory(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  macro.newInstance(extend$T, 'vtkWebGPUViewNodeFactory'); // ----------------------------------------------------------------------------
+  macro.newInstance(extend$X, 'vtkWebGPUViewNodeFactory'); // ----------------------------------------------------------------------------
 
   // vtkWebGPUCamera methods
   // ----------------------------------------------------------------------------
@@ -18681,14 +18681,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$Q = {
+  var DEFAULT_VALUES$U = {
     keyMatrixTime: null,
     keyMatrices: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$S(publicAPI, model) {
+  function extend$W(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$Q, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$U, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.keyMatrixTime = {};
@@ -18708,9 +18708,9 @@ var app = (function () {
     vtkWebGPUCamera(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$P = macro.newInstance(extend$S); // ----------------------------------------------------------------------------
+  var newInstance$T = macro.newInstance(extend$W); // ----------------------------------------------------------------------------
 
-  registerOverride('vtkCamera', newInstance$P);
+  registerOverride('vtkCamera', newInstance$T);
 
   // vtkWebGPUBindGroup methods
   // ----------------------------------------------------------------------------
@@ -18799,15 +18799,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$P = {
+  var DEFAULT_VALUES$T = {
     device: null,
     handle: null,
     name: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$R(publicAPI, model) {
+  function extend$V(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$P, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$T, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     model.bindables = [];
@@ -18820,11 +18820,11 @@ var app = (function () {
     vtkWebGPUBindGroup(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$O = macro.newInstance(extend$R); // ----------------------------------------------------------------------------
+  var newInstance$S = macro.newInstance(extend$V); // ----------------------------------------------------------------------------
 
   var vtkWebGPUBindGroup$1 = {
-    newInstance: newInstance$O,
-    extend: extend$R
+    newInstance: newInstance$S,
+    extend: extend$V
   };
 
   // vtkWebGPUShaderModule methods
@@ -18849,14 +18849,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$O = {
+  var DEFAULT_VALUES$S = {
     device: null,
     handle: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$Q(publicAPI, model) {
+  function extend$U(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$O, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$S, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['lastCameraMTime']);
@@ -18866,11 +18866,11 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
 
-  var newInstance$N = macro.newInstance(extend$Q, 'vtkWebGPUShaderModule'); // ----------------------------------------------------------------------------
+  var newInstance$R = macro.newInstance(extend$U, 'vtkWebGPUShaderModule'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUShaderModule$1 = {
-    newInstance: newInstance$N,
-    extend: extend$Q
+    newInstance: newInstance$R,
+    extend: extend$U
   };
 
   // this is useful for building up shader strings which typically involve
@@ -18934,15 +18934,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$N = {
+  var DEFAULT_VALUES$R = {
     shaderModules: null,
     device: null,
     window: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$P(publicAPI, model) {
+  function extend$T(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$N, initialValues); // Internal objects
+    Object.assign(model, DEFAULT_VALUES$R, initialValues); // Internal objects
 
     model._shaderModules = new Map(); // Build VTK API
 
@@ -18952,11 +18952,11 @@ var app = (function () {
     vtkWebGPUShaderCache(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$M = macro.newInstance(extend$P, 'vtkWebGPUShaderCache'); // ----------------------------------------------------------------------------
+  var newInstance$Q = macro.newInstance(extend$T, 'vtkWebGPUShaderCache'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUShaderCache$1 = {
-    newInstance: newInstance$M,
-    extend: extend$P,
+    newInstance: newInstance$Q,
+    extend: extend$T,
     substitute: substitute
   };
 
@@ -19047,7 +19047,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$M = {
+  var DEFAULT_VALUES$Q = {
     handle: null,
     layouts: null,
     renderEncoder: null,
@@ -19057,9 +19057,9 @@ var app = (function () {
     pipelineDescription: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$O(publicAPI, model) {
+  function extend$S(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$M, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$Q, initialValues); // Build VTK API
 
     obj(publicAPI, model);
     model.layouts = [];
@@ -19071,11 +19071,11 @@ var app = (function () {
     vtkWebGPUPipeline(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$L = newInstance$1j(extend$O, 'vtkWebGPUPipeline'); // ----------------------------------------------------------------------------
+  var newInstance$P = newInstance$1n(extend$S, 'vtkWebGPUPipeline'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUPipeline$1 = {
-    newInstance: newInstance$L,
-    extend: extend$O
+    newInstance: newInstance$P,
+    extend: extend$S
   };
 
   // vtkWebGPUShaderDescription methods
@@ -19178,7 +19178,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$L = {
+  var DEFAULT_VALUES$P = {
     type: null,
     // 'vertex' or 'fragment'
     hash: null,
@@ -19187,9 +19187,9 @@ var app = (function () {
     outputTypes: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$N(publicAPI, model) {
+  function extend$R(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$L, initialValues);
+    Object.assign(model, DEFAULT_VALUES$P, initialValues);
     model.outputNames = [];
     model.outputTypes = [];
     model.outputInterpolations = [];
@@ -19205,11 +19205,11 @@ var app = (function () {
     vtkWebGPUShaderDescription(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$K = macro.newInstance(extend$N, 'vtkWebGPUShaderDescription'); // ----------------------------------------------------------------------------
+  var newInstance$O = macro.newInstance(extend$R, 'vtkWebGPUShaderDescription'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUShaderDescription$1 = {
-    newInstance: newInstance$K,
-    extend: extend$N
+    newInstance: newInstance$O,
+    extend: extend$R
   };
 
   // vtkWebGPUDevice static functions
@@ -19525,7 +19525,7 @@ var app = (function () {
       return textureDetails[format];
     }
 
-    vtkErrorMacro$l("unknown format ".concat(format));
+    vtkErrorMacro$n("unknown format ".concat(format));
     return null;
   } // see https://gpuweb.github.io/gpuweb/#enumdef-gpuvertexformat
   // for possible formats
@@ -19546,7 +19546,7 @@ var app = (function () {
     var num = Number(format[sizeStart]);
 
     if (Number.isNaN(num)) {
-      vtkErrorMacro$l("unknown format ".concat(format));
+      vtkErrorMacro$n("unknown format ".concat(format));
       return 0;
     }
 
@@ -19582,7 +19582,7 @@ var app = (function () {
     } else if (format[0] === 'u') {
       result = 'Uint';
     } else {
-      vtkErrorMacro$l("unknown format ".concat(format));
+      vtkErrorMacro$n("unknown format ".concat(format));
       return undefined;
     } // options are 8, 16, 32 resulting in 8, 6, 2 as the last char
     // plugged into the formula below gives 1, 2, 4 respectively
@@ -19592,7 +19592,7 @@ var app = (function () {
     var num = Number(base[base.length - 1]);
 
     if (Number.isNaN(num)) {
-      vtkErrorMacro$l("unknown format ".concat(format));
+      vtkErrorMacro$n("unknown format ".concat(format));
       return undefined;
     }
 
@@ -19611,7 +19611,7 @@ var app = (function () {
     } else if (format[0] === 'u' && format[1] === 'i') {
       dataType = 'u32';
     } else {
-      vtkErrorMacro$l("unknown format ".concat(format));
+      vtkErrorMacro$n("unknown format ".concat(format));
       return undefined;
     } // options are x2, x3, x4 or nothing
 
@@ -19647,7 +19647,7 @@ var app = (function () {
     if (format.includes('f32')) return 'Float32Array';
     if (format.includes('i32')) return 'Int32Array';
     if (format.includes('u32')) return 'Uint32Array';
-    vtkErrorMacro$l("unknown format ".concat(format));
+    vtkErrorMacro$n("unknown format ".concat(format));
     return undefined;
   }
 
@@ -19834,15 +19834,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$K = {
+  var DEFAULT_VALUES$O = {
     inputs: null,
     bindingDescriptions: false,
     attributeDescriptions: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$M(publicAPI, model) {
+  function extend$Q(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$K, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$O, initialValues); // Build VTK API
 
     obj(publicAPI, model);
     model.bindingDescriptions = [];
@@ -19854,11 +19854,11 @@ var app = (function () {
     vtkWebGPUVertexInput(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$J = newInstance$1j(extend$M, 'vtkWebGPUVertexInput'); // ----------------------------------------------------------------------------
+  var newInstance$N = newInstance$1n(extend$Q, 'vtkWebGPUVertexInput'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUVertexInput$1 = {
-    newInstance: newInstance$J,
-    extend: extend$M
+    newInstance: newInstance$N,
+    extend: extend$Q
   };
 
   var vtkWebGPUMapperHelperVS = "\n//VTK::Renderer::Dec\n\n//VTK::Color::Dec\n\n//VTK::Normal::Dec\n\n//VTK::TCoord::Dec\n\n//VTK::Select::Dec\n\n//VTK::Mapper::Dec\n\n//VTK::IOStructs::Dec\n\n[[stage(vertex)]]\nfn main(\n//VTK::IOStructs::Input\n)\n//VTK::IOStructs::Output\n{\n  var output : vertexOutput;\n\n  // var vertex: vec4<f32> = vertexBC;\n\n  //VTK::Color::Impl\n\n  //VTK::Normal::Impl\n\n  //VTK::TCoord::Impl\n\n  //VTK::Select::Impl\n\n  //VTK::Position::Impl\n\n  return output;\n}\n";
@@ -20060,7 +20060,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$J = {
+  var DEFAULT_VALUES$N = {
     additionalBindables: undefined,
     bindGroup: null,
     device: null,
@@ -20077,9 +20077,9 @@ var app = (function () {
     WebGPURenderer: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$L(publicAPI, model) {
+  function extend$P(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$J, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$N, initialValues); // Inheritance
 
     macro.obj(publicAPI, model);
     model.textureViews = [];
@@ -20097,11 +20097,11 @@ var app = (function () {
     vtkWebGPUMapperHelper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$I = macro.newInstance(extend$L, 'vtkWebGPUMapperHelper'); // ----------------------------------------------------------------------------
+  var newInstance$M = macro.newInstance(extend$P, 'vtkWebGPUMapperHelper'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUMapperHelper$1 = {
-    newInstance: newInstance$I,
-    extend: extend$L
+    newInstance: newInstance$M,
+    extend: extend$P
   };
 
   // vtkWebGPUFullScreenQuad methods
@@ -20133,22 +20133,22 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$I = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$M = {}; // ----------------------------------------------------------------------------
 
-  function extend$K(publicAPI, model) {
+  function extend$O(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$I, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$M, initialValues); // Inheritance
 
     vtkWebGPUMapperHelper$1.extend(publicAPI, model, initialValues); // Object methods
 
     vtkWebGPUFullScreenQuad(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$H = macro.newInstance(extend$K, 'vtkWebGPUFullScreenQuad'); // ----------------------------------------------------------------------------
+  var newInstance$L = macro.newInstance(extend$O, 'vtkWebGPUFullScreenQuad'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUFullScreenQuad$1 = {
-    newInstance: newInstance$H,
-    extend: extend$K
+    newInstance: newInstance$L,
+    extend: extend$O
   };
 
   var BufferUsage$4 = {
@@ -20181,9 +20181,9 @@ var app = (function () {
     PrimitiveTypes: PrimitiveTypes$2
   };
 
-  function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
   var forwarded = ['getMappedRange', 'mapAsync', 'unmap'];
 
@@ -20260,7 +20260,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$H = {
+  var DEFAULT_VALUES$L = {
     device: null,
     handle: null,
     sizeInBytes: 0,
@@ -20270,9 +20270,9 @@ var app = (function () {
     sourceTime: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$J(publicAPI, model) {
+  function extend$N(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$H, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$L, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['handle', 'sizeInBytes', 'usage']);
@@ -20280,27 +20280,27 @@ var app = (function () {
     vtkWebGPUBuffer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$G = macro.newInstance(extend$J); // ----------------------------------------------------------------------------
+  var newInstance$K = macro.newInstance(extend$N); // ----------------------------------------------------------------------------
 
-  var vtkWebGPUBuffer$1 = _objectSpread$b({
-    newInstance: newInstance$G,
-    extend: extend$J
+  var vtkWebGPUBuffer$1 = _objectSpread$d({
+    newInstance: newInstance$K,
+    extend: extend$N
   }, Constants$4);
 
-  function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var BufferUsage$3 = Constants$4.BufferUsage,
       PrimitiveTypes$1 = Constants$4.PrimitiveTypes;
   var Representation$1 = vtkProperty$1.Representation;
-  var vtkDebugMacro$6 = vtkDebugMacro$a; // the webgpu constants all show up as undefined
+  var vtkDebugMacro$7 = vtkDebugMacro$b; // the webgpu constants all show up as undefined
 
   /* eslint-disable no-undef */
   // ----------------------------------------------------------------------------
   // Static API
   // ----------------------------------------------------------------------------
 
-  var STATIC$5 = {};
+  var STATIC$6 = {};
 
   function requestMatches(req1, req2) {
     if (req1.time !== req2.time) return false;
@@ -20593,7 +20593,7 @@ var app = (function () {
       polysToSurface: function polysToSurface(npts, cellPts, offset) {
         if (npts < 3) {
           // ignore degenerate triangles
-          vtkDebugMacro$6('skipping degenerate triangle');
+          vtkDebugMacro$7('skipping degenerate triangle');
         } else {
           // compute the normal
           var normal = getNormal(pointData, cellPts[offset], cellPts[offset + 1], cellPts[offset + 2]);
@@ -20808,14 +20808,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$G = {
+  var DEFAULT_VALUES$K = {
     device: null,
     fullScreenQuadBuffer: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$I(publicAPI, model) {
+  function extend$M(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$G, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$K, initialValues); // Object methods
 
     obj(publicAPI, model); // this is a cache, and a cache with GC pretty much means WeakMap
 
@@ -20824,15 +20824,15 @@ var app = (function () {
     vtkWebGPUBufferManager(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$F = newInstance$1j(extend$I); // ----------------------------------------------------------------------------
+  var newInstance$J = newInstance$1n(extend$M); // ----------------------------------------------------------------------------
 
-  var vtkWebGPUBufferManager$1 = _objectSpread$a(_objectSpread$a({
-    newInstance: newInstance$F,
-    extend: extend$I
-  }, STATIC$5), Constants$4);
+  var vtkWebGPUBufferManager$1 = _objectSpread$c(_objectSpread$c({
+    newInstance: newInstance$J,
+    extend: extend$M
+  }, STATIC$6), Constants$4);
 
   var BufferUsage$2 = vtkWebGPUBufferManager$1.BufferUsage;
-  var vtkErrorMacro$8 = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$a = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // vtkWebGPUUniformBuffer methods
   // ----------------------------------------------------------------------------
 
@@ -20842,7 +20842,7 @@ var app = (function () {
 
     publicAPI.addEntry = function (name, type) {
       if (model._bufferEntryNames.has(name)) {
-        vtkErrorMacro$8("entry named ".concat(name, " already exists"));
+        vtkErrorMacro$a("entry named ".concat(name, " already exists"));
         return;
       }
 
@@ -21052,7 +21052,7 @@ var app = (function () {
       var idx = model._bufferEntryNames.get(name);
 
       if (idx === undefined) {
-        vtkErrorMacro$8("entry named ".concat(name, " not found in UBO"));
+        vtkErrorMacro$a("entry named ".concat(name, " not found in UBO"));
         return;
       }
 
@@ -21074,7 +21074,7 @@ var app = (function () {
       var idx = model._bufferEntryNames.get(name);
 
       if (idx === undefined) {
-        vtkErrorMacro$8("entry named ".concat(name, " not found in UBO"));
+        vtkErrorMacro$a("entry named ".concat(name, " not found in UBO"));
         return;
       }
 
@@ -21127,7 +21127,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$F = {
+  var DEFAULT_VALUES$J = {
     bufferEntries: null,
     bufferEntryNames: null,
     sizeInBytes: 0,
@@ -21136,9 +21136,9 @@ var app = (function () {
     bindGroupEntry: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$H(publicAPI, model) {
+  function extend$L(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$F, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$J, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model); // Internal objects
 
@@ -21166,14 +21166,14 @@ var app = (function () {
     vtkWebGPUUniformBuffer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$E = macro.newInstance(extend$H, 'vtkWebGPUUniformBuffer'); // ----------------------------------------------------------------------------
+  var newInstance$I = macro.newInstance(extend$L, 'vtkWebGPUUniformBuffer'); // ----------------------------------------------------------------------------
 
   var vtkWebGPUUniformBuffer$1 = {
-    newInstance: newInstance$E,
-    extend: extend$H
+    newInstance: newInstance$I,
+    extend: extend$L
   };
 
-  var vtkDebugMacro$5 = vtkDebugMacro$a;
+  var vtkDebugMacro$6 = vtkDebugMacro$b;
   var clearFragTemplate = "\n//VTK::Renderer::Dec\n\n//VTK::Mapper::Dec\n\n//VTK::TCoord::Dec\n\n//VTK::RenderEncoder::Dec\n\n//VTK::IOStructs::Dec\n\n[[stage(fragment)]]\nfn main(\n//VTK::IOStructs::Input\n)\n//VTK::IOStructs::Output\n{\n  var output: fragmentOutput;\n\n  var computedColor: vec4<f32> = mapperUBO.BackgroundColor;\n\n  //VTK::RenderEncoder::Impl\n  return output;\n}\n"; // ----------------------------------------------------------------------------
   // vtkWebGPURenderer methods
   // ----------------------------------------------------------------------------
@@ -21255,7 +21255,7 @@ var app = (function () {
       }
 
       if (!count) {
-        vtkDebugMacro$5('No lights are on, creating one.');
+        vtkDebugMacro$6('No lights are on, creating one.');
         model.renderable.createLight();
       }
 
@@ -21487,7 +21487,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$E = {
+  var DEFAULT_VALUES$I = {
     bindGroup: null,
     selector: null,
     renderEncoder: null,
@@ -21496,9 +21496,9 @@ var app = (function () {
     stabilizedCenter: [0.0, 0.0, 0.0]
   }; // ----------------------------------------------------------------------------
 
-  function extend$G(publicAPI, model) {
+  function extend$K(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$E, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$I, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.UBO = vtkWebGPUUniformBuffer$1.newInstance();
@@ -21527,9 +21527,9 @@ var app = (function () {
     vtkWebGPURenderer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$D = newInstance$1j(extend$G, 'vtkWebGPURenderer'); // ----------------------------------------------------------------------------
+  var newInstance$H = newInstance$1n(extend$K, 'vtkWebGPURenderer'); // ----------------------------------------------------------------------------
 
-  registerOverride('vtkRenderer', newInstance$D);
+  registerOverride('vtkRenderer', newInstance$H);
 
   // vtkWebGPUActor methods
   // ----------------------------------------------------------------------------
@@ -21641,16 +21641,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$D = {
+  var DEFAULT_VALUES$H = {
     keyMatricesTime: null,
     keyMatrices: null,
     propID: undefined,
     bufferShift: undefined
   }; // ----------------------------------------------------------------------------
 
-  function extend$F(publicAPI, model) {
+  function extend$J(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$D, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$H, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.keyMatricesTime = {};
@@ -21668,9 +21668,9 @@ var app = (function () {
     vtkWebGPUActor(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$C = macro.newInstance(extend$F); // ----------------------------------------------------------------------------
+  var newInstance$G = macro.newInstance(extend$J); // ----------------------------------------------------------------------------
 
-  registerOverride('vtkActor', newInstance$C);
+  registerOverride('vtkActor', newInstance$G);
 
   // vtkTexture methods
   // ----------------------------------------------------------------------------
@@ -21711,7 +21711,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$C = {
+  var DEFAULT_VALUES$G = {
     repeat: false,
     interpolate: false,
     edgeClamp: false,
@@ -21719,9 +21719,9 @@ var app = (function () {
     imageLoaded: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$E(publicAPI, model) {
+  function extend$I(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$C, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$G, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.algo(publicAPI, model, 6, 0);
@@ -21730,11 +21730,11 @@ var app = (function () {
     vtkTexture(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$B = macro.newInstance(extend$E, 'vtkTexture'); // ----------------------------------------------------------------------------
+  var newInstance$F = macro.newInstance(extend$I, 'vtkTexture'); // ----------------------------------------------------------------------------
 
   var vtkTexture$1 = {
-    newInstance: newInstance$B,
-    extend: extend$E
+    newInstance: newInstance$F,
+    extend: extend$I
   };
 
   var BufferUsage$1 = vtkWebGPUBufferManager$1.BufferUsage,
@@ -22338,7 +22338,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$B = {
+  var DEFAULT_VALUES$F = {
     colorTexture: null,
     renderEncoder: null,
     textures: null,
@@ -22349,9 +22349,9 @@ var app = (function () {
     vertexShaderTemplate: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$D(publicAPI, model) {
+  function extend$H(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$B, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$F, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues);
     model.tmpMat3 = identity$1(new Float64Array(9));
@@ -22397,9 +22397,9 @@ var app = (function () {
     publicAPI.setShaderReplacement('replaceShaderColor', publicAPI.replaceShaderColor);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$A = newInstance$1j(extend$D, 'vtkWebGPUPolyDataMapper'); // ----------------------------------------------------------------------------
+  var newInstance$E = newInstance$1n(extend$H, 'vtkWebGPUPolyDataMapper'); // ----------------------------------------------------------------------------
 
-  registerOverride('vtkMapper', newInstance$A);
+  registerOverride('vtkMapper', newInstance$E);
 
   /* eslint-disable no-bitwise */
   // ----------------------------------------------------------------------------
@@ -22435,16 +22435,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$A = {
+  var DEFAULT_VALUES$E = {
     device: null,
     handle: null,
     name: null,
     options: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$C(publicAPI, model) {
+  function extend$G(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$A, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$E, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     model.options = {};
@@ -22465,11 +22465,11 @@ var app = (function () {
     vtkWebGPUSampler(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$z = macro.newInstance(extend$C); // ----------------------------------------------------------------------------
+  var newInstance$D = macro.newInstance(extend$G); // ----------------------------------------------------------------------------
 
   var vtkWebGPUSampler$1 = {
-    newInstance: newInstance$z,
-    extend: extend$C
+    newInstance: newInstance$D,
+    extend: extend$G
   };
 
   // vtkWebGPUTextureView methods
@@ -22563,16 +22563,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$z = {
+  var DEFAULT_VALUES$D = {
     texture: null,
     handle: null,
     name: null,
     sampler: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$B(publicAPI, model) {
+  function extend$F(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$z, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$D, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     model.bindGroupLayoutEntry = {
@@ -22595,11 +22595,11 @@ var app = (function () {
     vtkWebGPUTextureView(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$y = macro.newInstance(extend$B); // ----------------------------------------------------------------------------
+  var newInstance$C = macro.newInstance(extend$F); // ----------------------------------------------------------------------------
 
   var vtkWebGPUTextureView$1 = {
-    newInstance: newInstance$y,
-    extend: extend$B
+    newInstance: newInstance$C,
+    extend: extend$F
   };
 
   var BufferUsage = vtkWebGPUBufferManager$1.BufferUsage; // ----------------------------------------------------------------------------
@@ -22807,16 +22807,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$y = {
+  var DEFAULT_VALUES$C = {
     device: null,
     handle: null,
     buffer: null,
     ready: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$A(publicAPI, model) {
+  function extend$E(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$y, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$C, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['handle', 'ready', 'width', 'height', 'depth', 'format', 'usage']);
@@ -22824,7 +22824,7 @@ var app = (function () {
     vtkWebGPUTexture(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  macro.newInstance(extend$A); // ----------------------------------------------------------------------------
+  macro.newInstance(extend$E); // ----------------------------------------------------------------------------
 
   // vtkWebGPUPixelSpaceCallbackMapper methods
   // ----------------------------------------------------------------------------
@@ -22849,20 +22849,20 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$x = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$B = {}; // ----------------------------------------------------------------------------
 
-  function extend$z(publicAPI, model) {
+  function extend$D(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$x, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$B, initialValues); // Inheritance
 
     vtkViewNode$1.extend(publicAPI, model, initialValues); // Object methods
 
     vtkWebGPUPixelSpaceCallbackMapper(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$x = macro.newInstance(extend$z, 'vtkWebGPUPixelSpaceCallbackMapper'); // ----------------------------------------------------------------------------
+  var newInstance$B = macro.newInstance(extend$D, 'vtkWebGPUPixelSpaceCallbackMapper'); // ----------------------------------------------------------------------------
 
-  registerOverride('vtkPixelSpaceCallbackMapper', newInstance$x);
+  registerOverride('vtkPixelSpaceCallbackMapper', newInstance$B);
 
   function noop() { }
   function add_location(element, file, line, column, char) {
@@ -24221,7 +24221,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$w = {
+  var DEFAULT_VALUES$A = {
     defaultViewAPI: DEFAULT_VIEW_API,
     renderers: [],
     views: [],
@@ -24230,9 +24230,9 @@ var app = (function () {
     numberOfLayers: 1
   }; // ----------------------------------------------------------------------------
 
-  function extend$y(publicAPI, model) {
+  function extend$C(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$w, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$A, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, ['interactor', 'numberOfLayers', 'views', 'defaultViewAPI']);
@@ -24243,11 +24243,11 @@ var app = (function () {
     vtkRenderWindow$1(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$w = macro.newInstance(extend$y, 'vtkRenderWindow'); // ----------------------------------------------------------------------------
+  var newInstance$A = macro.newInstance(extend$C, 'vtkRenderWindow'); // ----------------------------------------------------------------------------
 
   var vtkRenderWindow$1$1 = {
-    newInstance: newInstance$w,
-    extend: extend$y,
+    newInstance: newInstance$A,
+    extend: extend$C,
     registerViewConstructor: registerViewConstructor,
     listViewAPIs: listViewAPIs,
     newAPISpecificView: newAPISpecificView
@@ -24321,7 +24321,7 @@ var app = (function () {
         if (model.openGLRenderWindow.getWebgl2()) {
           glAttachment += attachment;
         } else {
-          vtkErrorMacro$l('Using multiple framebuffer attachments requires WebGL 2');
+          vtkErrorMacro$n('Using multiple framebuffer attachments requires WebGL 2');
           return;
         }
       }
@@ -24339,7 +24339,7 @@ var app = (function () {
         if (model.openGLRenderWindow.getWebgl2()) {
           glAttachment += attachment;
         } else {
-          vtkErrorMacro$l('Using multiple framebuffer attachments requires WebGL 2');
+          vtkErrorMacro$n('Using multiple framebuffer attachments requires WebGL 2');
           return;
         }
       }
@@ -24352,7 +24352,7 @@ var app = (function () {
         var gl = model.context;
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, texture.getHandle(), 0);
       } else {
-        vtkErrorMacro$l('Attaching depth buffer textures to fbo requires WebGL 2');
+        vtkErrorMacro$n('Attaching depth buffer textures to fbo requires WebGL 2');
       }
     };
 
@@ -24361,7 +24361,7 @@ var app = (function () {
         var gl = model.context;
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, null, 0);
       } else {
-        vtkErrorMacro$l('Attaching depth buffer textures to framebuffers requires WebGL 2');
+        vtkErrorMacro$n('Attaching depth buffer textures to framebuffers requires WebGL 2');
       }
     };
 
@@ -24425,7 +24425,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$v = {
+  var DEFAULT_VALUES$z = {
     openGLRenderWindow: null,
     glFramebuffer: null,
     colorTexture: null,
@@ -24437,9 +24437,9 @@ var app = (function () {
     previousActiveFramebuffer: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$x(publicAPI, model) {
+  function extend$B(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$v, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$z, initialValues); // Build VTK API
 
     obj(publicAPI, model);
     setGet(publicAPI, model, ['colorTexture']); // For more macro methods, see "Sources/macros.js"
@@ -24448,11 +24448,11 @@ var app = (function () {
     vtkFramebuffer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$v = newInstance$1j(extend$x, 'vtkFramebuffer'); // ----------------------------------------------------------------------------
+  var newInstance$z = newInstance$1n(extend$B, 'vtkFramebuffer'); // ----------------------------------------------------------------------------
 
   var vtkOpenGLFramebuffer = {
-    newInstance: newInstance$v,
-    extend: extend$x
+    newInstance: newInstance$z,
+    extend: extend$B
   };
 
   function vtkRenderPass(publicAPI, model) {
@@ -24502,7 +24502,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$u = {
+  var DEFAULT_VALUES$y = {
     delegates: [],
     currentOperation: null,
     preDelegateOperations: [],
@@ -24510,9 +24510,9 @@ var app = (function () {
     currentParent: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$w(publicAPI, model) {
+  function extend$A(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$u, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$y, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['currentOperation']);
@@ -24521,11 +24521,11 @@ var app = (function () {
     vtkRenderPass(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$u = macro.newInstance(extend$w, 'vtkRenderPass'); // ----------------------------------------------------------------------------
+  var newInstance$y = macro.newInstance(extend$A, 'vtkRenderPass'); // ----------------------------------------------------------------------------
 
   var vtkRenderPass$1 = {
-    newInstance: newInstance$u,
-    extend: extend$w
+    newInstance: newInstance$y,
+    extend: extend$A
   };
 
   function vtkForwardPass(publicAPI, model) {
@@ -24648,7 +24648,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$t = {
+  var DEFAULT_VALUES$x = {
     opaqueActorCount: 0,
     translucentActorCount: 0,
     volumeCount: 0,
@@ -24657,9 +24657,9 @@ var app = (function () {
     depthRequested: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$v(publicAPI, model) {
+  function extend$z(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$t, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$x, initialValues); // Build VTK API
 
     vtkRenderPass$1.extend(publicAPI, model, initialValues);
     macro.get(publicAPI, model, ['framebuffer']); // Object methods
@@ -24667,11 +24667,11 @@ var app = (function () {
     vtkForwardPass(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$t = macro.newInstance(extend$v, 'vtkForwardPass'); // ----------------------------------------------------------------------------
+  var newInstance$x = macro.newInstance(extend$z, 'vtkForwardPass'); // ----------------------------------------------------------------------------
 
   var vtkForwardPass$1 = {
-    newInstance: newInstance$t,
-    extend: extend$v
+    newInstance: newInstance$x,
+    extend: extend$z
   };
 
   var PassTypes$1 = {
@@ -24753,14 +24753,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$s = {
+  var DEFAULT_VALUES$w = {
     fieldAssociation: FieldAssociations$1.FIELD_ASSOCIATION_CELLS,
     captureZValues: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$u(publicAPI, model) {
+  function extend$y(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$s, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$w, initialValues); // Inheritance
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, ['fieldAssociation', 'captureZValues']); // Object methods
@@ -24768,11 +24768,11 @@ var app = (function () {
     vtkHardwareSelector$1(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$s = macro.newInstance(extend$u, 'vtkHardwareSelector'); // ----------------------------------------------------------------------------
+  var newInstance$w = macro.newInstance(extend$y, 'vtkHardwareSelector'); // ----------------------------------------------------------------------------
 
   var vtkHardwareSelector$1$1 = {
-    newInstance: newInstance$s,
-    extend: extend$u
+    newInstance: newInstance$w,
+    extend: extend$y
   };
 
   /**
@@ -24816,9 +24816,9 @@ var app = (function () {
     SelectionField: SelectionField$1
   };
 
-  function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   // vtkSelectionNode methods
   // ----------------------------------------------------------------------------
 
@@ -24834,16 +24834,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$r = {
+  var DEFAULT_VALUES$v = {
     contentType: -1,
     fieldType: -1,
     properties: null,
     selectionList: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$t(publicAPI, model) {
+  function extend$x(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$r, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$v, initialValues); // Inheritance
 
     macro.obj(publicAPI, model);
     model.properties = {};
@@ -24852,21 +24852,21 @@ var app = (function () {
     vtkSelectionNode(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$r = macro.newInstance(extend$t, 'vtkSelectionNode'); // ----------------------------------------------------------------------------
+  var newInstance$v = macro.newInstance(extend$x, 'vtkSelectionNode'); // ----------------------------------------------------------------------------
 
-  var vtkSelectionNode$1 = _objectSpread$9({
-    newInstance: newInstance$r,
-    extend: extend$t
+  var vtkSelectionNode$1 = _objectSpread$b({
+    newInstance: newInstance$v,
+    extend: extend$x
   }, Constants$2);
 
-  function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var PassTypes = Constants$3.PassTypes;
   var SelectionContent = vtkSelectionNode$1.SelectionContent,
       SelectionField = vtkSelectionNode$1.SelectionField;
   var FieldAssociations = vtkDataSet$1.FieldAssociations;
-  var vtkErrorMacro$7 = macro.vtkErrorMacro;
+  var vtkErrorMacro$9 = macro.vtkErrorMacro;
   var idOffset = 1;
 
   function getInfoHash(info) {
@@ -25011,7 +25011,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$7('Unknown field association');
+          vtkErrorMacro$9('Unknown field association');
       }
 
       child.getProperties().propID = value.info.propID;
@@ -25207,7 +25207,7 @@ var app = (function () {
 
     publicAPI.captureBuffers = function () {
       if (!model.renderer || !model.openGLRenderWindow) {
-        vtkErrorMacro$7('Renderer and view must be set before calling Select.');
+        vtkErrorMacro$9('Renderer and view must be set before calling Select.');
         return false;
       }
 
@@ -25525,7 +25525,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$q = {
+  var DEFAULT_VALUES$u = {
     area: undefined,
     renderer: null,
     openGLRenderWindow: null,
@@ -25536,9 +25536,9 @@ var app = (function () {
     idOffset: 1
   }; // ----------------------------------------------------------------------------
 
-  function extend$s(publicAPI, model) {
+  function extend$w(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$q, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$u, initialValues); // Build VTK API
 
     vtkHardwareSelector$1$1.extend(publicAPI, model, initialValues);
     model.propColorValue = [0, 0, 0];
@@ -25556,11 +25556,11 @@ var app = (function () {
     vtkOpenGLHardwareSelector(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$q = macro.newInstance(extend$s, 'vtkOpenGLHardwareSelector'); // ----------------------------------------------------------------------------
+  var newInstance$u = macro.newInstance(extend$w, 'vtkOpenGLHardwareSelector'); // ----------------------------------------------------------------------------
 
-  var vtkHardwareSelector = _objectSpread$8({
-    newInstance: newInstance$q,
-    extend: extend$s
+  var vtkHardwareSelector = _objectSpread$a({
+    newInstance: newInstance$u,
+    extend: extend$w
   }, Constants$3);
 
   /*
@@ -26111,16 +26111,16 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$p = {
+  var DEFAULT_VALUES$t = {
     lastShaderBound: null,
     shaderPrograms: null,
     context: null,
     openGLRenderWindow: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$r(publicAPI, model) {
+  function extend$v(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$p, initialValues); // Internal objects
+    Object.assign(model, DEFAULT_VALUES$t, initialValues); // Internal objects
 
     model.shaderPrograms = {}; // Build VTK API
 
@@ -26130,14 +26130,14 @@ var app = (function () {
     vtkShaderCache(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$p = macro.newInstance(extend$r, 'vtkShaderCache'); // ----------------------------------------------------------------------------
+  var newInstance$t = macro.newInstance(extend$v, 'vtkShaderCache'); // ----------------------------------------------------------------------------
 
   var vtkShaderCache$1 = {
-    newInstance: newInstance$p,
-    extend: extend$r
+    newInstance: newInstance$t,
+    extend: extend$v
   };
 
-  var vtkErrorMacro$6 = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  var vtkErrorMacro$8 = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
   // vtkOpenGLTextureUnitManager methods
   // ----------------------------------------------------------------------------
 
@@ -26151,7 +26151,7 @@ var app = (function () {
     publicAPI.deleteTable = function () {
       for (var i = 0; i < model.numberOfTextureUnits; ++i) {
         if (model.textureUnits[i] === true) {
-          vtkErrorMacro$6('some texture units  were not properly released');
+          vtkErrorMacro$8('some texture units  were not properly released');
         }
       }
 
@@ -26228,15 +26228,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$o = {
+  var DEFAULT_VALUES$s = {
     context: null,
     numberOfTextureUnits: 0,
     textureUnits: 0
   }; // ----------------------------------------------------------------------------
 
-  function extend$q(publicAPI, model) {
+  function extend$u(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$o, initialValues);
+    Object.assign(model, DEFAULT_VALUES$s, initialValues);
     macro.obj(publicAPI, model);
     model.textureUnits = []; // Build VTK API
 
@@ -26246,11 +26246,11 @@ var app = (function () {
     vtkOpenGLTextureUnitManager(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$o = macro.newInstance(extend$q, 'vtkOpenGLTextureUnitManager'); // ----------------------------------------------------------------------------
+  var newInstance$s = macro.newInstance(extend$u, 'vtkOpenGLTextureUnitManager'); // ----------------------------------------------------------------------------
 
   var vtkTextureUnitManager = {
-    newInstance: newInstance$o,
-    extend: extend$q
+    newInstance: newInstance$s,
+    extend: extend$u
   };
 
   // vtkRenderWindowViewNode is intended to be a superclass for all api specific
@@ -26380,14 +26380,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$n = {
+  var DEFAULT_VALUES$r = {
     size: undefined,
     selector: undefined
   }; // ----------------------------------------------------------------------------
 
-  function extend$p(publicAPI, model) {
+  function extend$t(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$n, initialValues);
+    Object.assign(model, DEFAULT_VALUES$r, initialValues);
 
     if (!model.size) {
       model.size = [300, 300];
@@ -26401,15 +26401,15 @@ var app = (function () {
     vtkRenderWindowViewNode(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$n = macro.newInstance(extend$p, 'vtkRenderWindowViewNode'); // ----------------------------------------------------------------------------
+  var newInstance$r = macro.newInstance(extend$t, 'vtkRenderWindowViewNode'); // ----------------------------------------------------------------------------
 
   var vtkRenderWindowViewNode$1 = {
-    newInstance: newInstance$n,
-    extend: extend$p
+    newInstance: newInstance$r,
+    extend: extend$t
   };
 
-  var vtkDebugMacro$4 = macro.vtkDebugMacro,
-      vtkErrorMacro$5 = macro.vtkErrorMacro;
+  var vtkDebugMacro$5 = macro.vtkDebugMacro,
+      vtkErrorMacro$7 = macro.vtkErrorMacro;
   var SCREENSHOT_PLACEHOLDER = {
     position: 'absolute',
     top: 0,
@@ -26542,7 +26542,7 @@ var app = (function () {
     publicAPI.setContainer = function (el) {
       if (model.el && model.el !== el) {
         if (model.canvas.parentNode !== model.el) {
-          vtkErrorMacro$5('Error: canvas parent node does not match container');
+          vtkErrorMacro$7('Error: canvas parent node does not match container');
         } // Remove canvas from previous container
 
 
@@ -26621,12 +26621,12 @@ var app = (function () {
 
         if (result) {
           model.webgl2 = true;
-          vtkDebugMacro$4('using webgl2');
+          vtkDebugMacro$5('using webgl2');
         }
       }
 
       if (!result) {
-        vtkDebugMacro$4('using webgl1');
+        vtkDebugMacro$5('using webgl1');
         result = model.canvas.getContext('webgl', options) || model.canvas.getContext('experimental-webgl', options);
       } // prevent default context lost handler
 
@@ -26849,7 +26849,7 @@ var app = (function () {
       var activeUnit = publicAPI.getTextureUnitManager().allocate();
 
       if (activeUnit < 0) {
-        vtkErrorMacro$5('Hardware does not support the number of textures defined.');
+        vtkErrorMacro$7('Hardware does not support the number of textures defined.');
         return;
       }
 
@@ -27173,7 +27173,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$m = {
+  var DEFAULT_VALUES$q = {
     cullFaceEnabled: false,
     shaderCache: null,
     initialized: false,
@@ -27199,9 +27199,9 @@ var app = (function () {
     useBackgroundImage: false
   }; // ----------------------------------------------------------------------------
 
-  function extend$o(publicAPI, model) {
+  function extend$s(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$m, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$q, initialValues); // Inheritance
 
     vtkRenderWindowViewNode$1.extend(publicAPI, model, initialValues); // Create internal instances
 
@@ -27226,7 +27226,7 @@ var app = (function () {
     model.myFactory = vtkViewNodeFactory.newInstance();
     /* eslint-disable no-use-before-define */
 
-    model.myFactory.registerOverride('vtkRenderWindow', newInstance$m);
+    model.myFactory.registerOverride('vtkRenderWindow', newInstance$q);
     /* eslint-enable no-use-before-define */
 
     model.shaderCache = vtkShaderCache$1.newInstance();
@@ -27247,20 +27247,20 @@ var app = (function () {
     vtkOpenGLRenderWindow(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$m = macro.newInstance(extend$o, 'vtkOpenGLRenderWindow'); // ----------------------------------------------------------------------------
+  var newInstance$q = macro.newInstance(extend$s, 'vtkOpenGLRenderWindow'); // ----------------------------------------------------------------------------
   // Register API specific RenderWindow implementation
   // ----------------------------------------------------------------------------
 
-  registerViewConstructor('WebGL', newInstance$m); // ----------------------------------------------------------------------------
+  registerViewConstructor('WebGL', newInstance$q); // ----------------------------------------------------------------------------
 
   var vtkRenderWindow = {
-    newInstance: newInstance$m,
-    extend: extend$o,
+    newInstance: newInstance$q,
+    extend: extend$s,
     pushMonitorGLContextCount: pushMonitorGLContextCount,
     popMonitorGLContextCount: popMonitorGLContextCount
   };
 
-  var vtkDebugMacro$3 = macro.vtkDebugMacro;
+  var vtkDebugMacro$4 = macro.vtkDebugMacro;
   /* eslint-disable new-cap */
 
   /*
@@ -27342,7 +27342,7 @@ var app = (function () {
 
       if (model.distance < 1e-20) {
         model.distance = 1e-20;
-        vtkDebugMacro$3('Distance is set to minimum.');
+        vtkDebugMacro$4('Distance is set to minimum.');
       } // we want to keep the camera pointing in the same direction
 
 
@@ -27364,7 +27364,7 @@ var app = (function () {
 
       if (model.distance < 1e-20) {
         model.distance = 1e-20;
-        vtkDebugMacro$3('Distance is set to minimum.');
+        vtkDebugMacro$4('Distance is set to minimum.');
         var vec = model.directionOfProjection; // recalculate FocalPoint
 
         model.focalPoint[0] = model.position[0] + vec[0] * model.distance;
@@ -27518,7 +27518,7 @@ var app = (function () {
 
       if (t < 1e-20) {
         t = 1e-20;
-        vtkDebugMacro$3('Thickness is set to minimum.');
+        vtkDebugMacro$4('Thickness is set to minimum.');
       }
 
       publicAPI.setClippingRange(model.clippingRange[0], model.clippingRange[0] + t);
@@ -27529,7 +27529,7 @@ var app = (function () {
 
       if (t < 1e-20) {
         t = 1e-20;
-        vtkDebugMacro$3('Thickness is set to minimum.');
+        vtkDebugMacro$4('Thickness is set to minimum.');
       }
 
       publicAPI.setClippingRange(model.distance - t / 2, model.distance + t / 2);
@@ -27840,7 +27840,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$l = {
+  var DEFAULT_VALUES$p = {
     position: [0, 0, 1],
     focalPoint: [0, 0, 0],
     viewUp: [0, 1, 0],
@@ -27866,9 +27866,9 @@ var app = (function () {
     physicalViewNorth: [0, 0, -1]
   }; // ----------------------------------------------------------------------------
 
-  function extend$n(publicAPI, model) {
+  function extend$r(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$l, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$p, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['distance']);
@@ -27880,11 +27880,11 @@ var app = (function () {
     vtkCamera(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$l = macro.newInstance(extend$n, 'vtkCamera'); // ----------------------------------------------------------------------------
+  var newInstance$p = macro.newInstance(extend$r, 'vtkCamera'); // ----------------------------------------------------------------------------
 
   var vtkCamera$1 = {
-    newInstance: newInstance$l,
-    extend: extend$n
+    newInstance: newInstance$p,
+    extend: extend$r
   };
 
   var LIGHT_TYPES = ['HeadLight', 'CameraLight', 'SceneLight']; // ----------------------------------------------------------------------------
@@ -27960,7 +27960,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$k = {
+  var DEFAULT_VALUES$o = {
     switch: true,
     intensity: 1,
     color: [1, 1, 1],
@@ -27977,9 +27977,9 @@ var app = (function () {
     directionMTime: 0
   }; // ----------------------------------------------------------------------------
 
-  function extend$m(publicAPI, model) {
+  function extend$q(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$k, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$o, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.setGet(publicAPI, model, ['intensity', 'switch', 'positional', 'exponent', 'coneAngle', 'transformMatrix', 'lightType', 'shadowAttenuation']);
@@ -27988,19 +27988,19 @@ var app = (function () {
     vtkLight(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$k = macro.newInstance(extend$m, 'vtkLight'); // ----------------------------------------------------------------------------
+  var newInstance$o = macro.newInstance(extend$q, 'vtkLight'); // ----------------------------------------------------------------------------
 
   var vtkLight$1 = {
-    newInstance: newInstance$k,
-    extend: extend$m,
+    newInstance: newInstance$o,
+    extend: extend$q,
     LIGHT_TYPES: LIGHT_TYPES
   };
 
-  var vtkErrorMacro$4 = macro.vtkErrorMacro;
+  var vtkErrorMacro$6 = macro.vtkErrorMacro;
 
   function notImplemented$2(method) {
     return function () {
-      return vtkErrorMacro$4("vtkViewport::".concat(method, " - NOT IMPLEMENTED"));
+      return vtkErrorMacro$6("vtkViewport::".concat(method, " - NOT IMPLEMENTED"));
     };
   } // ----------------------------------------------------------------------------
   // vtkViewport methods
@@ -28082,15 +28082,15 @@ var app = (function () {
     };
 
     publicAPI.displayToView = function () {
-      return vtkErrorMacro$4('call displayToView on your view instead');
+      return vtkErrorMacro$6('call displayToView on your view instead');
     };
 
     publicAPI.viewToDisplay = function () {
-      return vtkErrorMacro$4('callviewtodisplay on your view instead');
+      return vtkErrorMacro$6('callviewtodisplay on your view instead');
     };
 
     publicAPI.getSize = function () {
-      return vtkErrorMacro$4('call getSize on your View instead');
+      return vtkErrorMacro$6('call getSize on your View instead');
     };
 
     publicAPI.normalizedDisplayToProjection = function (x, y, z) {
@@ -28131,7 +28131,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$j = {
+  var DEFAULT_VALUES$n = {
     vtkWindow: null,
     background: [0, 0, 0],
     background2: [0.2, 0.2, 0.2],
@@ -28143,9 +28143,9 @@ var app = (function () {
     actors2D: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$l(publicAPI, model) {
+  function extend$p(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$j, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$n, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.event(publicAPI, model, 'event');
@@ -28154,20 +28154,20 @@ var app = (function () {
     vtkViewport(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$j = macro.newInstance(extend$l, 'vtkViewport'); // ----------------------------------------------------------------------------
+  var newInstance$n = macro.newInstance(extend$p, 'vtkViewport'); // ----------------------------------------------------------------------------
 
   var vtkViewport$1 = {
-    newInstance: newInstance$j,
-    extend: extend$l
+    newInstance: newInstance$n,
+    extend: extend$p
   };
 
-  var vtkDebugMacro$2 = vtkDebugMacro$a,
-      vtkErrorMacro$3 = vtkErrorMacro$l,
-      vtkWarningMacro$2 = vtkWarningMacro$6;
+  var vtkDebugMacro$3 = vtkDebugMacro$b,
+      vtkErrorMacro$5 = vtkErrorMacro$n,
+      vtkWarningMacro$3 = vtkWarningMacro$7;
 
   function notImplemented$1(method) {
     return function () {
-      return vtkErrorMacro$3("vtkRenderer::".concat(method, " - NOT IMPLEMENTED"));
+      return vtkErrorMacro$5("vtkRenderer::".concat(method, " - NOT IMPLEMENTED"));
     };
   } // ----------------------------------------------------------------------------
   // vtkRenderer methods
@@ -28193,7 +28193,7 @@ var app = (function () {
 
     publicAPI.updateCamera = function () {
       if (!model.activeCamera) {
-        vtkDebugMacro$2('No cameras are on, creating one.'); // the get method will automagically create a camera
+        vtkDebugMacro$3('No cameras are on, creating one.'); // the get method will automagically create a camera
         // and reset it since one hasn't been specified yet.
 
         publicAPI.getActiveCameraAndResetIfCreated();
@@ -28216,7 +28216,7 @@ var app = (function () {
           light.setFocalPointFrom(camera.getFocalPointByReference());
           light.modified(camera.getMTime());
         } else {
-          vtkErrorMacro$3('light has unknown light type', light.get());
+          vtkErrorMacro$5('light has unknown light type', light.get());
         }
       });
     };
@@ -28240,7 +28240,7 @@ var app = (function () {
     };
 
     publicAPI.setLayer = function (layer) {
-      vtkDebugMacro$2(publicAPI.getClassName(), publicAPI, 'setting Layer to ', layer);
+      vtkDebugMacro$3(publicAPI.getClassName(), publicAPI, 'setting Layer to ', layer);
 
       if (model.layer !== layer) {
         model.layer = layer;
@@ -28406,7 +28406,7 @@ var app = (function () {
 
     publicAPI.viewToWorld = function (x, y, z) {
       if (model.activeCamera === null) {
-        vtkErrorMacro$3('ViewToWorld: no active camera, cannot compute view to world, returning 0,0,0');
+        vtkErrorMacro$5('ViewToWorld: no active camera, cannot compute view to world, returning 0,0,0');
         return [0, 0, 0];
       } // get the view matrix from the active camera
 
@@ -28422,7 +28422,7 @@ var app = (function () {
 
     publicAPI.projectionToView = function (x, y, z, aspect) {
       if (model.activeCamera === null) {
-        vtkErrorMacro$3('ProjectionToView: no active camera, cannot compute projection to view, returning 0,0,0');
+        vtkErrorMacro$5('ProjectionToView: no active camera, cannot compute projection to view, returning 0,0,0');
         return [0, 0, 0];
       } // get the projection transformation from the active camera
 
@@ -28439,7 +28439,7 @@ var app = (function () {
 
     publicAPI.worldToView = function (x, y, z) {
       if (model.activeCamera === null) {
-        vtkErrorMacro$3('WorldToView: no active camera, cannot compute view to world, returning 0,0,0');
+        vtkErrorMacro$5('WorldToView: no active camera, cannot compute view to world, returning 0,0,0');
         return [0, 0, 0];
       } // get the view transformation from the active camera
 
@@ -28455,7 +28455,7 @@ var app = (function () {
 
     publicAPI.viewToProjection = function (x, y, z, aspect) {
       if (model.activeCamera === null) {
-        vtkErrorMacro$3('ViewToProjection: no active camera, cannot compute view to projection, returning 0,0,0');
+        vtkErrorMacro$5('ViewToProjection: no active camera, cannot compute view to projection, returning 0,0,0');
         return [0, 0, 0];
       } // get the projeciton transformation from the active camera
 
@@ -28515,7 +28515,7 @@ var app = (function () {
 
       if (nothingVisible) {
         uninitializeBounds(model.allBounds);
-        vtkDebugMacro$2("Can't compute bounds, no 3D props are visible");
+        vtkDebugMacro$3("Can't compute bounds, no 3D props are visible");
       }
 
       return model.allBounds;
@@ -28527,7 +28527,7 @@ var app = (function () {
       var center = [0, 0, 0];
 
       if (!areBoundsInitialized(boundsToUse)) {
-        vtkDebugMacro$2('Cannot reset camera!');
+        vtkDebugMacro$3('Cannot reset camera!');
         return false;
       }
 
@@ -28536,7 +28536,7 @@ var app = (function () {
       if (publicAPI.getActiveCamera()) {
         vn = model.activeCamera.getViewPlaneNormal();
       } else {
-        vtkErrorMacro$3('Trying to reset non-existent camera');
+        vtkErrorMacro$5('Trying to reset non-existent camera');
         return false;
       } // Reset the perspective zoom factors, otherwise subsequent zooms will cause
       // the view angle to become very small and cause bad depth sorting.
@@ -28576,7 +28576,7 @@ var app = (function () {
       var vup = model.activeCamera.getViewUp();
 
       if (Math.abs(dot(vup, vn)) > 0.999) {
-        vtkWarningMacro$2('Resetting view-up since view plane normal is parallel');
+        vtkWarningMacro$3('Resetting view-up since view plane normal is parallel');
         model.activeCamera.setViewUp(-vup[2], vup[0], vup[1]);
       } // update the camera
 
@@ -28600,7 +28600,7 @@ var app = (function () {
       var boundsToUse = bounds || publicAPI.computeVisiblePropBounds();
 
       if (!areBoundsInitialized(boundsToUse)) {
-        vtkDebugMacro$2('Cannot reset camera clipping range!');
+        vtkDebugMacro$3('Cannot reset camera clipping range!');
         return false;
       } // Make sure we have an active camera
 
@@ -28608,7 +28608,7 @@ var app = (function () {
       publicAPI.getActiveCameraAndResetIfCreated();
 
       if (!model.activeCamera) {
-        vtkErrorMacro$3('Trying to reset clipping range of non-existent camera');
+        vtkErrorMacro$5('Trying to reset clipping range of non-existent camera');
         return false;
       } // Get the exact range for the bounds
 
@@ -28706,7 +28706,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$i = {
+  var DEFAULT_VALUES$m = {
     pickedProp: null,
     activeCamera: null,
     allBounds: [],
@@ -28745,9 +28745,9 @@ var app = (function () {
     pass: 0
   }; // ----------------------------------------------------------------------------
 
-  function extend$k(publicAPI, model) {
+  function extend$o(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$i, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$m, initialValues); // Inheritance
 
     vtkViewport$1.extend(publicAPI, model, initialValues); // make sure background has 4 entries. Default to opaque black
 
@@ -28767,11 +28767,11 @@ var app = (function () {
     vtkRenderer(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$i = newInstance$1j(extend$k, 'vtkRenderer'); // ----------------------------------------------------------------------------
+  var newInstance$m = newInstance$1n(extend$o, 'vtkRenderer'); // ----------------------------------------------------------------------------
 
   var vtkRenderer$1 = {
-    newInstance: newInstance$i,
-    extend: extend$k
+    newInstance: newInstance$m,
+    extend: extend$o
   };
 
   var Device$1 = {
@@ -28803,13 +28803,13 @@ var app = (function () {
     Axis: Axis
   };
 
-  function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var Device = Constants$1.Device,
       Input = Constants$1.Input;
-  var vtkWarningMacro$1 = macro.vtkWarningMacro,
-      vtkErrorMacro$2 = macro.vtkErrorMacro,
+  var vtkWarningMacro$2 = macro.vtkWarningMacro,
+      vtkErrorMacro$4 = macro.vtkErrorMacro,
       normalizeWheel = macro.normalizeWheel,
       vtkOnceErrorMacro = macro.vtkOnceErrorMacro; // ----------------------------------------------------------------------------
   // Global methods
@@ -28863,7 +28863,7 @@ var app = (function () {
 
 
     publicAPI.setRenderWindow = function (aren) {
-      vtkErrorMacro$2('you want to call setView(view) instead of setRenderWindow on a vtk.js interactor');
+      vtkErrorMacro$4('you want to call setView(view) instead of setRenderWindow on a vtk.js interactor');
     }; //----------------------------------------------------------------------
 
 
@@ -28899,7 +28899,7 @@ var app = (function () {
     };
 
     publicAPI.startEventLoop = function () {
-      return vtkWarningMacro$1('empty event loop');
+      return vtkWarningMacro$2('empty event loop');
     };
 
     function updateCurrentRenderer(x, y) {
@@ -28953,7 +28953,7 @@ var app = (function () {
     function getKeysFor(event) {
       var modifierKeys = getModifierKeysFor(event);
 
-      var keys = _objectSpread$7({
+      var keys = _objectSpread$9({
         key: event.key,
         keyCode: event.charCode
       }, modifierKeys);
@@ -29051,7 +29051,7 @@ var app = (function () {
       interactionRegistration(true);
       preventDefault(event);
 
-      var callData = _objectSpread$7(_objectSpread$7({}, getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9({}, getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29069,7 +29069,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$2("Unknown mouse button pressed: ".concat(event.button));
+          vtkErrorMacro$4("Unknown mouse button pressed: ".concat(event.button));
           break;
       }
     }; //----------------------------------------------------------------------
@@ -29114,12 +29114,12 @@ var app = (function () {
 
     publicAPI.requestAnimation = function (requestor) {
       if (requestor === undefined) {
-        vtkErrorMacro$2("undefined requester, can not start animating");
+        vtkErrorMacro$4("undefined requester, can not start animating");
         return;
       }
 
       if (animationRequesters.has(requestor)) {
-        vtkWarningMacro$1("requester is already registered for animating");
+        vtkWarningMacro$2("requester is already registered for animating");
         return;
       }
 
@@ -29143,7 +29143,7 @@ var app = (function () {
       if (!animationRequesters.has(requestor)) {
         if (!skipWarning) {
           var requestStr = requestor && requestor.getClassName ? requestor.getClassName() : requestor;
-          vtkWarningMacro$1("".concat(requestStr, " did not request an animation"));
+          vtkWarningMacro$2("".concat(requestStr, " did not request an animation"));
         }
 
         return;
@@ -29230,7 +29230,7 @@ var app = (function () {
     publicAPI.handleMouseMove = function (event) {
       // Do not consume event for move
       // preventDefault(event);
-      var callData = _objectSpread$7(_objectSpread$7({}, getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9({}, getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29283,7 +29283,7 @@ var app = (function () {
        *
        */
 
-      var callData = _objectSpread$7(_objectSpread$7(_objectSpread$7({}, normalizeWheel(event)), getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9(_objectSpread$9({}, normalizeWheel(event)), getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29302,7 +29302,7 @@ var app = (function () {
     };
 
     publicAPI.handleMouseEnter = function (event) {
-      var callData = _objectSpread$7(_objectSpread$7({}, getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9({}, getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29310,7 +29310,7 @@ var app = (function () {
     };
 
     publicAPI.handleMouseLeave = function (event) {
-      var callData = _objectSpread$7(_objectSpread$7({}, getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9({}, getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29321,7 +29321,7 @@ var app = (function () {
       interactionRegistration(false);
       preventDefault(event);
 
-      var callData = _objectSpread$7(_objectSpread$7({}, getModifierKeysFor(event)), {}, {
+      var callData = _objectSpread$9(_objectSpread$9({}, getModifierKeysFor(event)), {}, {
         position: getScreenEventPositionFor(event)
       });
 
@@ -29339,7 +29339,7 @@ var app = (function () {
           break;
 
         default:
-          vtkErrorMacro$2("Unknown mouse button released: ".concat(event.button));
+          vtkErrorMacro$4("Unknown mouse button released: ".concat(event.button));
           break;
       }
     };
@@ -29553,7 +29553,7 @@ var app = (function () {
         } // Pass the eventName and the poked renderer
 
 
-        var callData = _objectSpread$7({
+        var callData = _objectSpread$9({
           type: eventName,
           pokedRenderer: model.currentRenderer,
           firstRenderer: publicAPI.getFirstRenderer()
@@ -29748,7 +29748,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$h = {
+  var DEFAULT_VALUES$l = {
     renderWindow: null,
     interactorStyle: null,
     picker: null,
@@ -29771,9 +29771,9 @@ var app = (function () {
     lastGamepadValues: {}
   }; // ----------------------------------------------------------------------------
 
-  function extend$j(publicAPI, model) {
+  function extend$n(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$h, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$l, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.event(publicAPI, model, 'RenderEvent');
@@ -29789,18 +29789,18 @@ var app = (function () {
     vtkRenderWindowInteractor(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$h = macro.newInstance(extend$j, 'vtkRenderWindowInteractor'); // ----------------------------------------------------------------------------
+  var newInstance$l = macro.newInstance(extend$n, 'vtkRenderWindowInteractor'); // ----------------------------------------------------------------------------
 
-  var vtkRenderWindowInteractor$1 = _objectSpread$7({
-    newInstance: newInstance$h,
-    extend: extend$j,
+  var vtkRenderWindowInteractor$1 = _objectSpread$9({
+    newInstance: newInstance$l,
+    extend: extend$n,
     handledEvents: handledEvents
   }, Constants$1);
 
-  function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-  var vtkErrorMacro$1 = macro.vtkErrorMacro,
+  function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var vtkErrorMacro$3 = macro.vtkErrorMacro,
       VOID = macro.VOID; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
@@ -29824,7 +29824,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$4 = {
+  var STATIC$5 = {
     computeWorldToDisplay: computeWorldToDisplay,
     computeDisplayToWorld: computeDisplayToWorld
   }; // ----------------------------------------------------------------------------
@@ -29835,7 +29835,7 @@ var app = (function () {
     // Set our className
     model.classHierarchy.push('vtkInteractorObserver');
 
-    var superClass = _objectSpread$6({}, publicAPI); //----------------------------------------------------------------------------
+    var superClass = _objectSpread$8({}, publicAPI); //----------------------------------------------------------------------------
 
 
     function unsubscribeFromEvents() {
@@ -29890,7 +29890,7 @@ var app = (function () {
         if (model.interactor) {
           subscribeToEvents();
         } else {
-          vtkErrorMacro$1("\n          The interactor must be set before subscribing to events\n        ");
+          vtkErrorMacro$3("\n          The interactor must be set before subscribing to events\n        ");
         }
       }
 
@@ -29934,7 +29934,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$g = {
+  var DEFAULT_VALUES$k = {
     enabled: true,
     interactor: null,
     priority: 0.0,
@@ -29942,9 +29942,9 @@ var app = (function () {
     subscribedEvents: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$i(publicAPI, model) {
+  function extend$m(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$g, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$k, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.event(publicAPI, model, 'InteractionEvent');
@@ -29959,14 +29959,14 @@ var app = (function () {
     vtkInteractorObserver(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$g = macro.newInstance(extend$i, 'vtkInteractorObserver'); // ----------------------------------------------------------------------------
+  var newInstance$k = macro.newInstance(extend$m, 'vtkInteractorObserver'); // ----------------------------------------------------------------------------
 
-  var vtkInteractorObserver$1 = _objectSpread$6({
-    newInstance: newInstance$g,
-    extend: extend$i
-  }, STATIC$4);
+  var vtkInteractorObserver$1 = _objectSpread$8({
+    newInstance: newInstance$k,
+    extend: extend$m
+  }, STATIC$5);
 
-  var States$2 = {
+  var States$3 = {
     IS_START: 0,
     IS_NONE: 0,
     IS_ROTATE: 1,
@@ -29978,26 +29978,26 @@ var app = (function () {
     IS_SLICE: 1025
   };
   var vtkInteractorStyleConstants = {
-    States: States$2
+    States: States$3
   };
 
-  function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-  var States$1 = vtkInteractorStyleConstants.States; // ----------------------------------------------------------------------------
+  function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var States$2 = vtkInteractorStyleConstants.States; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
   // Add module-level functions or api that you want to expose statically via
   // the next section...
 
   var stateNames = {
-    Rotate: States$1.IS_ROTATE,
-    Pan: States$1.IS_PAN,
-    Spin: States$1.IS_SPIN,
-    Dolly: States$1.IS_DOLLY,
-    CameraPose: States$1.IS_CAMERA_POSE,
-    WindowLevel: States$1.IS_WINDOW_LEVEL,
-    Slice: States$1.IS_SLICE
+    Rotate: States$2.IS_ROTATE,
+    Pan: States$2.IS_PAN,
+    Spin: States$2.IS_SPIN,
+    Dolly: States$2.IS_DOLLY,
+    CameraPose: States$2.IS_CAMERA_POSE,
+    WindowLevel: States$2.IS_WINDOW_LEVEL,
+    Slice: States$2.IS_SLICE
   }; // ----------------------------------------------------------------------------
   // vtkInteractorStyle methods
   // ----------------------------------------------------------------------------
@@ -30011,7 +30011,7 @@ var app = (function () {
       macro.event(publicAPI, model, "Start".concat(key, "Event"));
 
       publicAPI["start".concat(key)] = function () {
-        if (model.state !== States$1.IS_NONE) {
+        if (model.state !== States$2.IS_NONE) {
           return;
         }
 
@@ -30032,7 +30032,7 @@ var app = (function () {
           return;
         }
 
-        model.state = States$1.IS_NONE;
+        model.state = States$2.IS_NONE;
         model.interactor.cancelAnimation(publicAPI);
         publicAPI.invokeEndInteractionEvent({
           type: 'EndInteractionEvent'
@@ -30100,29 +30100,29 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$f = {
-    state: States$1.IS_NONE,
+  var DEFAULT_VALUES$j = {
+    state: States$2.IS_NONE,
     handleObservers: 1,
     autoAdjustCameraClippingRange: 1
   }; // ----------------------------------------------------------------------------
 
-  function extend$h(publicAPI, model) {
+  function extend$l(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$f, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$j, initialValues); // Inheritance
 
     vtkInteractorObserver$1.extend(publicAPI, model, initialValues); // Object specific methods
 
     vtkInteractorStyle(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$f = macro.newInstance(extend$h, 'vtkInteractorStyle'); // ----------------------------------------------------------------------------
+  var newInstance$j = macro.newInstance(extend$l, 'vtkInteractorStyle'); // ----------------------------------------------------------------------------
 
-  var vtkInteractorStyle$1 = _objectSpread$5({
-    newInstance: newInstance$f,
-    extend: extend$h
+  var vtkInteractorStyle$1 = _objectSpread$7({
+    newInstance: newInstance$j,
+    extend: extend$l
   }, vtkInteractorStyleConstants);
 
-  var States = vtkInteractorStyleConstants.States;
+  var States$1 = vtkInteractorStyleConstants.States;
   /* eslint-disable no-lonely-if */
   // ----------------------------------------------------------------------------
   // vtkInteractorStyleTrackballCamera methods
@@ -30137,28 +30137,28 @@ var app = (function () {
       var renderer = callData.pokedRenderer;
 
       switch (model.state) {
-        case States.IS_ROTATE:
+        case States$1.IS_ROTATE:
           publicAPI.handleMouseRotate(renderer, pos);
           publicAPI.invokeInteractionEvent({
             type: 'InteractionEvent'
           });
           break;
 
-        case States.IS_PAN:
+        case States$1.IS_PAN:
           publicAPI.handleMousePan(renderer, pos);
           publicAPI.invokeInteractionEvent({
             type: 'InteractionEvent'
           });
           break;
 
-        case States.IS_DOLLY:
+        case States$1.IS_DOLLY:
           publicAPI.handleMouseDolly(renderer, pos);
           publicAPI.invokeInteractionEvent({
             type: 'InteractionEvent'
           });
           break;
 
-        case States.IS_SPIN:
+        case States$1.IS_SPIN:
           publicAPI.handleMouseSpin(renderer, pos);
           publicAPI.invokeInteractionEvent({
             type: 'InteractionEvent'
@@ -30176,14 +30176,14 @@ var app = (function () {
         return;
       }
 
-      if (ed && !ed.pressed && ed.device === Device$1.RightController && (ed.input === Input$1.Trigger || ed.input === Input$1.TrackPad) && model.state === States.IS_CAMERA_POSE) {
+      if (ed && !ed.pressed && ed.device === Device$1.RightController && (ed.input === Input$1.Trigger || ed.input === Input$1.TrackPad) && model.state === States$1.IS_CAMERA_POSE) {
         publicAPI.endCameraPose(); // return;
       }
     };
 
     publicAPI.handleMove3D = function (ed) {
       switch (model.state) {
-        case States.IS_CAMERA_POSE:
+        case States$1.IS_CAMERA_POSE:
           publicAPI.updateCameraPose(ed);
           break;
       }
@@ -30227,19 +30227,19 @@ var app = (function () {
 
     publicAPI.handleLeftButtonRelease = function () {
       switch (model.state) {
-        case States.IS_DOLLY:
+        case States$1.IS_DOLLY:
           publicAPI.endDolly();
           break;
 
-        case States.IS_PAN:
+        case States$1.IS_PAN:
           publicAPI.endPan();
           break;
 
-        case States.IS_SPIN:
+        case States$1.IS_SPIN:
           publicAPI.endSpin();
           break;
 
-        case States.IS_ROTATE:
+        case States$1.IS_ROTATE:
           publicAPI.endRotate();
           break;
       }
@@ -30449,14 +30449,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$e = {
+  var DEFAULT_VALUES$i = {
     motionFactor: 10.0,
     zoomFactor: 10.0
   }; // ----------------------------------------------------------------------------
 
-  function extend$g(publicAPI, model) {
+  function extend$k(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$e, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$i, initialValues); // Inheritance
 
     vtkInteractorStyle$1.extend(publicAPI, model, initialValues); // Create get-set macros
 
@@ -30466,16 +30466,16 @@ var app = (function () {
     vtkInteractorStyleTrackballCamera(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$e = macro.newInstance(extend$g, 'vtkInteractorStyleTrackballCamera'); // ----------------------------------------------------------------------------
+  var newInstance$i = macro.newInstance(extend$k, 'vtkInteractorStyleTrackballCamera'); // ----------------------------------------------------------------------------
 
   var vtkInteractorStyleTrackballCamera$1 = {
-    newInstance: newInstance$e,
-    extend: extend$g
+    newInstance: newInstance$i,
+    extend: extend$k
   };
 
-  function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   // Global methods
   // ----------------------------------------------------------------------------
 
@@ -30498,7 +30498,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$3 = {
+  var STATIC$4 = {
     extractCellSizes: extractCellSizes,
     getNumberOfCells: getNumberOfCells
   }; // ----------------------------------------------------------------------------
@@ -30551,7 +30551,7 @@ var app = (function () {
 
 
   function defaultValues(initialValues) {
-    return _objectSpread$4({
+    return _objectSpread$6({
       empty: true,
       numberOfComponents: 1,
       dataType: VtkDataTypes$3.UNSIGNED_INT
@@ -30559,18 +30559,18 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
 
-  function extend$f(publicAPI, model) {
+  function extend$j(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     vtkDataArray$1.extend(publicAPI, model, defaultValues(initialValues));
     vtkCellArray(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$d = macro.newInstance(extend$f, 'vtkCellArray'); // ----------------------------------------------------------------------------
+  var newInstance$h = macro.newInstance(extend$j, 'vtkCellArray'); // ----------------------------------------------------------------------------
 
-  var vtkCellArray$1 = _objectSpread$4({
-    newInstance: newInstance$d,
-    extend: extend$f
-  }, STATIC$3);
+  var vtkCellArray$1 = _objectSpread$6({
+    newInstance: newInstance$h,
+    extend: extend$j
+  }, STATIC$4);
 
   // vtkCell methods
   // ----------------------------------------------------------------------------
@@ -30696,14 +30696,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$d = {
+  var DEFAULT_VALUES$h = {
     bounds: [-1, -1, -1, -1, -1, -1],
     pointsIds: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$e(publicAPI, model) {
+  function extend$i(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$d, initialValues);
+    Object.assign(model, DEFAULT_VALUES$h, initialValues);
     macro.obj(publicAPI, model);
 
     if (!model.points) {
@@ -30714,11 +30714,11 @@ var app = (function () {
     vtkCell(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$c = macro.newInstance(extend$e, 'vtkCell'); // ----------------------------------------------------------------------------
+  var newInstance$g = macro.newInstance(extend$i, 'vtkCell'); // ----------------------------------------------------------------------------
 
   var vtkCell$1 = {
-    newInstance: newInstance$c,
-    extend: extend$e
+    newInstance: newInstance$g,
+    extend: extend$i
   };
 
   function resize(model, sz) {
@@ -30979,7 +30979,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$c = {
+  var DEFAULT_VALUES$g = {
     array: null,
     // pointer to data
     maxId: 0,
@@ -30988,18 +30988,18 @@ var app = (function () {
 
   }; // ----------------------------------------------------------------------------
 
-  function extend$d(publicAPI, model) {
+  function extend$h(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$c, initialValues);
+    Object.assign(model, DEFAULT_VALUES$g, initialValues);
     macro.obj(publicAPI, model);
     vtkCellLinks(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$b = macro.newInstance(extend$d, 'vtkCellLinks'); // ----------------------------------------------------------------------------
+  var newInstance$f = macro.newInstance(extend$h, 'vtkCellLinks'); // ----------------------------------------------------------------------------
 
   var vtkCellLinks$1 = {
-    newInstance: newInstance$b,
-    extend: extend$d
+    newInstance: newInstance$f,
+    extend: extend$h
   };
 
   var CellType = {
@@ -31073,9 +31073,9 @@ var app = (function () {
 
   var CellTypesStrings = ['vtkEmptyCell', 'vtkVertex', 'vtkPolyVertex', 'vtkLine', 'vtkPolyLine', 'vtkTriangle', 'vtkTriangleStrip', 'vtkPolygon', 'vtkPixel', 'vtkQuad', 'vtkTetra', 'vtkVoxel', 'vtkHexahedron', 'vtkWedge', 'vtkPyramid', 'vtkPentagonalPrism', 'vtkHexagonalPrism', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'vtkQuadraticEdge', 'vtkQuadraticTriangle', 'vtkQuadraticQuad', 'vtkQuadraticTetra', 'vtkQuadraticHexahedron', 'vtkQuadraticWedge', 'vtkQuadraticPyramid', 'vtkBiQuadraticQuad', 'vtkTriQuadraticHexahedron', 'vtkQuadraticLinearQuad', 'vtkQuadraticLinearWedge', 'vtkBiQuadraticQuadraticWedge', 'vtkBiQuadraticQuadraticHexahedron', 'vtkBiQuadraticTriangle', 'vtkCubicLine', 'vtkQuadraticPolygon', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'vtkConvexPointSet', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'vtkParametricCurve', 'vtkParametricSurface', 'vtkParametricTriSurface', 'vtkParametricQuadSurface', 'vtkParametricTetraRegion', 'vtkParametricHexRegion', 'UnknownClass', 'UnknownClass', 'UnknownClass', 'vtkHigherOrderEdge', 'vtkHigherOrderTriangle', 'vtkHigherOrderQuad', 'vtkHigherOrderPolygon', 'vtkHigherOrderTetrahedron', 'vtkHigherOrderWedge', 'vtkHigherOrderPyramid', 'vtkHigherOrderHexahedron'];
 
-  function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   // Global methods
   // ----------------------------------------------------------------------------
 
@@ -31111,7 +31111,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$2 = {
+  var STATIC$3 = {
     getClassNameFromTypeId: getClassNameFromTypeId,
     getTypeIdFromClassName: getTypeIdFromClassName,
     isLinear: isLinear
@@ -31255,7 +31255,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$b = {
+  var DEFAULT_VALUES$f = {
     // typeArray: null, // pointer to types array
     // locationArray: null;   // pointer to array of offsets
     size: 0,
@@ -31266,21 +31266,21 @@ var app = (function () {
 
   }; // ----------------------------------------------------------------------------
 
-  function extend$c(publicAPI, model) {
+  function extend$g(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$b, initialValues);
+    Object.assign(model, DEFAULT_VALUES$f, initialValues);
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['size', 'maxId', 'extend']);
     macro.getArray(publicAPI, model, ['typeArray', 'locationArray']);
     vtkCellTypes(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$a = macro.newInstance(extend$c, 'vtkCellTypes'); // ----------------------------------------------------------------------------
+  var newInstance$e = macro.newInstance(extend$g, 'vtkCellTypes'); // ----------------------------------------------------------------------------
 
-  var vtkCellTypes$1 = _objectSpread$3({
-    newInstance: newInstance$a,
-    extend: extend$c
-  }, STATIC$2);
+  var vtkCellTypes$1 = _objectSpread$5({
+    newInstance: newInstance$e,
+    extend: extend$g
+  }, STATIC$3);
 
   var IntersectionState$1 = {
     NO_INTERSECTION: 0,
@@ -31291,9 +31291,9 @@ var app = (function () {
     IntersectionState: IntersectionState$1
   };
 
-  function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   var IntersectionState = Constants.IntersectionState; // ----------------------------------------------------------------------------
   // Global methods
   // ----------------------------------------------------------------------------
@@ -31411,7 +31411,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC$1 = {
+  var STATIC$2 = {
     distanceToLine: distanceToLine,
     intersection: intersection
   }; // ----------------------------------------------------------------------------
@@ -31531,21 +31531,21 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$a = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$e = {}; // ----------------------------------------------------------------------------
 
-  function extend$b(publicAPI, model) {
+  function extend$f(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$a, initialValues);
+    Object.assign(model, DEFAULT_VALUES$e, initialValues);
     vtkCell$1.extend(publicAPI, model, initialValues);
     vtkLine(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$9 = macro.newInstance(extend$b, 'vtkLine'); // ----------------------------------------------------------------------------
+  var newInstance$d = macro.newInstance(extend$f, 'vtkLine'); // ----------------------------------------------------------------------------
 
-  var vtkLine$1 = _objectSpread$2(_objectSpread$2({
-    newInstance: newInstance$9,
-    extend: extend$b
-  }, STATIC$1), Constants);
+  var vtkLine$1 = _objectSpread$4(_objectSpread$4({
+    newInstance: newInstance$d,
+    extend: extend$f
+  }, STATIC$2), Constants);
 
   // Global methods
   // ----------------------------------------------------------------------------
@@ -31588,12 +31588,12 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$9 = {// points: null,
+  var DEFAULT_VALUES$d = {// points: null,
   }; // ----------------------------------------------------------------------------
 
-  function extend$a(publicAPI, model) {
+  function extend$e(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$9, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$d, initialValues); // Inheritance
 
     vtkDataSet$1.extend(publicAPI, model, initialValues);
     macro.setGet(publicAPI, model, ['points']); // Object specific methods
@@ -31601,16 +31601,16 @@ var app = (function () {
     vtkPointSet(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$8 = macro.newInstance(extend$a, 'vtkPointSet'); // ----------------------------------------------------------------------------
+  var newInstance$c = macro.newInstance(extend$e, 'vtkPointSet'); // ----------------------------------------------------------------------------
 
   var vtkPointSet$1 = {
-    newInstance: newInstance$8,
-    extend: extend$a
+    newInstance: newInstance$c,
+    extend: extend$e
   };
 
-  function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
   // Global methods
   // ----------------------------------------------------------------------------
 
@@ -31641,7 +31641,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var STATIC = {
+  var STATIC$1 = {
     computeNormalDirection: computeNormalDirection,
     computeNormal: computeNormal
   }; // ----------------------------------------------------------------------------
@@ -31986,26 +31986,26 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$8 = {}; // ----------------------------------------------------------------------------
+  var DEFAULT_VALUES$c = {}; // ----------------------------------------------------------------------------
 
-  function extend$9(publicAPI, model) {
+  function extend$d(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$8, initialValues);
+    Object.assign(model, DEFAULT_VALUES$c, initialValues);
     vtkCell$1.extend(publicAPI, model, initialValues);
     vtkTriangle(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$7 = macro.newInstance(extend$9, 'vtkTriangle'); // ----------------------------------------------------------------------------
+  var newInstance$b = macro.newInstance(extend$d, 'vtkTriangle'); // ----------------------------------------------------------------------------
 
-  var vtkTriangle$1 = _objectSpread$1({
-    newInstance: newInstance$7,
-    extend: extend$9
-  }, STATIC);
+  var vtkTriangle$1 = _objectSpread$3({
+    newInstance: newInstance$b,
+    extend: extend$d
+  }, STATIC$1);
 
   var POLYDATA_FIELDS = ['verts', 'lines', 'polys', 'strips'];
 
   var _CELL_FACTORY;
-  var vtkWarningMacro = macro.vtkWarningMacro;
+  var vtkWarningMacro$1 = macro.vtkWarningMacro;
   var CELL_FACTORY = (_CELL_FACTORY = {}, _defineProperty(_CELL_FACTORY, CellType.VTK_LINE, vtkLine$1), _defineProperty(_CELL_FACTORY, CellType.VTK_POLY_LINE, vtkLine$1), _defineProperty(_CELL_FACTORY, CellType.VTK_TRIANGLE, vtkTriangle$1), _CELL_FACTORY); // ----------------------------------------------------------------------------
   // vtkPolyData methods
   // ----------------------------------------------------------------------------
@@ -32083,7 +32083,7 @@ var app = (function () {
           pTypes[index] = numCellPts > 2 ? CellType.VTK_POLY_LINE : CellType.VTK_LINE;
 
           if (numCellPts === 1) {
-            vtkWarningMacro('Building VTK_LINE ', index, ' with only one point, but VTK_LINE needs at least two points. Check the input.');
+            vtkWarningMacro$1('Building VTK_LINE ', index, ' with only one point, but VTK_LINE needs at least two points. Check the input.');
           }
 
           _nextCellPts += numCellPts + 1;
@@ -32113,7 +32113,7 @@ var app = (function () {
           }
 
           if (numCellPts < 3) {
-            vtkWarningMacro('Building VTK_TRIANGLE ', index, ' with less than three points, but VTK_TRIANGLE needs at least three points. Check the input.');
+            vtkWarningMacro$1('Building VTK_TRIANGLE ', index, ' with less than three points, but VTK_TRIANGLE needs at least three points. Check the input.');
           }
 
           _nextCellPts2 += numCellPts + 1;
@@ -32231,7 +32231,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$7 = {// verts: null,
+  var DEFAULT_VALUES$b = {// verts: null,
     // lines: null,
     // polys: null,
     // strips: null,
@@ -32239,9 +32239,9 @@ var app = (function () {
     // links: null,
   }; // ----------------------------------------------------------------------------
 
-  function extend$8(publicAPI, model) {
+  function extend$c(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$7, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$b, initialValues); // Inheritance
 
     vtkPointSet$1.extend(publicAPI, model, initialValues);
     macro.get(publicAPI, model, ['cells', 'links']);
@@ -32250,11 +32250,11 @@ var app = (function () {
     vtkPolyData(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$6 = macro.newInstance(extend$8, 'vtkPolyData'); // ----------------------------------------------------------------------------
+  var newInstance$a = macro.newInstance(extend$c, 'vtkPolyData'); // ----------------------------------------------------------------------------
 
   var vtkPolyData$1 = {
-    newInstance: newInstance$6,
-    extend: extend$8
+    newInstance: newInstance$a,
+    extend: extend$c
   };
 
   function notImplemented(method) {
@@ -32377,7 +32377,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$6 = {
+  var DEFAULT_VALUES$a = {
     visibility: true,
     pickable: true,
     dragable: true,
@@ -32390,9 +32390,9 @@ var app = (function () {
     textures: []
   }; // ----------------------------------------------------------------------------
 
-  function extend$7(publicAPI, model) {
+  function extend$b(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$6, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$a, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['estimatedRenderTime', 'allocatedRenderTime']);
@@ -32401,11 +32401,11 @@ var app = (function () {
     vtkProp(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$5 = macro.newInstance(extend$7, 'vtkProp'); // ----------------------------------------------------------------------------
+  var newInstance$9 = macro.newInstance(extend$b, 'vtkProp'); // ----------------------------------------------------------------------------
 
   var vtkProp$1 = {
-    newInstance: newInstance$5,
-    extend: extend$7
+    newInstance: newInstance$9,
+    extend: extend$b
   };
 
   // vtkProp3D methods
@@ -32560,7 +32560,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$5 = {
+  var DEFAULT_VALUES$9 = {
     origin: [0, 0, 0],
     position: [0, 0, 0],
     orientation: [0, 0, 0],
@@ -32574,9 +32574,9 @@ var app = (function () {
     matrixMTime: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$6(publicAPI, model) {
+  function extend$a(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$5, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$9, initialValues); // Inheritance
 
     vtkProp$1.extend(publicAPI, model, initialValues);
     model.matrixMTime = {};
@@ -32595,17 +32595,17 @@ var app = (function () {
     vtkProp3D(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$4 = macro.newInstance(extend$6, 'vtkProp3D'); // ----------------------------------------------------------------------------
+  var newInstance$8 = macro.newInstance(extend$a, 'vtkProp3D'); // ----------------------------------------------------------------------------
 
   var vtkProp3D$1 = {
-    newInstance: newInstance$4,
-    extend: extend$6
+    newInstance: newInstance$8,
+    extend: extend$a
   };
 
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-  var vtkDebugMacro$1 = macro.vtkDebugMacro; // ----------------------------------------------------------------------------
+  function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var vtkDebugMacro$2 = macro.vtkDebugMacro; // ----------------------------------------------------------------------------
   // vtkActor methods
   // ----------------------------------------------------------------------------
 
@@ -32613,7 +32613,7 @@ var app = (function () {
     // Set our className
     model.classHierarchy.push('vtkActor'); // Capture 'parentClass' api for internal use
 
-    var superClass = _objectSpread({}, publicAPI);
+    var superClass = _objectSpread$2({}, publicAPI);
 
     publicAPI.getActors = function () {
       return publicAPI;
@@ -32694,7 +32694,7 @@ var app = (function () {
 
 
       if (!model.mapperBounds || bds[0] !== model.mapperBounds[0] || bds[1] !== model.mapperBounds[1] || bds[2] !== model.mapperBounds[2] || bds[3] !== model.mapperBounds[3] || bds[4] !== model.mapperBounds[4] || bds[5] !== model.mapperBounds[5] || publicAPI.getMTime() > model.boundsMTime.getMTime()) {
-        vtkDebugMacro$1('Recomputing bounds...');
+        vtkDebugMacro$2('Recomputing bounds...');
         model.mapperBounds = bds.concat(); // copy the mapper's bounds
 
         var bbox = [];
@@ -32767,7 +32767,7 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$4 = {
+  var DEFAULT_VALUES$8 = {
     mapper: null,
     property: null,
     backfaceProperty: null,
@@ -32776,9 +32776,9 @@ var app = (function () {
     bounds: [1, -1, 1, -1, 1, -1]
   }; // ----------------------------------------------------------------------------
 
-  function extend$5(publicAPI, model) {
+  function extend$9(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$4, initialValues); // Inheritance
+    Object.assign(model, DEFAULT_VALUES$8, initialValues); // Inheritance
 
     vtkProp3D$1.extend(publicAPI, model, initialValues); // vtkTimeStamp
 
@@ -32791,11 +32791,11 @@ var app = (function () {
     vtkActor(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$3 = macro.newInstance(extend$5, 'vtkActor'); // ----------------------------------------------------------------------------
+  var newInstance$7 = macro.newInstance(extend$9, 'vtkActor'); // ----------------------------------------------------------------------------
 
   var vtkActor$1 = {
-    newInstance: newInstance$3,
-    extend: extend$5
+    newInstance: newInstance$7,
+    extend: extend$9
   };
 
   function vtkGenericRenderWindow(publicAPI, model) {
@@ -32857,15 +32857,15 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$3 = {
+  var DEFAULT_VALUES$7 = {
     background: [0.32, 0.34, 0.43],
     listenWindowResize: true,
     container: null
   }; // ----------------------------------------------------------------------------
 
-  function extend$4(publicAPI, model) {
+  function extend$8(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$3, initialValues); // Object methods
+    Object.assign(model, DEFAULT_VALUES$7, initialValues); // Object methods
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['renderWindow', 'renderer', 'openGLRenderWindow', 'interactor', 'container']);
@@ -32874,11 +32874,11 @@ var app = (function () {
     vtkGenericRenderWindow(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$2 = macro.newInstance(extend$4); // ----------------------------------------------------------------------------
+  var newInstance$6 = macro.newInstance(extend$8); // ----------------------------------------------------------------------------
 
   var vtkGenericRenderWindow$1 = {
-    newInstance: newInstance$2,
-    extend: extend$4
+    newInstance: newInstance$6,
+    extend: extend$8
   };
 
   var xmlbuilder2_min = createCommonjsModule(function (module, exports) {
@@ -39894,11 +39894,11 @@ var app = (function () {
     swapBytes: swapBytes
   };
 
-  var vtkErrorMacro = macro.vtkErrorMacro,
-      vtkDebugMacro = macro.vtkDebugMacro;
+  var vtkErrorMacro$2 = macro.vtkErrorMacro,
+      vtkDebugMacro$1 = macro.vtkDebugMacro;
 
   var REJECT_COMPRESSION = function REJECT_COMPRESSION() {
-    vtkErrorMacro('LiteHttpDataAccessHelper does not support compression. Need to register HttpDataAccessHelper instead.');
+    vtkErrorMacro$2('LiteHttpDataAccessHelper does not support compression. Need to register HttpDataAccessHelper instead.');
     return Promise.reject(new Error('LiteHttpDataAccessHelper does not support compression. Need to register HttpDataAccessHelper instead.'));
   };
   /* eslint-disable prefer-promise-reject-errors */
@@ -39987,7 +39987,7 @@ var app = (function () {
               } else {
                 if (Endian.ENDIANNESS !== array.ref.encode && Endian.ENDIANNESS) {
                   // Need to swap bytes
-                  vtkDebugMacro("Swap bytes of ".concat(array.name));
+                  vtkDebugMacro$1("Swap bytes of ".concat(array.name));
                   Endian.swapBytes(array.buffer, DataTypeByteSize[array.dataType]);
                 }
 
@@ -39995,7 +39995,7 @@ var app = (function () {
               }
 
               if (array.values.length !== array.size) {
-                vtkErrorMacro("Error in FetchArray: ".concat(array.name, ", does not have the proper array size. Got ").concat(array.values.length, ", instead of ").concat(array.size));
+                vtkErrorMacro$2("Error in FetchArray: ".concat(array.name, ", does not have the proper array size. Got ").concat(array.values.length, ", instead of ").concat(array.size));
               } // Done with the ref and work
 
 
@@ -40635,14 +40635,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$2 = {// baseURL: null,
+  var DEFAULT_VALUES$6 = {// baseURL: null,
     // dataAccessHelper: null,
     // url: null,
   }; // ----------------------------------------------------------------------------
 
-  function extend$3(publicAPI, model) {
+  function extend$7(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$2, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$6, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['url', 'baseURL']);
@@ -40653,7 +40653,7 @@ var app = (function () {
   } // ----------------------------------------------------------------------------
 
   var vtkXMLReader$1 = {
-    extend: extend$3,
+    extend: extend$7,
     processDataArray: processDataArray,
     processFieldData: processFieldData,
     processCells: processCells
@@ -40729,22 +40729,22 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES$1 = {
+  var DEFAULT_VALUES$5 = {
     dataType: 'PolyData'
   }; // ----------------------------------------------------------------------------
 
-  function extend$2(publicAPI, model) {
+  function extend$6(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES$1, initialValues);
+    Object.assign(model, DEFAULT_VALUES$5, initialValues);
     vtkXMLReader$1.extend(publicAPI, model, initialValues);
     vtkXMLPolyDataReader(publicAPI, model);
   } // ----------------------------------------------------------------------------
 
-  var newInstance$1 = macro.newInstance(extend$2, 'vtkXMLPolyDataReader'); // ----------------------------------------------------------------------------
+  var newInstance$5 = macro.newInstance(extend$6, 'vtkXMLPolyDataReader'); // ----------------------------------------------------------------------------
 
   var vtkXMLPolyDataReader$1 = {
-    newInstance: newInstance$1,
-    extend: extend$2
+    newInstance: newInstance$5,
+    extend: extend$6
   };
 
   // import 'vtk.js/Sources/IO/Core/DataAccessHelper/HttpDataAccessHelper'; // HTTP + zip
@@ -41328,14 +41328,14 @@ var app = (function () {
   // ----------------------------------------------------------------------------
 
 
-  var DEFAULT_VALUES = {// baseURL: null,
+  var DEFAULT_VALUES$4 = {// baseURL: null,
     // dataAccessHelper: null,
     // url: null,
   }; // ----------------------------------------------------------------------------
 
-  function extend$1(publicAPI, model) {
+  function extend$5(publicAPI, model) {
     var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    Object.assign(model, DEFAULT_VALUES, initialValues); // Build VTK API
+    Object.assign(model, DEFAULT_VALUES$4, initialValues); // Build VTK API
 
     macro.obj(publicAPI, model);
     macro.get(publicAPI, model, ['url', 'baseURL']);
@@ -41353,11 +41353,11 @@ var app = (function () {
     }
   } // ----------------------------------------------------------------------------
 
-  var newInstance = macro.newInstance(extend$1, 'vtkPLYReader'); // ----------------------------------------------------------------------------
+  var newInstance$4 = macro.newInstance(extend$5, 'vtkPLYReader'); // ----------------------------------------------------------------------------
 
   var vtkPLYReader$1 = {
-    extend: extend$1,
-    newInstance: newInstance
+    extend: extend$5,
+    newInstance: newInstance$4
   };
 
   var bind = function bind(fn, thisArg) {
@@ -41667,7 +41667,7 @@ var app = (function () {
    * @param {Object} thisArg The object to bind function to
    * @return {Object} The resulting value of object a
    */
-  function extend(a, b, thisArg) {
+  function extend$4(a, b, thisArg) {
     forEach(b, function assignValue(val, key) {
       if (thisArg && typeof val === 'function') {
         a[key] = bind(val, thisArg);
@@ -41711,7 +41711,7 @@ var app = (function () {
     isStandardBrowserEnv: isStandardBrowserEnv,
     forEach: forEach,
     merge: merge,
-    extend: extend,
+    extend: extend$4,
     trim: trim,
     stripBOM: stripBOM
   };
@@ -44410,6 +44410,1209 @@ var app = (function () {
   	}
   }
 
+  // vtkAbstractPicker methods
+  // ----------------------------------------------------------------------------
+
+  function vtkAbstractPicker(publicAPI, model) {
+    // Set our className
+    model.classHierarchy.push('vtkAbstractPicker');
+
+    publicAPI.initialize = function () {
+      model.renderer = null;
+      model.selectionPoint[0] = 0.0;
+      model.selectionPoint[1] = 0.0;
+      model.selectionPoint[2] = 0.0;
+      model.pickPosition[0] = 0.0;
+      model.pickPosition[1] = 0.0;
+      model.pickPosition[2] = 0.0;
+    };
+
+    publicAPI.initializePickList = function () {
+      model.pickList = [];
+    };
+
+    publicAPI.addPickList = function (actor) {
+      model.pickList.push(actor);
+    };
+
+    publicAPI.deletePickList = function (actor) {
+      var i = model.pickList.indexOf(actor);
+
+      if (i !== -1) {
+        model.pickList.splice(i, 1);
+      }
+    };
+  } // ----------------------------------------------------------------------------
+  // Object factory
+  // ----------------------------------------------------------------------------
+
+
+  var DEFAULT_VALUES$3 = {
+    renderer: null,
+    selectionPoint: [0.0, 0.0, 0.0],
+    pickPosition: [0.0, 0.0, 0.0],
+    pickFromList: 0,
+    pickList: []
+  }; // ----------------------------------------------------------------------------
+
+  function extend$3(publicAPI, model) {
+    var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    Object.assign(model, DEFAULT_VALUES$3, initialValues); // Build VTK API
+
+    macro.obj(publicAPI, model);
+    macro.get(publicAPI, model, ['renderer']);
+    macro.getArray(publicAPI, model, ['selectionPoint', 'pickPosition']);
+    macro.setGet(publicAPI, model, ['pickFromList', 'pickList']);
+    vtkAbstractPicker(publicAPI, model);
+  } // ----------------------------------------------------------------------------
+
+  var newInstance$3 = macro.newInstance(extend$3, 'vtkAbstractPicker'); // ----------------------------------------------------------------------------
+
+  var vtkAbstractPicker$1 = {
+    newInstance: newInstance$3,
+    extend: extend$3
+  };
+
+  function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var vtkErrorMacro$1 = macro.vtkErrorMacro;
+  var vtkWarningMacro = macro.vtkWarningMacro; // ----------------------------------------------------------------------------
+  // vtkPicker methods
+  // ----------------------------------------------------------------------------
+
+  function vtkPicker(publicAPI, model) {
+    // Set our className
+    model.classHierarchy.push('vtkPicker');
+
+    var superClass = _objectSpread$1({}, publicAPI);
+
+    function initialize() {
+      superClass.initialize();
+      model.actors = [];
+      model.pickedPositions = [];
+      model.mapperPosition[0] = 0.0;
+      model.mapperPosition[1] = 0.0;
+      model.mapperPosition[2] = 0.0;
+      model.mapper = null;
+      model.dataSet = null;
+      model.globalTMin = Number.MAX_VALUE;
+    } // Intersect data with specified ray.
+    // Project the center point of the mapper onto the ray and determine its parametric value
+
+
+    publicAPI.intersectWithLine = function (p1, p2, tol, mapper) {
+      if (!mapper) {
+        return Number.MAX_VALUE;
+      }
+
+      var center = mapper.getCenter();
+      var ray = [];
+
+      for (var i = 0; i < 3; i++) {
+        ray[i] = p2[i] - p1[i];
+      }
+
+      var rayFactor = dot(ray, ray);
+
+      if (rayFactor === 0.0) {
+        return 2.0;
+      } // Project the center point onto the ray and determine its parametric value
+
+
+      var t = (ray[0] * (center[0] - p1[0]) + ray[1] * (center[1] - p1[1]) + ray[2] * (center[2] - p1[2])) / rayFactor;
+      return t;
+    }; // To be overridden in subclasses
+
+
+    publicAPI.pick = function (selection, renderer) {
+      if (selection.length !== 3) {
+        vtkWarningMacro('vtkPicker::pick: selectionPt needs three components');
+      }
+
+      var selectionX = selection[0];
+      var selectionY = selection[1];
+      var selectionZ = selection[2];
+      var cameraPos = [];
+      var cameraFP = [];
+      var displayCoords = [];
+      var worldCoords = [];
+      var ray = [];
+      var cameraDOP = [];
+      var clipRange = [];
+      var tF;
+      var tB;
+      var p1World = [];
+      var p2World = [];
+      var viewport = [];
+      var winSize = [];
+      var x;
+      var y;
+      var windowLowerLeft = [];
+      var windowUpperRight = [];
+      var tol = 0.0;
+      var props = [];
+      var pickable = false;
+      var p1Mapper = new Float64Array(4);
+      var p2Mapper = new Float64Array(4);
+      var bbox = vtkBoundingBox.newInstance();
+      var t = [];
+      var hitPosition = [];
+      var view = renderer.getRenderWindow().getViews()[0];
+      initialize();
+      model.renderer = renderer;
+      model.selectionPoint[0] = selectionX;
+      model.selectionPoint[1] = selectionY;
+      model.selectionPoint[2] = selectionZ;
+
+      if (!renderer) {
+        vtkErrorMacro$1('Picker::Pick Must specify renderer');
+        return;
+      } // Get camera focal point and position. Convert to display (screen)
+      // coordinates. We need a depth value for z-buffer.
+
+
+      var camera = renderer.getActiveCamera();
+      cameraPos = camera.getPosition();
+      cameraFP = camera.getFocalPoint();
+      var dims = view.getViewportSize(renderer);
+      var aspect = dims[0] / dims[1];
+      displayCoords = renderer.worldToNormalizedDisplay(cameraFP[0], cameraFP[1], cameraFP[2], aspect);
+      displayCoords = view.normalizedDisplayToDisplay(displayCoords[0], displayCoords[1], displayCoords[2]);
+      selectionZ = displayCoords[2]; // Convert the selection point into world coordinates.
+
+      var normalizedDisplay = view.displayToNormalizedDisplay(selectionX, selectionY, selectionZ);
+      worldCoords = renderer.normalizedDisplayToWorld(normalizedDisplay[0], normalizedDisplay[1], normalizedDisplay[2], aspect);
+
+      for (var i = 0; i < 3; i++) {
+        model.pickPosition[i] = worldCoords[i];
+      } //  Compute the ray endpoints. The ray is along the line running from
+      //  the camera position to the selection point, starting where this line
+      //  intersects the front clipping plane, and terminating where this
+      //  line intersects the back clipping plane.
+
+
+      for (var _i = 0; _i < 3; _i++) {
+        ray[_i] = model.pickPosition[_i] - cameraPos[_i];
+      }
+
+      for (var _i2 = 0; _i2 < 3; _i2++) {
+        cameraDOP[_i2] = cameraFP[_i2] - cameraPos[_i2];
+      }
+
+      normalize(cameraDOP);
+      var rayLength = dot(cameraDOP, ray);
+
+      if (rayLength === 0.0) {
+        vtkWarningMacro('Picker::Pick Cannot process points');
+        return;
+      }
+
+      clipRange = camera.getClippingRange();
+
+      if (camera.getParallelProjection()) {
+        tF = clipRange[0] - rayLength;
+        tB = clipRange[1] - rayLength;
+
+        for (var _i3 = 0; _i3 < 3; _i3++) {
+          p1World[_i3] = model.pickPosition[_i3] + tF * cameraDOP[_i3];
+          p2World[_i3] = model.pickPosition[_i3] + tB * cameraDOP[_i3];
+        }
+      } else {
+        tF = clipRange[0] / rayLength;
+        tB = clipRange[1] / rayLength;
+
+        for (var _i4 = 0; _i4 < 3; _i4++) {
+          p1World[_i4] = cameraPos[_i4] + tF * ray[_i4];
+          p2World[_i4] = cameraPos[_i4] + tB * ray[_i4];
+        }
+      }
+
+      p1World[3] = 1.0;
+      p2World[3] = 1.0; // Compute the tolerance in world coordinates.  Do this by
+      // determining the world coordinates of the diagonal points of the
+      // window, computing the width of the window in world coordinates, and
+      // multiplying by the tolerance.
+
+      viewport = renderer.getViewport();
+
+      if (renderer.getRenderWindow()) {
+        winSize = renderer.getRenderWindow().getViews()[0].getSize();
+      }
+
+      x = winSize[0] * viewport[0];
+      y = winSize[1] * viewport[1];
+      var normalizedLeftDisplay = view.displayToNormalizedDisplay(x, y, selectionZ);
+      windowLowerLeft = renderer.normalizedDisplayToWorld(normalizedLeftDisplay[0], normalizedLeftDisplay[1], normalizedLeftDisplay[2], aspect);
+      x = winSize[0] * viewport[2];
+      y = winSize[1] * viewport[3];
+      var normalizedRightDisplay = view.displayToNormalizedDisplay(x, y, selectionZ);
+      windowUpperRight = renderer.normalizedDisplayToWorld(normalizedRightDisplay[0], normalizedRightDisplay[1], normalizedRightDisplay[2], aspect);
+
+      for (var _i5 = 0; _i5 < 3; _i5++) {
+        tol += (windowUpperRight[_i5] - windowLowerLeft[_i5]) * (windowUpperRight[_i5] - windowLowerLeft[_i5]);
+      }
+
+      tol = Math.sqrt(tol) * model.tolerance;
+
+      if (model.pickFromList) {
+        props = model.pickList;
+      } else {
+        props = renderer.getActors();
+      }
+
+      var scale = [];
+      props.forEach(function (prop) {
+        var mapper = prop.getMapper();
+        pickable = prop.getNestedPickable() && prop.getNestedVisibility();
+
+        if (prop.getProperty().getOpacity() <= 0.0) {
+          pickable = false;
+        }
+
+        if (pickable) {
+          model.transformMatrix = prop.getMatrix().slice(0); // Webgl need a transpose matrix but we need the untransposed one to project world points
+          // into the right referential
+
+          transpose(model.transformMatrix, model.transformMatrix);
+          invert(model.transformMatrix, model.transformMatrix); // Extract scale
+
+          var col1 = [model.transformMatrix[0], model.transformMatrix[1], model.transformMatrix[2]];
+          var col2 = [model.transformMatrix[4], model.transformMatrix[5], model.transformMatrix[6]];
+          var col3 = [model.transformMatrix[8], model.transformMatrix[9], model.transformMatrix[10]];
+          scale[0] = norm(col1);
+          scale[1] = norm(col2);
+          scale[2] = norm(col3);
+          transformMat4(p1Mapper, p1World, model.transformMatrix);
+          transformMat4(p2Mapper, p2World, model.transformMatrix);
+          p1Mapper[0] /= p1Mapper[3];
+          p1Mapper[1] /= p1Mapper[3];
+          p1Mapper[2] /= p1Mapper[3];
+          p2Mapper[0] /= p2Mapper[3];
+          p2Mapper[1] /= p2Mapper[3];
+          p2Mapper[2] /= p2Mapper[3];
+
+          for (var _i6 = 0; _i6 < 3; _i6++) {
+            ray[_i6] = p2Mapper[_i6] - p1Mapper[_i6];
+          }
+
+          if (mapper) {
+            bbox.setBounds(mapper.getBounds());
+            bbox.inflate(tol);
+          } else {
+            bbox.reset();
+          }
+
+          if (bbox.intersectBox(p1Mapper, ray, hitPosition, t)) {
+            t[0] = publicAPI.intersectWithLine(p1Mapper, p2Mapper, tol * 0.333 * (scale[0] + scale[1] + scale[2]), mapper);
+
+            if (t[0] < Number.MAX_VALUE) {
+              var p = [];
+              p[0] = (1.0 - t[0]) * p1World[0] + t[0] * p2World[0];
+              p[1] = (1.0 - t[0]) * p1World[1] + t[0] * p2World[1];
+              p[2] = (1.0 - t[0]) * p1World[2] + t[0] * p2World[2]; // Check if the current actor is already in the list
+
+              var actorID = -1;
+
+              for (var _i7 = 0; _i7 < model.actors.length; _i7++) {
+                if (model.actors[_i7] === prop) {
+                  actorID = _i7;
+                  break;
+                }
+              }
+
+              if (actorID === -1) {
+                model.actors.push(prop);
+                model.pickedPositions.push(p);
+              } else {
+                var oldPoint = model.pickedPositions[actorID];
+                var distOld = distance2BetweenPoints(p1World, oldPoint);
+                var distCurrent = distance2BetweenPoints(p1World, p);
+
+                if (distCurrent < distOld) {
+                  model.pickedPositions[actorID] = p;
+                }
+              }
+            }
+          }
+        }
+
+        publicAPI.invokePickChange(model.pickedPositions);
+        return 1;
+      });
+    };
+  } // ----------------------------------------------------------------------------
+  // Object factory
+  // ----------------------------------------------------------------------------
+
+
+  var DEFAULT_VALUES$2 = {
+    tolerance: 0.025,
+    mapperPosition: [0.0, 0.0, 0.0],
+    mapper: null,
+    dataSet: null,
+    actors: [],
+    pickedPositions: [],
+    transformMatrix: null,
+    globalTMin: Number.MAX_VALUE
+  }; // ----------------------------------------------------------------------------
+
+  function extend$2(publicAPI, model) {
+    var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    Object.assign(model, DEFAULT_VALUES$2, initialValues); // Inheritance
+
+    vtkAbstractPicker$1.extend(publicAPI, model, initialValues);
+    macro.setGet(publicAPI, model, ['tolerance']);
+    macro.setGetArray(publicAPI, model, ['mapperPosition'], 3);
+    macro.get(publicAPI, model, ['mapper', 'dataSet', 'actors', 'pickedPositions']);
+    macro.event(publicAPI, model, 'pickChange');
+    vtkPicker(publicAPI, model);
+  } // ----------------------------------------------------------------------------
+
+  var newInstance$2 = macro.newInstance(extend$2, 'vtkPicker'); // ----------------------------------------------------------------------------
+
+  var vtkPicker$1 = {
+    newInstance: newInstance$2,
+    extend: extend$2
+  };
+
+  var vtkErrorMacro = macro.vtkErrorMacro; // ----------------------------------------------------------------------------
+  // vtkPointPicker methods
+  // ----------------------------------------------------------------------------
+
+  function vtkPointPicker(publicAPI, model) {
+    // Set our className
+    model.classHierarchy.push('vtkPointPicker');
+
+    publicAPI.intersectWithLine = function (p1, p2, tol, mapper) {
+      var tMin = Number.MAX_VALUE;
+
+      if (mapper.isA('vtkImageMapper')) {
+        var pickData = mapper.intersectWithLineForPointPicking(p1, p2);
+
+        if (pickData) {
+          tMin = pickData.t;
+          model.pointIJK = pickData.ijk;
+        }
+      } else if (mapper.isA('vtkMapper')) {
+        tMin = publicAPI.intersectActorWithLine(p1, p2, tol, mapper);
+      }
+
+      return tMin;
+    };
+
+    publicAPI.intersectActorWithLine = function (p1, p2, tol, mapper) {
+      // Get dataset
+      var input = mapper.getInputData(); // Determine appropriate info
+
+      var ptId = 0;
+      var numPts = input.getPoints().getNumberOfPoints();
+
+      if (numPts <= ptId) {
+        return 2.0;
+      }
+
+      var ray = [];
+
+      for (var i = 0; i < 3; i++) {
+        ray[i] = p2[i] - p1[i];
+      }
+
+      var rayFactor = dot(ray, ray);
+
+      if (rayFactor === 0.0) {
+        vtkErrorMacro('Cannot process points');
+        return 2.0;
+      }
+
+      var t;
+      var minPtId = -1;
+      var tMin = Number.MAX_VALUE;
+      var minPtDist = Number.MAX_VALUE;
+      var projXYZ = [];
+      var x = [];
+      var points = input.getPoints();
+
+      if (model.useCells) {
+        var cellData = input.getPolys().getData();
+        var nbPointsPerCell = cellData[0];
+        var nbCells = input.getPolys().getNumberOfCells();
+
+        for (var cellID = 0; cellID < nbCells; cellID++) {
+          var firstPointIndex = cellID * nbPointsPerCell + 1;
+          var lastPointIndex = firstPointIndex + nbPointsPerCell;
+
+          for (var pointIndex = firstPointIndex; pointIndex < lastPointIndex; pointIndex++) {
+            var pointDataIndex = cellData[pointIndex];
+            points.getPoint(pointDataIndex, x);
+            t = (ray[0] * (x[0] - p1[0]) + ray[1] * (x[1] - p1[1]) + ray[2] * (x[2] - p1[2])) / rayFactor; // If we find a point closer than we currently have, see whether it
+            // lies within the pick tolerance and clipping planes. We keep track
+            // of the point closest to the line (use a fudge factor for points
+            // nearly the same distance away.)
+
+            if (t >= 0.0 && t <= 1.0 && t <= tMin + model.tolerance) {
+              var maxDist = 0.0;
+
+              for (var _i = 0; _i < 3; _i++) {
+                projXYZ[_i] = p1[_i] + t * ray[_i];
+                var dist = Math.abs(x[_i] - projXYZ[_i]);
+
+                if (dist > maxDist) {
+                  maxDist = dist;
+                }
+              } // end for i
+
+
+              if (maxDist <= tol && maxDist < minPtDist) {
+                // within tolerance
+                minPtId = ptId;
+                minPtDist = maxDist;
+                tMin = t;
+              }
+            }
+          } // end for pointIndex
+
+        } // end for cellID
+
+      } else {
+        // end if model.useCells
+        for (ptId = 0; ptId < numPts; ptId++) {
+          points.getPoint(ptId, x);
+          t = (ray[0] * (x[0] - p1[0]) + ray[1] * (x[1] - p1[1]) + ray[2] * (x[2] - p1[2])) / rayFactor; // If we find a point closer than we currently have, see whether it
+          // lies within the pick tolerance and clipping planes. We keep track
+          // of the point closest to the line (use a fudge factor for points
+          // nearly the same distance away.)
+
+          if (t >= 0.0 && t <= 1.0 && t <= tMin + model.tolerance) {
+            var _maxDist = 0.0;
+
+            for (var _i2 = 0; _i2 < 3; _i2++) {
+              projXYZ[_i2] = p1[_i2] + t * ray[_i2];
+
+              var _dist = Math.abs(x[_i2] - projXYZ[_i2]);
+
+              if (_dist > _maxDist) {
+                _maxDist = _dist;
+              }
+            } // end for i
+
+
+            if (_maxDist <= tol && _maxDist < minPtDist) {
+              // within tolerance
+              minPtId = ptId;
+              minPtDist = _maxDist;
+              tMin = t;
+            }
+          }
+        }
+      }
+
+      model.pointId = minPtId;
+      return tMin;
+    };
+  } // ----------------------------------------------------------------------------
+  // Object factory
+  // ----------------------------------------------------------------------------
+
+
+  var DEFAULT_VALUES$1 = {
+    pointId: -1,
+    pointIJK: [],
+    useCells: false
+  }; // ----------------------------------------------------------------------------
+
+  function extend$1(publicAPI, model) {
+    var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    Object.assign(model, DEFAULT_VALUES$1, initialValues); // Inheritance
+
+    vtkPicker$1.extend(publicAPI, model, initialValues);
+    macro.getArray(publicAPI, model, ['pointIJK']);
+    macro.get(publicAPI, model, ['pointId']);
+    macro.setGet(publicAPI, model, ['useCells']);
+    vtkPointPicker(publicAPI, model);
+  } // ----------------------------------------------------------------------------
+
+  var newInstance$1 = macro.newInstance(extend$1, 'vtkPointPicker'); // ----------------------------------------------------------------------------
+
+  var vtkPointPicker$1 = {
+    newInstance: newInstance$1,
+    extend: extend$1
+  };
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var vtkDebugMacro = macro.vtkDebugMacro;
+  var States = vtkInteractorStyle$1.States; // ----------------------------------------------------------------------------
+  // Event Types
+  // ----------------------------------------------------------------------------
+
+  var START_INTERACTION_EVENT = {
+    type: 'StartInteractionEvent'
+  };
+  var INTERACTION_EVENT = {
+    type: 'InteractionEvent'
+  };
+  var END_INTERACTION_EVENT = {
+    type: 'EndInteractionEvent'
+  }; // ----------------------------------------------------------------------------
+  // Global methods
+  // ----------------------------------------------------------------------------
+
+  function translateCamera(renderer, rwi, toX, toY, fromX, fromY) {
+    var cam = renderer.getActiveCamera();
+    var viewFocus = cam.getFocalPoint();
+    viewFocus = rwi.getInteractorStyle().computeWorldToDisplay(renderer, viewFocus[0], viewFocus[1], viewFocus[2]);
+    var focalDepth = viewFocus[2];
+    var newPickPoint = rwi.getInteractorStyle().computeDisplayToWorld(renderer, toX, toY, focalDepth);
+    var oldPickPoint = rwi.getInteractorStyle().computeDisplayToWorld(renderer, fromX, fromY, focalDepth); // camera motion is reversed
+
+    var motionVector = [oldPickPoint[0] - newPickPoint[0], oldPickPoint[1] - newPickPoint[1], oldPickPoint[2] - newPickPoint[2]];
+    viewFocus = cam.getFocalPoint();
+    var viewPoint = cam.getPosition();
+    cam.setFocalPoint(motionVector[0] + viewFocus[0], motionVector[1] + viewFocus[1], motionVector[2] + viewFocus[2]);
+    cam.setPosition(motionVector[0] + viewPoint[0], motionVector[1] + viewPoint[1], motionVector[2] + viewPoint[2]);
+  }
+
+  function dollyToPosition(fact, position, renderer, rwi) {
+    var cam = renderer.getActiveCamera();
+
+    if (cam.getParallelProjection()) {
+      // Zoom relatively to the cursor
+      var aSize = rwi.getView().getSize();
+      var w = aSize[0];
+      var h = aSize[1];
+      var x0 = w / 2;
+      var y0 = h / 2;
+      var x1 = position.x;
+      var y1 = position.y;
+      translateCamera(renderer, rwi, x0, y0, x1, y1);
+      cam.setParallelScale(cam.getParallelScale() / fact);
+      translateCamera(renderer, rwi, x1, y1, x0, y0);
+    } else {
+      // Zoom relatively to the cursor position
+      // Move focal point to cursor position
+      var viewFocus = cam.getFocalPoint();
+      var norm = cam.getViewPlaneNormal();
+      viewFocus = rwi.getInteractorStyle().computeWorldToDisplay(renderer, viewFocus[0], viewFocus[1], viewFocus[2]);
+      var newFp = rwi.getInteractorStyle().computeDisplayToWorld(renderer, position.x, position.y, viewFocus[2]);
+      cam.setFocalPoint(newFp[0], newFp[1], newFp[2]); // Move camera in/out along projection direction
+
+      cam.dolly(fact);
+      renderer.resetCameraClippingRange(); // Find new focal point
+
+      var newCameraPos = cam.getPosition();
+      viewFocus = cam.getFocalPoint();
+      var newPoint = [0, 0, 0];
+      var t = norm[0] * (viewFocus[0] - newCameraPos[0]) + norm[1] * (viewFocus[1] - newCameraPos[1]) + norm[2] * (viewFocus[2] - newCameraPos[2]);
+      t /= Math.pow(norm[0], 2) + Math.pow(norm[1], 2) + Math.pow(norm[2], 2);
+      newPoint[0] = newCameraPos[0] + norm[0] * t;
+      newPoint[1] = newCameraPos[1] + norm[1] * t;
+      newPoint[2] = newCameraPos[2] + norm[2] * t;
+      cam.setFocalPoint(newPoint[0], newPoint[1], newPoint[2]);
+      renderer.resetCameraClippingRange();
+    }
+  }
+
+  function dollyByFactor(interactor, renderer, factor) {
+    if (Number.isNaN(factor)) {
+      return;
+    }
+
+    var camera = renderer.getActiveCamera();
+
+    if (camera.getParallelProjection()) {
+      camera.setParallelScale(camera.getParallelScale() / factor);
+    } else {
+      camera.dolly(factor);
+      renderer.resetCameraClippingRange();
+    }
+
+    if (interactor.getLightFollowCamera()) {
+      renderer.updateLightsGeometryToFollowCamera();
+    }
+  } // ----------------------------------------------------------------------------
+  // Static API
+  // ----------------------------------------------------------------------------
+
+
+  var STATIC = {
+    dollyToPosition: dollyToPosition,
+    translateCamera: translateCamera,
+    dollyByFactor: dollyByFactor
+  }; // ----------------------------------------------------------------------------
+  // vtkInteractorStyleManipulator methods
+  // ----------------------------------------------------------------------------
+
+  function vtkInteractorStyleManipulator(publicAPI, model) {
+    // Set our className
+    model.classHierarchy.push('vtkInteractorStyleManipulator');
+    model.mouseManipulators = [];
+    model.keyboardManipulators = [];
+    model.vrManipulators = [];
+    model.gestureManipulators = [];
+    model.currentManipulator = null;
+    model.currentWheelManipulator = null;
+    model.centerOfRotation = [0, 0, 0];
+    model.rotationFactor = 1; //-------------------------------------------------------------------------
+
+    publicAPI.removeAllManipulators = function () {
+      publicAPI.removeAllMouseManipulators();
+      publicAPI.removeAllKeyboardManipulators();
+      publicAPI.removeAllVRManipulators();
+      publicAPI.removeAllGestureManipulators();
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeAllMouseManipulators = function () {
+      model.mouseManipulators = [];
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeAllKeyboardManipulators = function () {
+      model.keyboardManipulators = [];
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeAllVRManipulators = function () {
+      model.vrManipulators = [];
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeAllGestureManipulators = function () {
+      model.gestureManipulators = [];
+    }; //-------------------------------------------------------------------------
+
+
+    var removeManipulator = function removeManipulator(manipulator, list) {
+      var index = list.indexOf(manipulator);
+
+      if (index === -1) {
+        return false;
+      }
+
+      list.splice(index, 1);
+      publicAPI.modified();
+      return true;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeMouseManipulator = function (manipulator) {
+      return removeManipulator(manipulator, model.mouseManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeKeyboardManipulator = function (manipulator) {
+      return removeManipulator(manipulator, model.keyboardManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeVRManipulator = function (manipulator) {
+      return removeManipulator(manipulator, model.vrManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.removeGestureManipulator = function (manipulator) {
+      return removeManipulator(manipulator, model.gestureManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    var addManipulator = function addManipulator(manipulator, list) {
+      var index = list.indexOf(manipulator);
+
+      if (index !== -1) {
+        return false;
+      }
+
+      list.push(manipulator);
+      publicAPI.modified();
+      return true;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.addMouseManipulator = function (manipulator) {
+      return addManipulator(manipulator, model.mouseManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.addKeyboardManipulator = function (manipulator) {
+      return addManipulator(manipulator, model.keyboardManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.addVRManipulator = function (manipulator) {
+      return addManipulator(manipulator, model.vrManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.addGestureManipulator = function (manipulator) {
+      return addManipulator(manipulator, model.gestureManipulators);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.getNumberOfMouseManipulators = function () {
+      return model.mouseManipulators.length;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.getNumberOfKeyboardManipulators = function () {
+      return model.keyboardManipulators.length;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.getNumberOfVRManipulators = function () {
+      return model.vrManipulators.length;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.getNumberOfGestureManipulators = function () {
+      return model.gestureManipulators.length;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.resetCurrentManipulator = function () {
+      model.currentManipulator = null;
+      model.currentWheelManipulator = null;
+    }; //-------------------------------------------------------------------------
+    // Mouse
+    //-------------------------------------------------------------------------
+
+
+    publicAPI.handleLeftButtonPress = function (callData) {
+      model.previousPosition = callData.position;
+      publicAPI.onButtonDown(1, callData);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleMiddleButtonPress = function (callData) {
+      model.previousPosition = callData.position;
+      publicAPI.onButtonDown(2, callData);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleRightButtonPress = function (callData) {
+      model.previousPosition = callData.position;
+      publicAPI.onButtonDown(3, callData);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleButton3D = function (ed) {
+      if (!ed) {
+        return;
+      } // Look for a matching 3D camera interactor.
+
+
+      model.currentManipulator = publicAPI.findVRManipulator(ed.device, ed.input, ed.pressed);
+
+      if (model.currentManipulator) {
+        model.currentManipulator.onButton3D(publicAPI, ed.pokedRenderer, model.state, ed.device, ed.input, ed.pressed);
+
+        if (ed.pressed) {
+          publicAPI.startCameraPose();
+        } else {
+          publicAPI.endCameraPose();
+        }
+      } else {
+        vtkDebugMacro('No manipulator found');
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleMove3D = function (ed) {
+      if (model.currentManipulator && model.state === States.IS_CAMERA_POSE) {
+        model.currentManipulator.onMove3D(publicAPI, ed.pokedRenderer, model.state, ed);
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.onButtonDown = function (button, callData) {
+      // Must not be processing an interaction to start another.
+      if (model.currentManipulator) {
+        return;
+      } // Look for a matching camera interactor.
+
+
+      model.currentManipulator = publicAPI.findMouseManipulator(button, callData.shiftKey, callData.controlKey, callData.altKey);
+
+      if (model.currentManipulator) {
+        if (model.currentManipulator.setCenter) {
+          model.currentManipulator.setCenter(model.centerOfRotation);
+        }
+
+        if (model.currentManipulator.setRotationFactor) {
+          model.currentManipulator.setRotationFactor(model.rotationFactor);
+        }
+
+        model.currentManipulator.startInteraction();
+        model.currentManipulator.onButtonDown(model.interactor, callData.pokedRenderer, callData.position);
+        model.interactor.requestAnimation(publicAPI.onButtonDown);
+        publicAPI.invokeStartInteractionEvent(START_INTERACTION_EVENT);
+      } else {
+        vtkDebugMacro('No manipulator found');
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.findMouseManipulator = function (button, shift, control, alt) {
+      // Look for a matching camera manipulator
+      var manipulator = null;
+      var count = model.mouseManipulators.length;
+
+      while (count--) {
+        var manip = model.mouseManipulators[count];
+
+        if (manip && manip.getButton() === button && manip.getShift() === shift && manip.getControl() === control && manip.getAlt() === alt && manip.isDragEnabled()) {
+          manipulator = manip;
+        }
+      }
+
+      return manipulator;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.findVRManipulator = function (device, input) {
+      // Look for a matching camera manipulator
+      var manipulator = null;
+      var count = model.vrManipulators.length;
+
+      while (count--) {
+        var manip = model.vrManipulators[count];
+
+        if (manip && manip.getDevice() === device && manip.getInput() === input) {
+          manipulator = manip;
+        }
+      }
+
+      return manipulator;
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleLeftButtonRelease = function () {
+      publicAPI.onButtonUp(1);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleMiddleButtonRelease = function () {
+      publicAPI.onButtonUp(2);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleRightButtonRelease = function () {
+      publicAPI.onButtonUp(3);
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.onButtonUp = function (button) {
+      if (!model.currentManipulator) {
+        return;
+      }
+
+      if (model.currentManipulator.getButton && model.currentManipulator.getButton() === button) {
+        model.currentManipulator.onButtonUp(model.interactor);
+        model.currentManipulator.endInteraction();
+        model.currentManipulator = null;
+        model.interactor.cancelAnimation(publicAPI.onButtonDown);
+        publicAPI.invokeEndInteractionEvent(END_INTERACTION_EVENT);
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleStartMouseWheel = function (callData) {
+      // Must not be processing a wheel interaction to start another.
+      if (model.currentWheelManipulator) {
+        return;
+      }
+
+      var manipulator = null;
+      var count = model.mouseManipulators.length;
+
+      while (count--) {
+        var manip = model.mouseManipulators[count];
+
+        if (manip && manip.isScrollEnabled() && manip.getShift() === callData.shiftKey && manip.getControl() === callData.controlKey && manip.getAlt() === callData.altKey) {
+          manipulator = manip;
+        }
+      }
+
+      if (manipulator) {
+        model.currentWheelManipulator = manipulator;
+        model.currentWheelManipulator.onStartScroll(model.interactor, callData.pokedRenderer, callData.spinY);
+        model.currentWheelManipulator.startInteraction();
+        model.interactor.requestAnimation(publicAPI.handleStartMouseWheel);
+        publicAPI.invokeStartInteractionEvent(START_INTERACTION_EVENT);
+      } else {
+        vtkDebugMacro('No manipulator found');
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleEndMouseWheel = function () {
+      if (!model.currentWheelManipulator) {
+        return;
+      }
+
+      if (model.currentWheelManipulator.onEndScroll) {
+        model.currentWheelManipulator.onEndScroll(model.interactor);
+        model.currentWheelManipulator.endInteraction();
+        model.currentWheelManipulator = null;
+        model.interactor.cancelAnimation(publicAPI.handleStartMouseWheel);
+        publicAPI.invokeEndInteractionEvent(END_INTERACTION_EVENT);
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleMouseWheel = function (callData) {
+      if (model.currentWheelManipulator && model.currentWheelManipulator.onScroll) {
+        model.currentWheelManipulator.onScroll(model.interactor, callData.pokedRenderer, callData.spinY, model.cachedMousePosition);
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      }
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleMouseMove = function (callData) {
+      model.cachedMousePosition = callData.position;
+
+      if (model.currentManipulator && model.currentManipulator.onMouseMove) {
+        model.currentManipulator.onMouseMove(model.interactor, callData.pokedRenderer, callData.position);
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      }
+    }; //-------------------------------------------------------------------------
+    // Keyboard
+    //-------------------------------------------------------------------------
+
+
+    publicAPI.handleKeyPress = function (callData) {
+      model.keyboardManipulators.filter(function (m) {
+        return m.onKeyPress;
+      }).forEach(function (manipulator) {
+        manipulator.onKeyPress(model.interactor, callData.pokedRenderer, callData.key);
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      });
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleKeyDown = function (callData) {
+      model.keyboardManipulators.filter(function (m) {
+        return m.onKeyDown;
+      }).forEach(function (manipulator) {
+        manipulator.onKeyDown(model.interactor, callData.pokedRenderer, callData.key);
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      });
+    }; //-------------------------------------------------------------------------
+
+
+    publicAPI.handleKeyUp = function (callData) {
+      model.keyboardManipulators.filter(function (m) {
+        return m.onKeyUp;
+      }).forEach(function (manipulator) {
+        manipulator.onKeyUp(model.interactor, callData.pokedRenderer, callData.key);
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      });
+    }; //-------------------------------------------------------------------------
+    // Gesture
+    //-------------------------------------------------------------------------
+
+
+    publicAPI.handleStartPinch = function (callData) {
+      publicAPI.startDolly();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPinchEnabled()) {
+          manipulator.onStartPinch(model.interactor, callData.scale);
+          manipulator.startInteraction();
+        }
+      }
+
+      model.interactor.requestAnimation(publicAPI.handleStartPinch);
+      publicAPI.invokeStartInteractionEvent(START_INTERACTION_EVENT);
+    }; //--------------------------------------------------------------------------
+
+
+    publicAPI.handleEndPinch = function () {
+      publicAPI.endDolly();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPinchEnabled()) {
+          manipulator.onEndPinch(model.interactor);
+          manipulator.endInteraction();
+        }
+      }
+
+      model.interactor.cancelAnimation(publicAPI.handleStartPinch);
+      publicAPI.invokeEndInteractionEvent(END_INTERACTION_EVENT);
+    }; //----------------------------------------------------------------------------
+
+
+    publicAPI.handleStartRotate = function (callData) {
+      publicAPI.startRotate();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isRotateEnabled()) {
+          manipulator.onStartRotate(model.interactor, callData.rotation);
+          manipulator.startInteraction();
+        }
+      }
+
+      model.interactor.requestAnimation(publicAPI.handleStartRotate);
+      publicAPI.invokeStartInteractionEvent(START_INTERACTION_EVENT);
+    }; //--------------------------------------------------------------------------
+
+
+    publicAPI.handleEndRotate = function () {
+      publicAPI.endRotate();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isRotateEnabled()) {
+          manipulator.onEndRotate(model.interactor);
+          manipulator.endInteraction();
+        }
+      }
+
+      model.interactor.cancelAnimation(publicAPI.handleStartRotate);
+      publicAPI.invokeEndInteractionEvent(END_INTERACTION_EVENT);
+    }; //----------------------------------------------------------------------------
+
+
+    publicAPI.handleStartPan = function (callData) {
+      publicAPI.startPan();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPanEnabled()) {
+          manipulator.onStartPan(model.interactor, callData.translation);
+          manipulator.startInteraction();
+        }
+      }
+
+      model.interactor.requestAnimation(publicAPI.handleStartPan);
+      publicAPI.invokeStartInteractionEvent(START_INTERACTION_EVENT);
+    }; //--------------------------------------------------------------------------
+
+
+    publicAPI.handleEndPan = function () {
+      publicAPI.endPan();
+      var count = model.gestureManipulators.length;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPanEnabled()) {
+          manipulator.onEndPan(model.interactor);
+          manipulator.endInteraction();
+        }
+      }
+
+      model.interactor.cancelAnimation(publicAPI.handleStartPan);
+      publicAPI.invokeEndInteractionEvent(END_INTERACTION_EVENT);
+    }; //----------------------------------------------------------------------------
+
+
+    publicAPI.handlePinch = function (callData) {
+      var count = model.gestureManipulators.length;
+      var actionCount = 0;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPinchEnabled()) {
+          manipulator.onPinch(model.interactor, callData.pokedRenderer, callData.scale);
+          actionCount++;
+        }
+      }
+
+      if (actionCount) {
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      }
+    }; //----------------------------------------------------------------------------
+
+
+    publicAPI.handlePan = function (callData) {
+      var count = model.gestureManipulators.length;
+      var actionCount = 0;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isPanEnabled()) {
+          manipulator.onPan(model.interactor, callData.pokedRenderer, callData.translation);
+          actionCount++;
+        }
+      }
+
+      if (actionCount) {
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      }
+    }; //----------------------------------------------------------------------------
+
+
+    publicAPI.handleRotate = function (callData) {
+      var count = model.gestureManipulators.length;
+      var actionCount = 0;
+
+      while (count--) {
+        var manipulator = model.gestureManipulators[count];
+
+        if (manipulator && manipulator.isRotateEnabled()) {
+          manipulator.onRotate(model.interactor, callData.pokedRenderer, callData.rotation);
+          actionCount++;
+        }
+      }
+
+      if (actionCount) {
+        publicAPI.invokeInteractionEvent(INTERACTION_EVENT);
+      }
+    };
+  } // ----------------------------------------------------------------------------
+  // Object factory
+  // ----------------------------------------------------------------------------
+
+
+  var DEFAULT_VALUES = {
+    cachedMousePosition: null,
+    currentManipulator: null,
+    currentWheelManipulator: null,
+    // mouseManipulators: null,
+    // keyboardManipulators: null,
+    // vrManipulators: null,
+    // gestureManipulators: null,
+    centerOfRotation: [0, 0, 0],
+    rotationFactor: 1
+  }; // ----------------------------------------------------------------------------
+
+  function extend(publicAPI, model) {
+    var initialValues = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    Object.assign(model, DEFAULT_VALUES, initialValues); // Inheritance
+
+    vtkInteractorStyle$1.extend(publicAPI, model, initialValues); // Create get-set macros
+
+    macro.setGet(publicAPI, model, ['rotationFactor']);
+    macro.get(publicAPI, model, ['mouseManipulators', 'keyboardManipulators', 'vrManipulators', 'gestureManipulators']);
+    macro.setGetArray(publicAPI, model, ['centerOfRotation'], 3); // Object specific methods
+
+    vtkInteractorStyleManipulator(publicAPI, model);
+  } // ----------------------------------------------------------------------------
+
+  var newInstance = macro.newInstance(extend, 'vtkInteractorStyleManipulator'); // ----------------------------------------------------------------------------
+
+  var vtkInteractorStyleManipulator$1 = _objectSpread({
+    newInstance: newInstance,
+    extend: extend
+  }, STATIC);
+
   /* src/components/Pill.svelte generated by Svelte v3.44.3 */
 
   const file$1 = "src/components/Pill.svelte";
@@ -44662,7 +45865,7 @@ var app = (function () {
   /* src/App.svelte generated by Svelte v3.44.3 */
   const file = "src/App.svelte";
 
-  // (162:0) {#if m_bWarmUp}
+  // (214:0) {#if m_bWarmUp}
   function create_if_block(ctx) {
   	let pill;
   	let current;
@@ -44714,7 +45917,7 @@ var app = (function () {
   		block,
   		id: create_if_block.name,
   		type: "if",
-  		source: "(162:0) {#if m_bWarmUp}",
+  		source: "(214:0) {#if m_bWarmUp}",
   		ctx
   	});
 
@@ -44742,8 +45945,8 @@ var app = (function () {
   			t1 = space();
   			if (if_block) if_block.c();
   			if_block_anchor = empty();
-  			attr_dev(div, "class", "renderer svelte-xeqz9w");
-  			add_location(div, file, 159, 0, 4093);
+  			attr_dev(div, "class", "renderer svelte-1srbjkb");
+  			add_location(div, file, 211, 0, 5540);
   		},
   		l: function claim(nodes) {
   			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -44853,7 +46056,8 @@ var app = (function () {
   		//read sample mesh
   		m_targetObject = await readPolyData('resources/sample_1_norm.vtp');
 
-  		// m_targetObject.getPointData().removeArray("Normals");
+  		m_targetObject.getPointData().removeArray("Normals");
+
   		// let colors = new Int8Array(m_targetObject.getNumberOfPoints());						
   		// for(let pid in colors){
   		// 	const position = m_targetObject.getPoints().getPoint(pid);
@@ -44863,7 +46067,7 @@ var app = (function () {
   		// m_targetObject.getPointData().setScalars(scalars);
   		m_targetActor = makeActor(m_targetObject);
 
-  		m_targetActor.getProperty().setColor(.87, .66, .1);
+  		m_targetActor.getProperty().setColor(.87, .66, .87);
   		m_targetActor.getProperty().setSpecular(true);
   		m_targetActor.getProperty().setSpecularPower(400);
   		m_renderer.getActiveCamera().setPosition(0, 0, 100);
@@ -44950,6 +46154,53 @@ var app = (function () {
   		latentFunction(x / m_windowInnerWidth, y / m_windowInnerHeight);
   	};
 
+  	const main = async () => {
+  		const interactor = m_genericRenderWindow.getInteractor();
+
+  		// const interactorStyle = interactor.getInteractorStyle();
+  		const tempInteractorStyle = vtkInteractorStyleManipulator$1.newInstance();
+
+  		interactor.setInteractorStyle(tempInteractorStyle);
+  		const picker = vtkPointPicker$1.newInstance();
+
+  		// picker.setPickFromList(1);
+  		// picker.initializePickList();
+  		// picker.addPickList(m_targetActor);
+  		interactor.setPicker(picker);
+
+  		let pickedPoint = -1;
+
+  		interactor.onLeftButtonPress(e => {
+  			const pos = e.position;
+  			picker.pick([pos.x, pos.y, pos.z], m_renderer);
+
+  			if (picker.getActors().length !== 0) {
+  				pickedPoint = picker.getPointId();
+  			} else {
+  				pickedPoint = -1;
+  			}
+  		});
+
+  		interactor.onMouseMove(e => {
+  			if (pickedPoint === -1) return;
+  			const pos = e.position;
+  			picker.pick([pos.x, pos.y, pos.z], m_renderer);
+  			const pickedPosition = picker.getPickPosition();
+  			const currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
+  			m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+
+  			// m_targetObject.getPoints().modified();
+  			m_targetObject.modified();
+
+  			m_renderWindow.render();
+  		});
+
+  		interactor.onLeftButtonRelease(e => {
+  			pickedPoint = -1;
+  		});
+  	};
+
+  	main();
   	const writable_props = [];
 
   	Object.keys($$props).forEach(key => {
@@ -45010,6 +46261,8 @@ var app = (function () {
   		AnimatedBackground,
   		AnimatedBackground2,
   		AnimatedBackground3,
+  		vtkPointPicker: vtkPointPicker$1,
+  		vtkInteractorStyleManipulator: vtkInteractorStyleManipulator$1,
   		Pill,
   		sampleLatents,
   		m_container,
@@ -45028,7 +46281,8 @@ var app = (function () {
   		m_windowInnerHeight,
   		latentFunction,
   		onMouseMove,
-  		onTouchMove
+  		onTouchMove,
+  		main
   	});
 
   	$$self.$inject_state = $$props => {

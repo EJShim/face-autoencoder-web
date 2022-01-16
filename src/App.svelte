@@ -4,8 +4,11 @@
 	import AnimatedBackground from './AnimatedBackground.svelte'
 	import AnimatedBackground2 from './AnimatedBackground2.svelte'
 	import AnimatedBackground3 from './AnimatedBackground3.svelte'
+	import vtkPointPicker from '@kitware/vtk.js/Rendering/Core/PointPicker';
+	import vtkInteractorStyleManipulator from '@kitware/vtk.js/Interaction/Style/InteractorStyleManipulator'
 	import Pill from './components/Pill.svelte';
 	import {sampleLatents} from './utils';
+
 	let m_container;
 	let m_genericRenderWindow = createGenericRenderWindow();
 	let m_renderer = m_genericRenderWindow.getRenderer();
@@ -30,7 +33,7 @@
 
 		//read sample mesh
 		m_targetObject = await readPolyData('resources/sample_1_norm.vtp');
-		// m_targetObject.getPointData().removeArray("Normals");
+		m_targetObject.getPointData().removeArray("Normals");
 		// let colors = new Int8Array(m_targetObject.getNumberOfPoints());						
 		// for(let pid in colors){
 		// 	const position = m_targetObject.getPoints().getPoint(pid);
@@ -42,7 +45,7 @@
 
 		
 		m_targetActor = makeActor(m_targetObject);
-		m_targetActor.getProperty().setColor(.87, .66, .1);
+		m_targetActor.getProperty().setColor(.87, .66, .87);
 		m_targetActor.getProperty().setSpecular(true);		
 		m_targetActor.getProperty().setSpecularPower(400);		
 				
@@ -146,11 +149,60 @@ const onTouchMove = (e)=>{
 	latentFunction(x / m_windowInnerWidth, y/ m_windowInnerHeight);
 	
 }
+
+
+const main = async ()=>{
+	const interactor = m_genericRenderWindow.getInteractor();
+	// const interactorStyle = interactor.getInteractorStyle();
+	const tempInteractorStyle = vtkInteractorStyleManipulator.newInstance();
+	interactor.setInteractorStyle(tempInteractorStyle);
+	const picker = vtkPointPicker.newInstance();
+	// picker.setPickFromList(1);
+	// picker.initializePickList();
+	// picker.addPickList(m_targetActor);
+	interactor.setPicker(picker);	
+
+
+	let pickedPoint = -1
+	interactor.onLeftButtonPress(e=>{
+		
+		const pos = e.position;
+		picker.pick([pos.x, pos.y, pos.z], m_renderer);
+
+		if(picker.getActors().length !== 0){
+			pickedPoint = picker.getPointId();						
+		}else{
+			pickedPoint = -1;
+		}
+	})
+
+	interactor.onMouseMove(e=>{
+		if(pickedPoint === -1) return;
+
+		const pos = e.position;
+		picker.pick([pos.x, pos.y, pos.z], m_renderer);
+		const pickedPosition = picker.getPickPosition();
+		const currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
+
+		m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+		// m_targetObject.getPoints().modified();
+		m_targetObject.modified();		
+
+		m_renderWindow.render();
+		
+	})
+
+
+	interactor.onLeftButtonRelease(e=>{pickedPoint = -1;})
+	
+}
+
+main()
 </script>
 
 
 <AnimatedBackground3/>
-<svelte:window on:mousemove={e=>{onMouseMove(e)}}
+<svelte:window  on:mousemove={e=>{onMouseMove(e)}}
 				on:touchmove={e=>{onTouchMove(e)}}	
 				on:mouseup={e=>{m_bControl=false;}}		
 				on:touchend={e=>{m_bControl=false;}}													
@@ -179,7 +231,7 @@ const onTouchMove = (e)=>{
 	
 
 	.renderer{
-		backdrop-filter: blur(15px);		
+		backdrop-filter: blur(5px);		
 		width:100%;
 		height:100%;
 		position:absolute;
