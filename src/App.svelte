@@ -189,7 +189,7 @@ const main = async ()=>{
 		const pickedPosition = picker.getPickPosition();
 		const currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
 
-		m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+		// m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
 		// m_targetObject.getPoints().modified();
 		// m_targetObject.modified();		
 

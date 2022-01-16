@@ -45964,7 +45964,7 @@ var app = (function () {
   			if (if_block) if_block.c();
   			if_block_anchor = empty();
   			attr_dev(div, "class", "renderer svelte-1srbjkb");
-  			add_location(div, file, 218, 0, 5695);
+  			add_location(div, file, 218, 0, 5698);
   		},
   		l: function claim(nodes) {
   			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -46207,10 +46207,10 @@ var app = (function () {
   			if (pickedPoint === -1) return;
   			const pos = e.position;
   			picker.pick([pos.x, pos.y, pos.z], m_renderer);
-  			const pickedPosition = picker.getPickPosition();
-  			const currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
-  			m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+  			picker.getPickPosition();
+  			m_targetObject.getPoints().getPoint(pickedPoint);
 
+  			// m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
   			// m_targetObject.getPoints().modified();
   			// m_targetObject.modified();		
   			encoderDecoder(m_targetObject);
