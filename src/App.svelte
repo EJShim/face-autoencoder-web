@@ -1,12 +1,12 @@
 <script>
 	import {onMount} from 'svelte';
-	import {createGenericRenderWindow, readPolyData, makeActor, encoderDecoder, decoder, warmUp} from './utils';	
-	import AnimatedBackground from './AnimatedBackground.svelte'
-	import AnimatedBackground2 from './AnimatedBackground2.svelte'
+	import {createGenericRenderWindow, readPolyData, makeActor, encoderDecoder, decoder, warmUp} from './utils';		
 	import AnimatedBackground3 from './AnimatedBackground3.svelte'
 	import vtkPointPicker from '@kitware/vtk.js/Rendering/Core/PointPicker';
 	import vtkInteractorStyleManipulator from '@kitware/vtk.js/Interaction/Style/InteractorStyleManipulator'
+	import {vec3} from 'gl-matrix';
 	import Pill from './components/Pill.svelte';
+
 	import {sampleLatents} from './utils';
 
 	let m_container;
@@ -181,19 +181,28 @@ const main = async ()=>{
 		}
 	})
 
-	interactor.onMouseMove(e=>{
+	interactor.onMouseMove(async e=>{
 		if(pickedPoint === -1) return;
 
 		const pos = e.position;
 		picker.pick([pos.x, pos.y, pos.z], m_renderer);
 		const pickedPosition = picker.getPickPosition();
-		const currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
+		let currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
 
-		// m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+		currentPoint = vec3.fromValues(currentPoint[0], currentPoint[1], currentPoint[2]);
+		const targetPosition = vec3.fromValues(pickedPosition[0], pickedPosition[1], currentPoint[2]);
+
+		// const direction = vec3.create()
+		// vec3.sub(direction, targetPosition, currentPosition);
+		vec3.subtract(targetPosition, targetPosition, currentPoint);
+		vec3.normalize(targetPosition, targetPosition)
+		vec3.add(currentPoint, currentPoint, targetPosition)
+
+		m_targetObject.getPoints().setPoint(pickedPoint, ...currentPoint);
 		// m_targetObject.getPoints().modified();
 		// m_targetObject.modified();		
 
-		encoderDecoder(m_targetObject);
+		await encoderDecoder(m_targetObject);
 
 		m_renderWindow.render();
 		

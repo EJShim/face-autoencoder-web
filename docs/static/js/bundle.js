@@ -10,6 +10,7 @@ var app = (function () {
   // Configuration Constants
   var EPSILON = 0.000001;
   var ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
+  var RANDOM = Math.random;
   if (!Math.hypot) Math.hypot = function () {
     var y = 0,
         i = arguments.length;
@@ -76,7 +77,7 @@ var app = (function () {
    * @returns {mat3} a new 3x3 matrix
    */
 
-  function clone$1(a) {
+  function clone$2(a) {
     var out = new ARRAY_TYPE(9);
     out[0] = a[0];
     out[1] = a[1];
@@ -97,7 +98,7 @@ var app = (function () {
    * @returns {mat3} out
    */
 
-  function copy$1(out, a) {
+  function copy$2(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -315,7 +316,7 @@ var app = (function () {
    * @returns {mat3} out
    */
 
-  function multiply$2(out, a, b) {
+  function multiply$3(out, a, b) {
     var a00 = a[0],
         a01 = a[1],
         a02 = a[2];
@@ -648,7 +649,7 @@ var app = (function () {
    * @returns {String} string representation of the matrix
    */
 
-  function str$1(a) {
+  function str$2(a) {
     return "mat3(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7] + ", " + a[8] + ")";
   }
   /**
@@ -791,7 +792,7 @@ var app = (function () {
    * @function
    */
 
-  var mul$1 = multiply$2;
+  var mul$2 = multiply$3;
   /**
    * Alias for {@link mat3.subtract}
    * @function
@@ -803,8 +804,8 @@ var app = (function () {
     __proto__: null,
     create: create$4,
     fromMat4: fromMat4,
-    clone: clone$1,
-    copy: copy$1,
+    clone: clone$2,
+    copy: copy$2,
     fromValues: fromValues$4,
     set: set$3,
     identity: identity$1,
@@ -812,7 +813,7 @@ var app = (function () {
     invert: invert$1,
     adjoint: adjoint$1,
     determinant: determinant$1,
-    multiply: multiply$2,
+    multiply: multiply$3,
     translate: translate$1,
     rotate: rotate$1,
     scale: scale$2,
@@ -823,7 +824,7 @@ var app = (function () {
     fromQuat: fromQuat$1,
     normalFromMat4: normalFromMat4,
     projection: projection,
-    str: str$1,
+    str: str$2,
     frob: frob$1,
     add: add$3,
     subtract: subtract$3,
@@ -831,7 +832,7 @@ var app = (function () {
     multiplyScalarAndAdd: multiplyScalarAndAdd$1,
     exactEquals: exactEquals$2,
     equals: equals$2,
-    mul: mul$1,
+    mul: mul$2,
     sub: sub$2
   });
 
@@ -877,7 +878,7 @@ var app = (function () {
    * @returns {mat4} a new 4x4 matrix
    */
 
-  function clone(a) {
+  function clone$1(a) {
     var out = new ARRAY_TYPE(16);
     out[0] = a[0];
     out[1] = a[1];
@@ -905,7 +906,7 @@ var app = (function () {
    * @returns {mat4} out
    */
 
-  function copy(out, a) {
+  function copy$1(out, a) {
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -1238,7 +1239,7 @@ var app = (function () {
    * @returns {mat4} out
    */
 
-  function multiply$1(out, a, b) {
+  function multiply$2(out, a, b) {
     var a00 = a[0],
         a01 = a[1],
         a02 = a[2],
@@ -1465,7 +1466,7 @@ var app = (function () {
    * @returns {mat4} out
    */
 
-  function rotateX(out, a, rad) {
+  function rotateX$1(out, a, rad) {
     var s = Math.sin(rad);
     var c = Math.cos(rad);
     var a10 = a[4];
@@ -1509,7 +1510,7 @@ var app = (function () {
    * @returns {mat4} out
    */
 
-  function rotateY(out, a, rad) {
+  function rotateY$1(out, a, rad) {
     var s = Math.sin(rad);
     var c = Math.cos(rad);
     var a00 = a[0];
@@ -1553,7 +1554,7 @@ var app = (function () {
    * @returns {mat4} out
    */
 
-  function rotateZ(out, a, rad) {
+  function rotateZ$1(out, a, rad) {
     var s = Math.sin(rad);
     var c = Math.cos(rad);
     var a00 = a[0];
@@ -2456,7 +2457,7 @@ var app = (function () {
    * @returns {String} string representation of the matrix
    */
 
-  function str(a) {
+  function str$1(a) {
     return "mat4(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7] + ", " + a[8] + ", " + a[9] + ", " + a[10] + ", " + a[11] + ", " + a[12] + ", " + a[13] + ", " + a[14] + ", " + a[15] + ")";
   }
   /**
@@ -2641,7 +2642,7 @@ var app = (function () {
    * @function
    */
 
-  var mul = multiply$1;
+  var mul$1 = multiply$2;
   /**
    * Alias for {@link mat4.subtract}
    * @function
@@ -2652,8 +2653,8 @@ var app = (function () {
   var mat4 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     create: create$3,
-    clone: clone,
-    copy: copy,
+    clone: clone$1,
+    copy: copy$1,
     fromValues: fromValues$3,
     set: set$2,
     identity: identity,
@@ -2661,13 +2662,13 @@ var app = (function () {
     invert: invert,
     adjoint: adjoint,
     determinant: determinant,
-    multiply: multiply$1,
+    multiply: multiply$2,
     translate: translate,
     scale: scale$1,
     rotate: rotate,
-    rotateX: rotateX,
-    rotateY: rotateY,
-    rotateZ: rotateZ,
+    rotateX: rotateX$1,
+    rotateY: rotateY$1,
+    rotateZ: rotateZ$1,
     fromTranslation: fromTranslation,
     fromScaling: fromScaling,
     fromRotation: fromRotation,
@@ -2688,7 +2689,7 @@ var app = (function () {
     ortho: ortho,
     lookAt: lookAt,
     targetTo: targetTo,
-    str: str,
+    str: str$1,
     frob: frob,
     add: add$2,
     subtract: subtract$2,
@@ -2696,7 +2697,7 @@ var app = (function () {
     multiplyScalarAndAdd: multiplyScalarAndAdd,
     exactEquals: exactEquals$1,
     equals: equals$1,
-    mul: mul,
+    mul: mul$1,
     sub: sub$1
   });
 
@@ -2720,6 +2721,20 @@ var app = (function () {
       out[2] = 0;
     }
 
+    return out;
+  }
+  /**
+   * Creates a new vec3 initialized with values from an existing vector
+   *
+   * @param {ReadonlyVec3} a vector to clone
+   * @returns {vec3} a new 3D vector
+   */
+
+  function clone(a) {
+    var out = new ARRAY_TYPE(3);
+    out[0] = a[0];
+    out[1] = a[1];
+    out[2] = a[2];
     return out;
   }
   /**
@@ -2749,6 +2764,20 @@ var app = (function () {
     out[0] = x;
     out[1] = y;
     out[2] = z;
+    return out;
+  }
+  /**
+   * Copy the values from one vec3 to another
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the source vector
+   * @returns {vec3} out
+   */
+
+  function copy(out, a) {
+    out[0] = a[0];
+    out[1] = a[1];
+    out[2] = a[2];
     return out;
   }
   /**
@@ -2798,6 +2827,108 @@ var app = (function () {
     return out;
   }
   /**
+   * Multiplies two vec3's
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {vec3} out
+   */
+
+  function multiply$1(out, a, b) {
+    out[0] = a[0] * b[0];
+    out[1] = a[1] * b[1];
+    out[2] = a[2] * b[2];
+    return out;
+  }
+  /**
+   * Divides two vec3's
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {vec3} out
+   */
+
+  function divide(out, a, b) {
+    out[0] = a[0] / b[0];
+    out[1] = a[1] / b[1];
+    out[2] = a[2] / b[2];
+    return out;
+  }
+  /**
+   * Math.ceil the components of a vec3
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a vector to ceil
+   * @returns {vec3} out
+   */
+
+  function ceil(out, a) {
+    out[0] = Math.ceil(a[0]);
+    out[1] = Math.ceil(a[1]);
+    out[2] = Math.ceil(a[2]);
+    return out;
+  }
+  /**
+   * Math.floor the components of a vec3
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a vector to floor
+   * @returns {vec3} out
+   */
+
+  function floor(out, a) {
+    out[0] = Math.floor(a[0]);
+    out[1] = Math.floor(a[1]);
+    out[2] = Math.floor(a[2]);
+    return out;
+  }
+  /**
+   * Returns the minimum of two vec3's
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {vec3} out
+   */
+
+  function min(out, a, b) {
+    out[0] = Math.min(a[0], b[0]);
+    out[1] = Math.min(a[1], b[1]);
+    out[2] = Math.min(a[2], b[2]);
+    return out;
+  }
+  /**
+   * Returns the maximum of two vec3's
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {vec3} out
+   */
+
+  function max(out, a, b) {
+    out[0] = Math.max(a[0], b[0]);
+    out[1] = Math.max(a[1], b[1]);
+    out[2] = Math.max(a[2], b[2]);
+    return out;
+  }
+  /**
+   * Math.round the components of a vec3
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a vector to round
+   * @returns {vec3} out
+   */
+
+  function round$1(out, a) {
+    out[0] = Math.round(a[0]);
+    out[1] = Math.round(a[1]);
+    out[2] = Math.round(a[2]);
+    return out;
+  }
+  /**
    * Scales a vec3 by a scalar number
    *
    * @param {vec3} out the receiving vector
@@ -2810,6 +2941,77 @@ var app = (function () {
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
+    return out;
+  }
+  /**
+   * Adds two vec3's after scaling the second operand by a scalar value
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @param {Number} scale the amount to scale b by before adding
+   * @returns {vec3} out
+   */
+
+  function scaleAndAdd(out, a, b, scale) {
+    out[0] = a[0] + b[0] * scale;
+    out[1] = a[1] + b[1] * scale;
+    out[2] = a[2] + b[2] * scale;
+    return out;
+  }
+  /**
+   * Calculates the euclidian distance between two vec3's
+   *
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {Number} distance between a and b
+   */
+
+  function distance(a, b) {
+    var x = b[0] - a[0];
+    var y = b[1] - a[1];
+    var z = b[2] - a[2];
+    return Math.hypot(x, y, z);
+  }
+  /**
+   * Calculates the squared euclidian distance between two vec3's
+   *
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @returns {Number} squared distance between a and b
+   */
+
+  function squaredDistance(a, b) {
+    var x = b[0] - a[0];
+    var y = b[1] - a[1];
+    var z = b[2] - a[2];
+    return x * x + y * y + z * z;
+  }
+  /**
+   * Calculates the squared length of a vec3
+   *
+   * @param {ReadonlyVec3} a vector to calculate squared length of
+   * @returns {Number} squared length of a
+   */
+
+  function squaredLength(a) {
+    var x = a[0];
+    var y = a[1];
+    var z = a[2];
+    return x * x + y * y + z * z;
+  }
+  /**
+   * Negates the components of a vec3
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a vector to negate
+   * @returns {vec3} out
+   */
+
+  function negate(out, a) {
+    out[0] = -a[0];
+    out[1] = -a[1];
+    out[2] = -a[2];
     return out;
   }
   /**
@@ -2883,6 +3085,91 @@ var app = (function () {
     return out;
   }
   /**
+   * Performs a linear interpolation between two vec3's
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+   * @returns {vec3} out
+   */
+
+  function lerp(out, a, b, t) {
+    var ax = a[0];
+    var ay = a[1];
+    var az = a[2];
+    out[0] = ax + t * (b[0] - ax);
+    out[1] = ay + t * (b[1] - ay);
+    out[2] = az + t * (b[2] - az);
+    return out;
+  }
+  /**
+   * Performs a hermite interpolation with two control points
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @param {ReadonlyVec3} c the third operand
+   * @param {ReadonlyVec3} d the fourth operand
+   * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+   * @returns {vec3} out
+   */
+
+  function hermite(out, a, b, c, d, t) {
+    var factorTimes2 = t * t;
+    var factor1 = factorTimes2 * (2 * t - 3) + 1;
+    var factor2 = factorTimes2 * (t - 2) + t;
+    var factor3 = factorTimes2 * (t - 1);
+    var factor4 = factorTimes2 * (3 - 2 * t);
+    out[0] = a[0] * factor1 + b[0] * factor2 + c[0] * factor3 + d[0] * factor4;
+    out[1] = a[1] * factor1 + b[1] * factor2 + c[1] * factor3 + d[1] * factor4;
+    out[2] = a[2] * factor1 + b[2] * factor2 + c[2] * factor3 + d[2] * factor4;
+    return out;
+  }
+  /**
+   * Performs a bezier interpolation with two control points
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the first operand
+   * @param {ReadonlyVec3} b the second operand
+   * @param {ReadonlyVec3} c the third operand
+   * @param {ReadonlyVec3} d the fourth operand
+   * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+   * @returns {vec3} out
+   */
+
+  function bezier(out, a, b, c, d, t) {
+    var inverseFactor = 1 - t;
+    var inverseFactorTimesTwo = inverseFactor * inverseFactor;
+    var factorTimes2 = t * t;
+    var factor1 = inverseFactorTimesTwo * inverseFactor;
+    var factor2 = 3 * t * inverseFactorTimesTwo;
+    var factor3 = 3 * factorTimes2 * inverseFactor;
+    var factor4 = factorTimes2 * t;
+    out[0] = a[0] * factor1 + b[0] * factor2 + c[0] * factor3 + d[0] * factor4;
+    out[1] = a[1] * factor1 + b[1] * factor2 + c[1] * factor3 + d[1] * factor4;
+    out[2] = a[2] * factor1 + b[2] * factor2 + c[2] * factor3 + d[2] * factor4;
+    return out;
+  }
+  /**
+   * Generates a random vector with the given scale
+   *
+   * @param {vec3} out the receiving vector
+   * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+   * @returns {vec3} out
+   */
+
+  function random(out, scale) {
+    scale = scale || 1.0;
+    var r = RANDOM() * 2.0 * Math.PI;
+    var z = RANDOM() * 2.0 - 1.0;
+    var zScale = Math.sqrt(1.0 - z * z) * scale;
+    out[0] = Math.cos(r) * zScale;
+    out[1] = Math.sin(r) * zScale;
+    out[2] = z * scale;
+    return out;
+  }
+  /**
    * Transforms the vec3 with a mat4.
    * 4th vector component is implicitly '1'
    *
@@ -2902,6 +3189,188 @@ var app = (function () {
     out[1] = (m[1] * x + m[5] * y + m[9] * z + m[13]) / w;
     out[2] = (m[2] * x + m[6] * y + m[10] * z + m[14]) / w;
     return out;
+  }
+  /**
+   * Transforms the vec3 with a mat3.
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the vector to transform
+   * @param {ReadonlyMat3} m the 3x3 matrix to transform with
+   * @returns {vec3} out
+   */
+
+  function transformMat3(out, a, m) {
+    var x = a[0],
+        y = a[1],
+        z = a[2];
+    out[0] = x * m[0] + y * m[3] + z * m[6];
+    out[1] = x * m[1] + y * m[4] + z * m[7];
+    out[2] = x * m[2] + y * m[5] + z * m[8];
+    return out;
+  }
+  /**
+   * Transforms the vec3 with a quat
+   * Can also be used for dual quaternions. (Multiply it with the real part)
+   *
+   * @param {vec3} out the receiving vector
+   * @param {ReadonlyVec3} a the vector to transform
+   * @param {ReadonlyQuat} q quaternion to transform with
+   * @returns {vec3} out
+   */
+
+  function transformQuat(out, a, q) {
+    // benchmarks: https://jsperf.com/quaternion-transform-vec3-implementations-fixed
+    var qx = q[0],
+        qy = q[1],
+        qz = q[2],
+        qw = q[3];
+    var x = a[0],
+        y = a[1],
+        z = a[2]; // var qvec = [qx, qy, qz];
+    // var uv = vec3.cross([], qvec, a);
+
+    var uvx = qy * z - qz * y,
+        uvy = qz * x - qx * z,
+        uvz = qx * y - qy * x; // var uuv = vec3.cross([], qvec, uv);
+
+    var uuvx = qy * uvz - qz * uvy,
+        uuvy = qz * uvx - qx * uvz,
+        uuvz = qx * uvy - qy * uvx; // vec3.scale(uv, uv, 2 * w);
+
+    var w2 = qw * 2;
+    uvx *= w2;
+    uvy *= w2;
+    uvz *= w2; // vec3.scale(uuv, uuv, 2);
+
+    uuvx *= 2;
+    uuvy *= 2;
+    uuvz *= 2; // return vec3.add(out, a, vec3.add(out, uv, uuv));
+
+    out[0] = x + uvx + uuvx;
+    out[1] = y + uvy + uuvy;
+    out[2] = z + uvz + uuvz;
+    return out;
+  }
+  /**
+   * Rotate a 3D vector around the x-axis
+   * @param {vec3} out The receiving vec3
+   * @param {ReadonlyVec3} a The vec3 point to rotate
+   * @param {ReadonlyVec3} b The origin of the rotation
+   * @param {Number} rad The angle of rotation in radians
+   * @returns {vec3} out
+   */
+
+  function rotateX(out, a, b, rad) {
+    var p = [],
+        r = []; //Translate point to the origin
+
+    p[0] = a[0] - b[0];
+    p[1] = a[1] - b[1];
+    p[2] = a[2] - b[2]; //perform rotation
+
+    r[0] = p[0];
+    r[1] = p[1] * Math.cos(rad) - p[2] * Math.sin(rad);
+    r[2] = p[1] * Math.sin(rad) + p[2] * Math.cos(rad); //translate to correct position
+
+    out[0] = r[0] + b[0];
+    out[1] = r[1] + b[1];
+    out[2] = r[2] + b[2];
+    return out;
+  }
+  /**
+   * Rotate a 3D vector around the y-axis
+   * @param {vec3} out The receiving vec3
+   * @param {ReadonlyVec3} a The vec3 point to rotate
+   * @param {ReadonlyVec3} b The origin of the rotation
+   * @param {Number} rad The angle of rotation in radians
+   * @returns {vec3} out
+   */
+
+  function rotateY(out, a, b, rad) {
+    var p = [],
+        r = []; //Translate point to the origin
+
+    p[0] = a[0] - b[0];
+    p[1] = a[1] - b[1];
+    p[2] = a[2] - b[2]; //perform rotation
+
+    r[0] = p[2] * Math.sin(rad) + p[0] * Math.cos(rad);
+    r[1] = p[1];
+    r[2] = p[2] * Math.cos(rad) - p[0] * Math.sin(rad); //translate to correct position
+
+    out[0] = r[0] + b[0];
+    out[1] = r[1] + b[1];
+    out[2] = r[2] + b[2];
+    return out;
+  }
+  /**
+   * Rotate a 3D vector around the z-axis
+   * @param {vec3} out The receiving vec3
+   * @param {ReadonlyVec3} a The vec3 point to rotate
+   * @param {ReadonlyVec3} b The origin of the rotation
+   * @param {Number} rad The angle of rotation in radians
+   * @returns {vec3} out
+   */
+
+  function rotateZ(out, a, b, rad) {
+    var p = [],
+        r = []; //Translate point to the origin
+
+    p[0] = a[0] - b[0];
+    p[1] = a[1] - b[1];
+    p[2] = a[2] - b[2]; //perform rotation
+
+    r[0] = p[0] * Math.cos(rad) - p[1] * Math.sin(rad);
+    r[1] = p[0] * Math.sin(rad) + p[1] * Math.cos(rad);
+    r[2] = p[2]; //translate to correct position
+
+    out[0] = r[0] + b[0];
+    out[1] = r[1] + b[1];
+    out[2] = r[2] + b[2];
+    return out;
+  }
+  /**
+   * Get the angle between two 3D vectors
+   * @param {ReadonlyVec3} a The first operand
+   * @param {ReadonlyVec3} b The second operand
+   * @returns {Number} The angle in radians
+   */
+
+  function angle(a, b) {
+    var ax = a[0],
+        ay = a[1],
+        az = a[2],
+        bx = b[0],
+        by = b[1],
+        bz = b[2],
+        mag1 = Math.sqrt(ax * ax + ay * ay + az * az),
+        mag2 = Math.sqrt(bx * bx + by * by + bz * bz),
+        mag = mag1 * mag2,
+        cosine = mag && dot$1(a, b) / mag;
+    return Math.acos(Math.min(Math.max(cosine, -1), 1));
+  }
+  /**
+   * Set the components of a vec3 to zero
+   *
+   * @param {vec3} out the receiving vector
+   * @returns {vec3} out
+   */
+
+  function zero$2(out) {
+    out[0] = 0.0;
+    out[1] = 0.0;
+    out[2] = 0.0;
+    return out;
+  }
+  /**
+   * Returns a string representation of a vector
+   *
+   * @param {ReadonlyVec3} a vector to represent as a string
+   * @returns {String} string representation of the vector
+   */
+
+  function str(a) {
+    return "vec3(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
   }
   /**
    * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
@@ -2938,11 +3407,41 @@ var app = (function () {
 
   var sub = subtract$1;
   /**
+   * Alias for {@link vec3.multiply}
+   * @function
+   */
+
+  var mul = multiply$1;
+  /**
+   * Alias for {@link vec3.divide}
+   * @function
+   */
+
+  var div = divide;
+  /**
+   * Alias for {@link vec3.distance}
+   * @function
+   */
+
+  var dist = distance;
+  /**
+   * Alias for {@link vec3.squaredDistance}
+   * @function
+   */
+
+  var sqrDist = squaredDistance;
+  /**
    * Alias for {@link vec3.length}
    * @function
    */
 
   var len = length;
+  /**
+   * Alias for {@link vec3.squaredLength}
+   * @function
+   */
+
+  var sqrLen = squaredLength;
   /**
    * Perform some operation over an array of vec3s.
    *
@@ -2956,7 +3455,7 @@ var app = (function () {
    * @function
    */
 
-  (function () {
+  var forEach$1 = function () {
     var vec = create$2();
     return function (a, stride, offset, count, fn, arg) {
       var i, l;
@@ -2987,7 +3486,59 @@ var app = (function () {
 
       return a;
     };
-  })();
+  }();
+
+  var vec3 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    create: create$2,
+    clone: clone,
+    length: length,
+    fromValues: fromValues$2,
+    copy: copy,
+    set: set$1,
+    add: add$1,
+    subtract: subtract$1,
+    multiply: multiply$1,
+    divide: divide,
+    ceil: ceil,
+    floor: floor,
+    min: min,
+    max: max,
+    round: round$1,
+    scale: scale,
+    scaleAndAdd: scaleAndAdd,
+    distance: distance,
+    squaredDistance: squaredDistance,
+    squaredLength: squaredLength,
+    negate: negate,
+    inverse: inverse,
+    normalize: normalize$3,
+    dot: dot$1,
+    cross: cross$1,
+    lerp: lerp,
+    hermite: hermite,
+    bezier: bezier,
+    random: random,
+    transformMat4: transformMat4$1,
+    transformMat3: transformMat3,
+    transformQuat: transformQuat,
+    rotateX: rotateX,
+    rotateY: rotateY,
+    rotateZ: rotateZ,
+    angle: angle,
+    zero: zero$2,
+    str: str,
+    exactEquals: exactEquals,
+    equals: equals,
+    sub: sub,
+    mul: mul,
+    div: div,
+    dist: dist,
+    sqrDist: sqrDist,
+    len: len,
+    sqrLen: sqrLen,
+    forEach: forEach$1
+  });
 
   /**
    * 4 Dimensional Vector
@@ -6300,14 +6851,14 @@ var app = (function () {
     publicAPI.getKeyMatrices = function (ren) {
       // has the camera changed?
       if (ren !== model.lastRenderer || model.openGLRenderWindow.getMTime() > model.keyMatrixTime.getMTime() || publicAPI.getMTime() > model.keyMatrixTime.getMTime() || ren.getMTime() > model.keyMatrixTime.getMTime() || model.renderable.getMTime() > model.keyMatrixTime.getMTime()) {
-        copy(model.keyMatrices.wcvc, model.renderable.getViewMatrix());
+        copy$1(model.keyMatrices.wcvc, model.renderable.getViewMatrix());
         fromMat4(model.keyMatrices.normalMatrix, model.keyMatrices.wcvc);
         invert$1(model.keyMatrices.normalMatrix, model.keyMatrices.normalMatrix);
         transpose(model.keyMatrices.wcvc, model.keyMatrices.wcvc);
         var aspectRatio = model.openGLRenderer.getAspectRatio();
-        copy(model.keyMatrices.vcpc, model.renderable.getProjectionMatrix(aspectRatio, -1, 1));
+        copy$1(model.keyMatrices.vcpc, model.renderable.getProjectionMatrix(aspectRatio, -1, 1));
         transpose(model.keyMatrices.vcpc, model.keyMatrices.vcpc);
-        multiply$1(model.keyMatrices.wcpc, model.keyMatrices.vcpc, model.keyMatrices.wcvc);
+        multiply$2(model.keyMatrices.wcpc, model.keyMatrices.vcpc, model.keyMatrices.wcvc);
         model.keyMatrixTime.modified();
         model.lastRenderer = ren;
       }
@@ -6673,7 +7224,7 @@ var app = (function () {
       // has the actor changed?
       if (model.renderable.getMTime() > model.keyMatrixTime.getMTime()) {
         model.renderable.computeMatrix();
-        copy(model.keyMatrices.mcwc, model.renderable.getMatrix());
+        copy$1(model.keyMatrices.mcwc, model.renderable.getMatrix());
         transpose(model.keyMatrices.mcwc, model.keyMatrices.mcwc);
 
         if (model.renderable.getIsIdentity()) {
@@ -18657,7 +19208,7 @@ var app = (function () {
 
       if (Math.max(webGPURenderWindow.getMTime(), publicAPI.getMTime(), ren.getMTime(), model.renderable.getMTime(), webGPURenderer.getStabilizedTime()) > model.keyMatrixTime.getMTime()) {
         var wcvc = model.renderable.getViewMatrix();
-        copy(model.keyMatrices.normalMatrix, wcvc); // zero out translation
+        copy$1(model.keyMatrices.normalMatrix, wcvc); // zero out translation
 
         model.keyMatrices.normalMatrix[3] = 0.0;
         model.keyMatrices.normalMatrix[7] = 0.0;
@@ -18669,7 +19220,7 @@ var app = (function () {
         var aspectRatio = webGPURenderer.getAspectRatio();
         var cRange = model.renderable.getClippingRangeByReference();
         publicAPI.getProjectionMatrix(model.keyMatrices.vcpc, aspectRatio, cRange, model.renderable.getWindowCenterByReference());
-        multiply$1(model.keyMatrices.scpc, model.keyMatrices.vcpc, model.keyMatrices.scvc);
+        multiply$2(model.keyMatrices.scpc, model.keyMatrices.vcpc, model.keyMatrices.scvc);
         invert(model.keyMatrices.pcsc, model.keyMatrices.scpc);
         model.keyMatrixTime.modified();
       }
@@ -21618,7 +22169,7 @@ var app = (function () {
           identity(model.keyMatrices.normalMatrix);
         } else {
           // we use bcwc BEFORE the translate below (just to get transposed mcvc)
-          copy(model.keyMatrices.normalMatrix, model.keyMatrices.bcwc); // zero out translation
+          copy$1(model.keyMatrices.normalMatrix, model.keyMatrices.bcwc); // zero out translation
 
           model.keyMatrices.normalMatrix[3] = 0.0;
           model.keyMatrices.normalMatrix[7] = 0.0;
@@ -22897,12 +23448,6 @@ var app = (function () {
   function detach(node) {
       node.parentNode.removeChild(node);
   }
-  function destroy_each(iterations, detaching) {
-      for (let i = 0; i < iterations.length; i += 1) {
-          if (iterations[i])
-              iterations[i].d(detaching);
-      }
-  }
   function element(name) {
       return document.createElement(name);
   }
@@ -23247,15 +23792,6 @@ var app = (function () {
           dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
       else
           dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
-  }
-  function validate_each_argument(arg) {
-      if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
-          let msg = '{#each} only iterates over array-like objects.';
-          if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
-              msg += ' You can use a spread to convert this iterable into an array.';
-          }
-          throw new Error(msg);
-      }
   }
   function validate_slots(name, slot, keys) {
       for (const slot_key of Object.keys(slot)) {
@@ -27634,7 +28170,7 @@ var app = (function () {
       publicAPI.getWorldToPhysicalMatrix(tmpMatrix); // first convert the physical -> view matrix to be
       // world -> view
 
-      multiply$1(tmpMatrix, mat, tmpMatrix);
+      multiply$2(tmpMatrix, mat, tmpMatrix);
       publicAPI.computeViewParametersFromViewMatrix(tmpMatrix);
     };
 
@@ -27642,7 +28178,7 @@ var app = (function () {
       model.viewMatrix = mat;
 
       if (model.viewMatrix) {
-        copy(tmpMatrix, model.viewMatrix);
+        copy$1(tmpMatrix, model.viewMatrix);
         publicAPI.computeViewParametersFromViewMatrix(tmpMatrix);
         transpose(model.viewMatrix, model.viewMatrix);
       }
@@ -27659,7 +28195,7 @@ var app = (function () {
       );
       transpose(tmpMatrix, tmpMatrix);
       var result = new Float64Array(16);
-      copy(result, tmpMatrix);
+      copy$1(result, tmpMatrix);
       return result;
     };
 
@@ -27674,7 +28210,7 @@ var app = (function () {
       if (model.projectionMatrix) {
         var scale = 1 / model.physicalScale;
         set$1(tmpvec1, scale, scale, scale);
-        copy(result, model.projectionMatrix);
+        copy$1(result, model.projectionMatrix);
         scale$1(result, result, tmpvec1);
         transpose(result, result);
         return result;
@@ -27734,7 +28270,7 @@ var app = (function () {
         tmpMatrix[15] = 0.0;
       }
 
-      copy(result, tmpMatrix);
+      copy$1(result, tmpMatrix);
       return result;
     };
 
@@ -27743,7 +28279,7 @@ var app = (function () {
       var pMat = publicAPI.getProjectionMatrix(aspect, nearz, farz); // mats are transposed so the order is A then B
       // we reuse pMat as it is a copy so we can do what we want with it
 
-      multiply$1(pMat, vMat, pMat);
+      multiply$2(pMat, vMat, pMat);
       return pMat;
     };
 
@@ -32441,7 +32977,7 @@ var app = (function () {
         return;
       }
 
-      rotateX(model.rotation, model.rotation, radiansFromDegrees(val));
+      rotateX$1(model.rotation, model.rotation, radiansFromDegrees(val));
       publicAPI.modified();
     };
 
@@ -32450,7 +32986,7 @@ var app = (function () {
         return;
       }
 
-      rotateY(model.rotation, model.rotation, radiansFromDegrees(val));
+      rotateY$1(model.rotation, model.rotation, radiansFromDegrees(val));
       publicAPI.modified();
     };
 
@@ -32459,7 +32995,7 @@ var app = (function () {
         return;
       }
 
-      rotateZ(model.rotation, model.rotation, radiansFromDegrees(val));
+      rotateZ$1(model.rotation, model.rotation, radiansFromDegrees(val));
       publicAPI.modified();
     };
 
@@ -32474,7 +33010,7 @@ var app = (function () {
       setAxisAngle(q, [x, y, z], angle);
       var quatMat = new Float64Array(16);
       fromQuat(quatMat, q);
-      multiply$1(model.rotation, model.rotation, quatMat);
+      multiply$2(model.rotation, model.rotation, quatMat);
       publicAPI.modified();
     };
 
@@ -32493,7 +33029,7 @@ var app = (function () {
     };
 
     publicAPI.setUserMatrix = function (matrix) {
-      copy(model.userMatrix, matrix);
+      copy$1(model.userMatrix, matrix);
       publicAPI.modified();
     };
 
@@ -32508,12 +33044,12 @@ var app = (function () {
         identity(model.matrix);
 
         if (model.userMatrix) {
-          multiply$1(model.matrix, model.matrix, model.userMatrix);
+          multiply$2(model.matrix, model.matrix, model.userMatrix);
         }
 
         translate(model.matrix, model.matrix, model.origin);
         translate(model.matrix, model.matrix, model.position);
-        multiply$1(model.matrix, model.matrix, model.rotation);
+        multiply$2(model.matrix, model.matrix, model.rotation);
         scale$1(model.matrix, model.matrix, model.scale);
         translate(model.matrix, model.matrix, [-model.origin[0], -model.origin[1], -model.origin[2]]);
         transpose(model.matrix, model.matrix); // check for identity
@@ -43759,589 +44295,6 @@ var app = (function () {
       polydata.modified();    
   };
 
-  /* src/AnimatedBackground.svelte generated by Svelte v3.44.3 */
-
-  const file$4 = "src/AnimatedBackground.svelte";
-
-  function create_fragment$4(ctx) {
-  	let div51;
-  	let div50;
-  	let div0;
-  	let t0;
-  	let div1;
-  	let t1;
-  	let div2;
-  	let t2;
-  	let div3;
-  	let t3;
-  	let div4;
-  	let t4;
-  	let div5;
-  	let t5;
-  	let div6;
-  	let t6;
-  	let div7;
-  	let t7;
-  	let div8;
-  	let t8;
-  	let div9;
-  	let t9;
-  	let div10;
-  	let t10;
-  	let div11;
-  	let t11;
-  	let div12;
-  	let t12;
-  	let div13;
-  	let t13;
-  	let div14;
-  	let t14;
-  	let div15;
-  	let t15;
-  	let div16;
-  	let t16;
-  	let div17;
-  	let t17;
-  	let div18;
-  	let t18;
-  	let div19;
-  	let t19;
-  	let div20;
-  	let t20;
-  	let div21;
-  	let t21;
-  	let div22;
-  	let t22;
-  	let div23;
-  	let t23;
-  	let div24;
-  	let t24;
-  	let div25;
-  	let t25;
-  	let div26;
-  	let t26;
-  	let div27;
-  	let t27;
-  	let div28;
-  	let t28;
-  	let div29;
-  	let t29;
-  	let div30;
-  	let t30;
-  	let div31;
-  	let t31;
-  	let div32;
-  	let t32;
-  	let div33;
-  	let t33;
-  	let div34;
-  	let t34;
-  	let div35;
-  	let t35;
-  	let div36;
-  	let t36;
-  	let div37;
-  	let t37;
-  	let div38;
-  	let t38;
-  	let div39;
-  	let t39;
-  	let div40;
-  	let t40;
-  	let div41;
-  	let t41;
-  	let div42;
-  	let t42;
-  	let div43;
-  	let t43;
-  	let div44;
-  	let t44;
-  	let div45;
-  	let t45;
-  	let div46;
-  	let t46;
-  	let div47;
-  	let t47;
-  	let div48;
-  	let t48;
-  	let div49;
-
-  	const block = {
-  		c: function create() {
-  			div51 = element("div");
-  			div50 = element("div");
-  			div0 = element("div");
-  			t0 = space();
-  			div1 = element("div");
-  			t1 = space();
-  			div2 = element("div");
-  			t2 = space();
-  			div3 = element("div");
-  			t3 = space();
-  			div4 = element("div");
-  			t4 = space();
-  			div5 = element("div");
-  			t5 = space();
-  			div6 = element("div");
-  			t6 = space();
-  			div7 = element("div");
-  			t7 = space();
-  			div8 = element("div");
-  			t8 = space();
-  			div9 = element("div");
-  			t9 = space();
-  			div10 = element("div");
-  			t10 = space();
-  			div11 = element("div");
-  			t11 = space();
-  			div12 = element("div");
-  			t12 = space();
-  			div13 = element("div");
-  			t13 = space();
-  			div14 = element("div");
-  			t14 = space();
-  			div15 = element("div");
-  			t15 = space();
-  			div16 = element("div");
-  			t16 = space();
-  			div17 = element("div");
-  			t17 = space();
-  			div18 = element("div");
-  			t18 = space();
-  			div19 = element("div");
-  			t19 = space();
-  			div20 = element("div");
-  			t20 = space();
-  			div21 = element("div");
-  			t21 = space();
-  			div22 = element("div");
-  			t22 = space();
-  			div23 = element("div");
-  			t23 = space();
-  			div24 = element("div");
-  			t24 = space();
-  			div25 = element("div");
-  			t25 = space();
-  			div26 = element("div");
-  			t26 = space();
-  			div27 = element("div");
-  			t27 = space();
-  			div28 = element("div");
-  			t28 = space();
-  			div29 = element("div");
-  			t29 = space();
-  			div30 = element("div");
-  			t30 = space();
-  			div31 = element("div");
-  			t31 = space();
-  			div32 = element("div");
-  			t32 = space();
-  			div33 = element("div");
-  			t33 = space();
-  			div34 = element("div");
-  			t34 = space();
-  			div35 = element("div");
-  			t35 = space();
-  			div36 = element("div");
-  			t36 = space();
-  			div37 = element("div");
-  			t37 = space();
-  			div38 = element("div");
-  			t38 = space();
-  			div39 = element("div");
-  			t39 = space();
-  			div40 = element("div");
-  			t40 = space();
-  			div41 = element("div");
-  			t41 = space();
-  			div42 = element("div");
-  			t42 = space();
-  			div43 = element("div");
-  			t43 = space();
-  			div44 = element("div");
-  			t44 = space();
-  			div45 = element("div");
-  			t45 = space();
-  			div46 = element("div");
-  			t46 = space();
-  			div47 = element("div");
-  			t47 = space();
-  			div48 = element("div");
-  			t48 = space();
-  			div49 = element("div");
-  			attr_dev(div0, "class", "star svelte-16bi43d");
-  			add_location(div0, file$4, 2, 4, 43);
-  			attr_dev(div1, "class", "star svelte-16bi43d");
-  			add_location(div1, file$4, 3, 4, 72);
-  			attr_dev(div2, "class", "star svelte-16bi43d");
-  			add_location(div2, file$4, 4, 4, 101);
-  			attr_dev(div3, "class", "star svelte-16bi43d");
-  			add_location(div3, file$4, 5, 4, 130);
-  			attr_dev(div4, "class", "star svelte-16bi43d");
-  			add_location(div4, file$4, 6, 4, 159);
-  			attr_dev(div5, "class", "star svelte-16bi43d");
-  			add_location(div5, file$4, 7, 4, 188);
-  			attr_dev(div6, "class", "star svelte-16bi43d");
-  			add_location(div6, file$4, 8, 4, 217);
-  			attr_dev(div7, "class", "star svelte-16bi43d");
-  			add_location(div7, file$4, 9, 4, 246);
-  			attr_dev(div8, "class", "star svelte-16bi43d");
-  			add_location(div8, file$4, 10, 4, 275);
-  			attr_dev(div9, "class", "star svelte-16bi43d");
-  			add_location(div9, file$4, 11, 4, 304);
-  			attr_dev(div10, "class", "star svelte-16bi43d");
-  			add_location(div10, file$4, 12, 4, 333);
-  			attr_dev(div11, "class", "star svelte-16bi43d");
-  			add_location(div11, file$4, 13, 4, 362);
-  			attr_dev(div12, "class", "star svelte-16bi43d");
-  			add_location(div12, file$4, 14, 4, 391);
-  			attr_dev(div13, "class", "star svelte-16bi43d");
-  			add_location(div13, file$4, 15, 4, 420);
-  			attr_dev(div14, "class", "star svelte-16bi43d");
-  			add_location(div14, file$4, 16, 4, 449);
-  			attr_dev(div15, "class", "star svelte-16bi43d");
-  			add_location(div15, file$4, 17, 4, 478);
-  			attr_dev(div16, "class", "star svelte-16bi43d");
-  			add_location(div16, file$4, 18, 4, 507);
-  			attr_dev(div17, "class", "star svelte-16bi43d");
-  			add_location(div17, file$4, 19, 4, 536);
-  			attr_dev(div18, "class", "star svelte-16bi43d");
-  			add_location(div18, file$4, 20, 4, 565);
-  			attr_dev(div19, "class", "star svelte-16bi43d");
-  			add_location(div19, file$4, 21, 4, 594);
-  			attr_dev(div20, "class", "star svelte-16bi43d");
-  			add_location(div20, file$4, 22, 4, 623);
-  			attr_dev(div21, "class", "star svelte-16bi43d");
-  			add_location(div21, file$4, 23, 4, 652);
-  			attr_dev(div22, "class", "star svelte-16bi43d");
-  			add_location(div22, file$4, 24, 4, 681);
-  			attr_dev(div23, "class", "star svelte-16bi43d");
-  			add_location(div23, file$4, 25, 4, 710);
-  			attr_dev(div24, "class", "star svelte-16bi43d");
-  			add_location(div24, file$4, 26, 4, 739);
-  			attr_dev(div25, "class", "star svelte-16bi43d");
-  			add_location(div25, file$4, 27, 4, 768);
-  			attr_dev(div26, "class", "star svelte-16bi43d");
-  			add_location(div26, file$4, 28, 4, 797);
-  			attr_dev(div27, "class", "star svelte-16bi43d");
-  			add_location(div27, file$4, 29, 4, 826);
-  			attr_dev(div28, "class", "star svelte-16bi43d");
-  			add_location(div28, file$4, 30, 4, 855);
-  			attr_dev(div29, "class", "star svelte-16bi43d");
-  			add_location(div29, file$4, 31, 4, 884);
-  			attr_dev(div30, "class", "star svelte-16bi43d");
-  			add_location(div30, file$4, 32, 4, 913);
-  			attr_dev(div31, "class", "star svelte-16bi43d");
-  			add_location(div31, file$4, 33, 4, 942);
-  			attr_dev(div32, "class", "star svelte-16bi43d");
-  			add_location(div32, file$4, 34, 4, 971);
-  			attr_dev(div33, "class", "star svelte-16bi43d");
-  			add_location(div33, file$4, 35, 4, 1000);
-  			attr_dev(div34, "class", "star svelte-16bi43d");
-  			add_location(div34, file$4, 36, 4, 1029);
-  			attr_dev(div35, "class", "star svelte-16bi43d");
-  			add_location(div35, file$4, 37, 4, 1058);
-  			attr_dev(div36, "class", "star svelte-16bi43d");
-  			add_location(div36, file$4, 38, 4, 1087);
-  			attr_dev(div37, "class", "star svelte-16bi43d");
-  			add_location(div37, file$4, 39, 4, 1116);
-  			attr_dev(div38, "class", "star svelte-16bi43d");
-  			add_location(div38, file$4, 40, 4, 1145);
-  			attr_dev(div39, "class", "star svelte-16bi43d");
-  			add_location(div39, file$4, 41, 4, 1174);
-  			attr_dev(div40, "class", "star svelte-16bi43d");
-  			add_location(div40, file$4, 42, 4, 1203);
-  			attr_dev(div41, "class", "star svelte-16bi43d");
-  			add_location(div41, file$4, 43, 4, 1232);
-  			attr_dev(div42, "class", "star svelte-16bi43d");
-  			add_location(div42, file$4, 44, 4, 1261);
-  			attr_dev(div43, "class", "star svelte-16bi43d");
-  			add_location(div43, file$4, 45, 4, 1290);
-  			attr_dev(div44, "class", "star svelte-16bi43d");
-  			add_location(div44, file$4, 46, 4, 1319);
-  			attr_dev(div45, "class", "star svelte-16bi43d");
-  			add_location(div45, file$4, 47, 4, 1348);
-  			attr_dev(div46, "class", "star svelte-16bi43d");
-  			add_location(div46, file$4, 48, 4, 1377);
-  			attr_dev(div47, "class", "star svelte-16bi43d");
-  			add_location(div47, file$4, 49, 4, 1406);
-  			attr_dev(div48, "class", "star svelte-16bi43d");
-  			add_location(div48, file$4, 50, 4, 1435);
-  			attr_dev(div49, "class", "star svelte-16bi43d");
-  			add_location(div49, file$4, 51, 4, 1464);
-  			attr_dev(div50, "class", "stars svelte-16bi43d");
-  			add_location(div50, file$4, 1, 0, 19);
-  			attr_dev(div51, "class", "body svelte-16bi43d");
-  			add_location(div51, file$4, 0, 0, 0);
-  		},
-  		l: function claim(nodes) {
-  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-  		},
-  		m: function mount(target, anchor) {
-  			insert_dev(target, div51, anchor);
-  			append_dev(div51, div50);
-  			append_dev(div50, div0);
-  			append_dev(div50, t0);
-  			append_dev(div50, div1);
-  			append_dev(div50, t1);
-  			append_dev(div50, div2);
-  			append_dev(div50, t2);
-  			append_dev(div50, div3);
-  			append_dev(div50, t3);
-  			append_dev(div50, div4);
-  			append_dev(div50, t4);
-  			append_dev(div50, div5);
-  			append_dev(div50, t5);
-  			append_dev(div50, div6);
-  			append_dev(div50, t6);
-  			append_dev(div50, div7);
-  			append_dev(div50, t7);
-  			append_dev(div50, div8);
-  			append_dev(div50, t8);
-  			append_dev(div50, div9);
-  			append_dev(div50, t9);
-  			append_dev(div50, div10);
-  			append_dev(div50, t10);
-  			append_dev(div50, div11);
-  			append_dev(div50, t11);
-  			append_dev(div50, div12);
-  			append_dev(div50, t12);
-  			append_dev(div50, div13);
-  			append_dev(div50, t13);
-  			append_dev(div50, div14);
-  			append_dev(div50, t14);
-  			append_dev(div50, div15);
-  			append_dev(div50, t15);
-  			append_dev(div50, div16);
-  			append_dev(div50, t16);
-  			append_dev(div50, div17);
-  			append_dev(div50, t17);
-  			append_dev(div50, div18);
-  			append_dev(div50, t18);
-  			append_dev(div50, div19);
-  			append_dev(div50, t19);
-  			append_dev(div50, div20);
-  			append_dev(div50, t20);
-  			append_dev(div50, div21);
-  			append_dev(div50, t21);
-  			append_dev(div50, div22);
-  			append_dev(div50, t22);
-  			append_dev(div50, div23);
-  			append_dev(div50, t23);
-  			append_dev(div50, div24);
-  			append_dev(div50, t24);
-  			append_dev(div50, div25);
-  			append_dev(div50, t25);
-  			append_dev(div50, div26);
-  			append_dev(div50, t26);
-  			append_dev(div50, div27);
-  			append_dev(div50, t27);
-  			append_dev(div50, div28);
-  			append_dev(div50, t28);
-  			append_dev(div50, div29);
-  			append_dev(div50, t29);
-  			append_dev(div50, div30);
-  			append_dev(div50, t30);
-  			append_dev(div50, div31);
-  			append_dev(div50, t31);
-  			append_dev(div50, div32);
-  			append_dev(div50, t32);
-  			append_dev(div50, div33);
-  			append_dev(div50, t33);
-  			append_dev(div50, div34);
-  			append_dev(div50, t34);
-  			append_dev(div50, div35);
-  			append_dev(div50, t35);
-  			append_dev(div50, div36);
-  			append_dev(div50, t36);
-  			append_dev(div50, div37);
-  			append_dev(div50, t37);
-  			append_dev(div50, div38);
-  			append_dev(div50, t38);
-  			append_dev(div50, div39);
-  			append_dev(div50, t39);
-  			append_dev(div50, div40);
-  			append_dev(div50, t40);
-  			append_dev(div50, div41);
-  			append_dev(div50, t41);
-  			append_dev(div50, div42);
-  			append_dev(div50, t42);
-  			append_dev(div50, div43);
-  			append_dev(div50, t43);
-  			append_dev(div50, div44);
-  			append_dev(div50, t44);
-  			append_dev(div50, div45);
-  			append_dev(div50, t45);
-  			append_dev(div50, div46);
-  			append_dev(div50, t46);
-  			append_dev(div50, div47);
-  			append_dev(div50, t47);
-  			append_dev(div50, div48);
-  			append_dev(div50, t48);
-  			append_dev(div50, div49);
-  		},
-  		p: noop,
-  		i: noop,
-  		o: noop,
-  		d: function destroy(detaching) {
-  			if (detaching) detach_dev(div51);
-  		}
-  	};
-
-  	dispatch_dev("SvelteRegisterBlock", {
-  		block,
-  		id: create_fragment$4.name,
-  		type: "component",
-  		source: "",
-  		ctx
-  	});
-
-  	return block;
-  }
-
-  function instance$4($$self, $$props) {
-  	let { $$slots: slots = {}, $$scope } = $$props;
-  	validate_slots('AnimatedBackground', slots, []);
-  	const writable_props = [];
-
-  	Object.keys($$props).forEach(key => {
-  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<AnimatedBackground> was created with unknown prop '${key}'`);
-  	});
-
-  	return [];
-  }
-
-  class AnimatedBackground extends SvelteComponentDev {
-  	constructor(options) {
-  		super(options);
-  		init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
-
-  		dispatch_dev("SvelteRegisterComponent", {
-  			component: this,
-  			tagName: "AnimatedBackground",
-  			options,
-  			id: create_fragment$4.name
-  		});
-  	}
-  }
-
-  /* src/AnimatedBackground2.svelte generated by Svelte v3.44.3 */
-
-  const file$3 = "src/AnimatedBackground2.svelte";
-
-  function get_each_context(ctx, list, i) {
-  	const child_ctx = ctx.slice();
-  	child_ctx[0] = list[i];
-  	child_ctx[2] = i;
-  	return child_ctx;
-  }
-
-  // (2:4) {#each Array(144) as _,i}
-  function create_each_block(ctx) {
-  	let div;
-
-  	const block = {
-  		c: function create() {
-  			div = element("div");
-  			attr_dev(div, "class", "c svelte-1ee4xy3");
-  			add_location(div, file$3, 2, 8, 57);
-  		},
-  		m: function mount(target, anchor) {
-  			insert_dev(target, div, anchor);
-  		},
-  		d: function destroy(detaching) {
-  			if (detaching) detach_dev(div);
-  		}
-  	};
-
-  	dispatch_dev("SvelteRegisterBlock", {
-  		block,
-  		id: create_each_block.name,
-  		type: "each",
-  		source: "(2:4) {#each Array(144) as _,i}",
-  		ctx
-  	});
-
-  	return block;
-  }
-
-  function create_fragment$3(ctx) {
-  	let div;
-  	let each_value = Array(144);
-  	validate_each_argument(each_value);
-  	let each_blocks = [];
-
-  	for (let i = 0; i < each_value.length; i += 1) {
-  		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
-  	}
-
-  	const block = {
-  		c: function create() {
-  			div = element("div");
-
-  			for (let i = 0; i < each_blocks.length; i += 1) {
-  				each_blocks[i].c();
-  			}
-
-  			attr_dev(div, "class", "wrap svelte-1ee4xy3");
-  			add_location(div, file$3, 0, 0, 0);
-  		},
-  		l: function claim(nodes) {
-  			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-  		},
-  		m: function mount(target, anchor) {
-  			insert_dev(target, div, anchor);
-
-  			for (let i = 0; i < each_blocks.length; i += 1) {
-  				each_blocks[i].m(div, null);
-  			}
-  		},
-  		p: noop,
-  		i: noop,
-  		o: noop,
-  		d: function destroy(detaching) {
-  			if (detaching) detach_dev(div);
-  			destroy_each(each_blocks, detaching);
-  		}
-  	};
-
-  	dispatch_dev("SvelteRegisterBlock", {
-  		block,
-  		id: create_fragment$3.name,
-  		type: "component",
-  		source: "",
-  		ctx
-  	});
-
-  	return block;
-  }
-
-  function instance$3($$self, $$props) {
-  	let { $$slots: slots = {}, $$scope } = $$props;
-  	validate_slots('AnimatedBackground2', slots, []);
-  	const writable_props = [];
-
-  	Object.keys($$props).forEach(key => {
-  		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<AnimatedBackground2> was created with unknown prop '${key}'`);
-  	});
-
-  	return [];
-  }
-
-  class AnimatedBackground2 extends SvelteComponentDev {
-  	constructor(options) {
-  		super(options);
-  		init(this, options, instance$3, create_fragment$3, safe_not_equal, {});
-
-  		dispatch_dev("SvelteRegisterComponent", {
-  			component: this,
-  			tagName: "AnimatedBackground2",
-  			options,
-  			id: create_fragment$3.name
-  		});
-  	}
-  }
-
   /* src/AnimatedBackground3.svelte generated by Svelte v3.44.3 */
 
   const file$2 = "src/AnimatedBackground3.svelte";
@@ -45883,7 +45836,7 @@ var app = (function () {
   const { console: console_1 } = globals;
   const file = "src/App.svelte";
 
-  // (221:0) {#if m_bWarmUp}
+  // (230:0) {#if m_bWarmUp}
   function create_if_block(ctx) {
   	let pill;
   	let current;
@@ -45935,7 +45888,7 @@ var app = (function () {
   		block,
   		id: create_if_block.name,
   		type: "if",
-  		source: "(221:0) {#if m_bWarmUp}",
+  		source: "(230:0) {#if m_bWarmUp}",
   		ctx
   	});
 
@@ -45964,7 +45917,7 @@ var app = (function () {
   			if (if_block) if_block.c();
   			if_block_anchor = empty();
   			attr_dev(div, "class", "renderer svelte-1srbjkb");
-  			add_location(div, file, 218, 0, 5698);
+  			add_location(div, file, 227, 0, 6023);
   		},
   		l: function claim(nodes) {
   			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -46203,17 +46156,26 @@ var app = (function () {
   			}
   		});
 
-  		interactor.onMouseMove(e => {
+  		interactor.onMouseMove(async e => {
   			if (pickedPoint === -1) return;
   			const pos = e.position;
   			picker.pick([pos.x, pos.y, pos.z], m_renderer);
-  			picker.getPickPosition();
-  			m_targetObject.getPoints().getPoint(pickedPoint);
+  			const pickedPosition = picker.getPickPosition();
+  			let currentPoint = m_targetObject.getPoints().getPoint(pickedPoint);
+  			currentPoint = fromValues$2(currentPoint[0], currentPoint[1], currentPoint[2]);
+  			const targetPosition = fromValues$2(pickedPosition[0], pickedPosition[1], currentPoint[2]);
 
-  			// m_targetObject.getPoints().setPoint(pickedPoint, pickedPosition[0], pickedPosition[1], currentPoint[2]);
+  			// const direction = vec3.create()
+  			// vec3.sub(direction, targetPosition, currentPosition);
+  			subtract$1(targetPosition, targetPosition, currentPoint);
+
+  			normalize$3(targetPosition, targetPosition);
+  			add$1(currentPoint, currentPoint, targetPosition);
+  			m_targetObject.getPoints().setPoint(pickedPoint, ...currentPoint);
+
   			// m_targetObject.getPoints().modified();
   			// m_targetObject.modified();		
-  			encoderDecoder(m_targetObject);
+  			await encoderDecoder(m_targetObject);
 
   			m_renderWindow.render();
   		});
@@ -46282,11 +46244,10 @@ var app = (function () {
   		encoderDecoder,
   		decoder,
   		warmUp,
-  		AnimatedBackground,
-  		AnimatedBackground2,
   		AnimatedBackground3,
   		vtkPointPicker: vtkPointPicker$1,
   		vtkInteractorStyleManipulator: vtkInteractorStyleManipulator$1,
+  		vec3,
   		Pill,
   		sampleLatents,
   		m_container,
